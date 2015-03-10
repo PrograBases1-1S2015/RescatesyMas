@@ -30,7 +30,7 @@ img{max-width:100%;}
 /*end reset*/
 body{
 	font-family:Arial, Helvetica, sans-serif;
-	background: url(../images/verde.jpg)no-repeat center fixed;
+	background: url(../images/blur.png)no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -71,12 +71,10 @@ ul.follow_icon{
 	vertical-align: middle;
 }
 .phone {
-	color: Blue;
 	float: right;
 	font-family: 'Roboto Condensed', sans-serif;
 	margin:20px 0 0px 0px;
 	line-height: 15px;
-	
 }
 span.order{
 	font-weight: normal;
