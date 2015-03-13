@@ -122,51 +122,58 @@
 
 	<form id="formulario" action="enviado.php" method="post" >
 	    <fieldset>
+		
 	        <legend>Formulario de Registro</legend>
-	            <label>Nombre</label>
+	            <label>Nombre:</label>
 	                <input id="campo1" name="nombre" type="text" />
 			<br> </br>
-	            <label>Primer Apellido</label>
+	            <label>Primer Apellido:</label>
 	                <input id="campo2" name="primerApellido" type="text" />
 			<br> </br>
-		    <label>Segundo Apellido</label>
+		    <label>Segundo Apellido:</label>
 	                <input id="campo3" name="segundoApellido" type="text" />
 			<br> </br>
-	            <label>Email</label>
+	            <label>Email:</label>
 	                <input id="campo4" name="email" type="text" />
 			<br> </br>
-		    <label>Cédula</label>
+		    <label>Cédula:</label>
 	                <input id="campo5" name="cedula" type="number" />
 			<br> </br>
-	            <label>Teléfono</label>
+	            <label>Teléfono:</label>
 	                <input id="campo7" name="telefono" type="text" />
 			<br> </br>
-		    <label>Nombre Usuario</label>
+		    <div class="Parte2">
+		    <label>Nombre Usuario:</label>
 	                <input id="campo8" name="nomUsuario" type="text" />
 			<br> </br>
-	            <label>Contraseña</label>
+	            <label>Contraseña:</label>
 	                <input id="campo9" name="contraseña" type="text" />
 			<br> </br>
 		   <select name=pais>
+			<option>Pais</option>
 		   </select>
-		   <br> </br>
+		   	<br> </br>
 		   <select name=provincia>
+			<option>Provincia</option>
 		   </select>
-		   <br> </br>
+		   	<br> </br>
 		   <select name=canton>
+			<option>Cantón</option>
 		   </select>
-		   <br> </br>
+		   	<br> </br>
 		   <select name=distrito>
+			<option>Distrito</option>
 		   </select>
-		   <br> </br>
+		   	<br> </br>
 	           <label for="rescatista">Rescatista: </label>	
 		   	<input type="radio" name="tipoPersona" id="rescatista" value="Rescatista">
-		   <br> </br>
+		   	<br> </br>
 		   <label for="adoptante">Adoptante: </label>	
 		   		<input type="radio" name="tipoPersona" id="adoptante" value="Adoptante">
-		   <br> </br>	
+		   	<br> </br>	
 		 <input id="campo10" name="enviar" type="submit" value="Enviar" />	    
-		<br> </br>
+			<br> </br>
+	      </div>
 		</fieldset>
 	</form>
 
