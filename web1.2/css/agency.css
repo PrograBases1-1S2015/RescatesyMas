@@ -354,8 +354,9 @@ section h3.section-subheading {
     text-transform: none;
 }
 
-.Parte2{
- 
+form fieldset {
+  float: left;
+  width: 48%;
 }
 
 
