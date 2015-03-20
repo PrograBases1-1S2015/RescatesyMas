@@ -355,8 +355,8 @@ section h3.section-subheading {
 }
 
 form fieldset {
-  float: left;
-  width: 48%;
+    float: left;
+    width: 50%;
 }
 
 
@@ -435,6 +435,12 @@ form fieldset {
     #portfolio .portfolio-item {
         margin: 0 0 30px;
     }
+}
+
+form fieldset {
+    float: left;
+    width: 50%;
+    
 }
 
 .timeline {
