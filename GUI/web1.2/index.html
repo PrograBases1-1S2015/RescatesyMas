@@ -121,60 +121,122 @@
         </div> -->
 
 	<form id="formulario" action="" method="post" >
-	    <fieldset>
-		
-	        <legend>Formulario de Registro</legend>
-	            <label>Nombre:</label>
-	                <input id="campo1" name="nombre" type="text" />
-			<br> </br>
-	            <label>Primer Apellido:</label>
-	                <input id="campo2" name="primerApellido" type="text" />
-			<br> </br>
-		    <label>Segundo Apellido:</label>
-	                <input id="campo3" name="segundoApellido" type="text" />
-			<br> </br>
-	            <label>Email:</label>
-	                <input id="campo4" name="email" type="text" />
-			<br> </br>
-		    <label>Cédula:</label>
-	                <input id="campo5" name="cedula" type="number" />
-			<br> </br>
-	            <label>Teléfono:</label>
-	                <input id="campo7" name="telefono" type="text" />
-			<br> </br>
-		</fieldset>
-		   
-		    <label>Nombre Usuario:</label>
-	                <input id="campo8" name="nomUsuario" type="text" />
-			<br> </br>
-	            <label>Contraseña:</label>
-	                <input id="campo9" name="contraseña" type="text" />
-			<br> </br>
-		   <select name=pais>
-			<option>Pais</option>
-		   </select>
-		   	<br> </br>
-		   <select name=provincia>
-			<option>Provincia</option>
-		   </select>
-		   	<br> </br>
-		   <select name=canton>
-			<option>Cantón</option>
-		   </select>
-		   	<br> </br>
-		   <select name=distrito>
-			<option>Distrito</option>
-		   </select>
-		   	<br> </br>
-	           <label for="rescatista">Rescatista: </label>	
-		   	<input type="radio" name="tipoPersona" id="rescatista" value="Rescatista">
-		   	<br> </br>
-		   <label for="adoptante">Adoptante: </label>	
-		   		<input type="radio" name="tipoPersona" id="adoptante" value="Adoptante">
-		   	<br> </br>	
-		 <input id="campo10" name="enviar" type="submit" value="Enviar" />	    
-			<br> </br>
-	     
+            <legend>Formulario de Registro</legend>
+                <table style="float: left;" >
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Nombre:</label>
+                        <input id="campo1" name="nombre" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Primer Apellido:</label>
+                        <input id="campo2" name="primerApellido" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Segundo Apellido:</label>
+                        <input id="campo3" name="segundoApellido" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Email:</label>
+                        <input id="campo4" name="email" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Cédula:</label>
+                        <input id="campo5" name="cedula" type="number" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Teléfono:</label>
+                        <input id="campo7" name="telefono" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label for="rescatista" style="width: 200px; display: block; float: left;" >Rescatista:</label>
+                        <input type="radio" name="tipoPersona" id="rescatista" value="Rescatista" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label for="adoptante" style="width: 200px; display: block; float: left;" >Adoptante:</label>
+                        <input type="radio" name="tipoPersona" id="adoptante" value="Adoptante"  />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                </table>
+
+                <table style="float: left;">
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
+                        <input id="campo8" name="nomUsuario" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <input id="campo9" name="contraseña" type="password" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >País:</label>
+                       <select name=pais style="width: 200px; display: block; float: left;">
+                        <option>Pais</option>
+                       </select>
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Provincia:</label>
+                       <select name=provincia style="width: 200px; display: block; float: left;">
+                            <option>Provincia</option>
+                       </select>
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Canton:</label>
+                       <select name=canton style="width: 200px; display: block; float: left;">
+                            <option>Cantón</option>
+                       </select>
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Distrito:</label>
+                       <select name=distrito style="width: 200px; display: block; float: left;">
+                            <option>Distrito</option>
+                       </select>
+                    </td>
+                  </tr>
+
+                </table>
+                <div style="clear: both;"></div>
+                
+                <input id="campo10" name="enviar" type="submit" value="Enviar" />                
+                
 	</form>
 
     
@@ -193,18 +255,24 @@
         </div>
 
         <form id="loggin" action="" method="post">
-            <fieldset>
                 <legend>Loggin</legend>
-                <label>Nombre de usuario</label>
-                    <input id="campo1" name="nomusuario" type="text" />
-                    <br></br>
-                 <label>Contraseña</label>
-                 <input id="campo2" name="contraseña" type="password" />
-                    <br> </br>
-                 <input id="campo3" name="entrar" type="submit" value="Entrar" />       
-                    <br> </br>
-            </fieldset>
-
+                <table style="float: left;">
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
+                        <input id="campo1" name="nomusuario" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <input id="campo2" name="contraseña" type="password" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                </table>
+                   <div style="clear: both;"></div>
+                   <input id="campo3" name="entrar" type="submit" value="Entrar" />       
         </form>
 
 
