@@ -1,3 +1,24 @@
+<?php
+//Agregar archivos de configuracion y funciones
+
+//Al presionar el boton de enviar
+if (isset($_POST['enviar']))
+{ 
+// Todo el codigo para registrar un usuario
+         die('Por el momento no podemos realizar su solicitud <a href=index.php>Intente en otro momento</a>');
+
+}
+//Al presionar el boton de login
+if (isset($_POST['entrar']))
+{ 
+// Todas las validaciones necesarias antes de entrar
+         header("Location: index2.php");
+
+}
+
+   
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +30,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Amor Animal</title>
+    <title>Agency - Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +44,6 @@
     <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
 
 </head>
 
@@ -40,7 +60,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.php">Amor Animal</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Amor Animal</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,10 +70,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="registroUsuario.php">Registro</a>
+                        <a class="page-scroll" href="#services">Registro</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="logginUsuario.php">Entrar</a>
+                        <a class="page-scroll" href="#portfolio">Entrar</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">Nosotros</a>
@@ -77,12 +97,275 @@
         </div>
     </header>
 
+    <!-- Services Section -->
+    <section id="services">
+        
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Registro</h2>
+                    <h3 class="section-subheading text-muted">Registrese para poder acceder al contenido</h3>
+                </div>
+            </div>
+
+
+	<form id="formulario" action="" method="post" >
+            <legend>Formulario de Registro</legend>
+                <table style="float: left;" >
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Nombre:</label>
+                        <input id="campo1" name="nombre" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Primer Apellido:</label>
+                        <input id="campo2" name="primerApellido" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Segundo Apellido:</label>
+                        <input id="campo3" name="segundoApellido" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Email:</label>
+                        <input id="campo4" name="email" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Cédula:</label>
+                        <input id="campo5" name="cedula" type="number" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Teléfono:</label>
+                        <input id="campo7" name="telefono" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label for="rescatista" style="width: 200px; display: block; float: left;" >Rescatista:</label>
+                        <input type="radio" name="tipoPersona" id="rescatista" value="Rescatista" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label for="adoptante" style="width: 200px; display: block; float: left;" >Adoptante:</label>
+                        <input type="radio" name="tipoPersona" id="adoptante" value="Adoptante"  />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                </table>
+
+                <table style="float: left;">
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
+                        <input id="campo8" name="nomUsuario" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <input id="campo9" name="contraseña" type="password" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >País:</label>
+                       <select name=pais style="width: 200px; display: block; float: left;">
+                        <option>Pais</option>
+                       </select>
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Provincia:</label>
+                       <select name=provincia style="width: 200px; display: block; float: left;">
+                            <option>Provincia</option>
+                       </select>
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Canton:</label>
+                       <select name=canton style="width: 200px; display: block; float: left;">
+                            <option>Cantón</option>
+                       </select>
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Distrito:</label>
+                       <select name=distrito style="width: 200px; display: block; float: left;">
+                            <option>Distrito</option>
+                       </select>
+                    </td>
+                  </tr>
+
+                </table>
+                <div style="clear: both;"></div>
+                
+                <input id="campo10" name="enviar" type="submit" value="Enviar" />                
+                
+	</form>
+
+    
+
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Entrar</h2>
+                    <h3 class="section-subheading text-muted">!Salvemos los animales¡</h3>
+                </div>
+            </div>
+        </div>
+
+        <form id="loggin" action="" method="post">
+                <legend>Loggin</legend>
+                <table style="float: left;">
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
+                        <input id="campo1" name="nomusuario" type="text" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <input id="campo2" name="contraseña" type="password" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
+                </table>
+                   <div style="clear: both;"></div>
+                   <input id="campo3" name="entrar" type="submit" value="Entrar" />       
+        </form>
+
+
+
+
+    </section>
+
+<!-- About Section 
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">About</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2009-2011</h4>
+                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>March 2011</h4>
+                                    <h4 class="subheading">An Agency is Born</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>December 2012</h4>
+                                    <h4 class="subheading">Transition to Full Service</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>July 2014</h4>
+                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
 
 </body>
 
