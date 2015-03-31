@@ -108,6 +108,29 @@ begin
   return(ID);
 end Distrito_ID;
 
+----------6. Direccion Exacta---------------------
+--Procedimiento--
+create or replace procedure Agregar_Direccion_Exacta(Nombre varchar,Distrito varchar2) is
+       resultado number;
+begin
+ Select distrito_id(Distrito) into resultado from dual;
+ insert into Direccion_Exacta(Direccion_Exacta_Id,Direccion_Exacta,Distrito_Id)
+  values(incremento_Direccion_Exacta.nextval,Nombre,resultado);
+  
+end Agregar_Direccion_Exacta;
+
+--Funcion busqueda--
+create or replace function Direccion_Exacta_ID(Nombre_Direccion_Exacta varchar2) 
+return number is
+  Id number;
+begin
+  Select Direccion_Exacta_id into  ID 
+  from Direccion_Exacta
+  where (Direccion_Exacta = Direccion_Exacta_Distrito);       
+  
+  return(ID);
+end Direccion_Exacta_ID;
+
 
 ---Procedimiento para crear la persona---
 --Procedimiento para agregar las personas--
