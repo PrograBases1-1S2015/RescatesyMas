@@ -113,7 +113,7 @@ end Distrito_ID;
 create or replace procedure Agregar_Direccion_Exacta(Nombre varchar,Distrito varchar2) is
        resultado number;
 begin
- Select distrito_id(Distrito) into resultado from dual;
+ Select distrito_id(Distrito) into resultado_distrito from dual;
  insert into Direccion_Exacta(Direccion_Exacta_Id,Direccion_Exacta,Distrito_Id)
   values(incremento_Direccion_Exacta.nextval,Nombre,resultado);
   
