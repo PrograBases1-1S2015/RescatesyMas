@@ -38,39 +38,42 @@ begin
   where (Pais = Nombre_Pais);       
   
   return(ID);
-end Usuario_ID;
+end Pais_ID;
 
 
 ----------3. Provincia---------------------
---Procedimiento--
-create or replace procedure Agregar_Provincia(Nombre varchar) is
+create or replace procedure Agregar_Provincia(Nombre varchar,Pais varchar2) is
+       resultado number;
 begin
-  insert into pais(provincia_id,provincia)
-  values(incremento_provincia.nextval,Nombre);
+ Select pais_id(pais) into resultado from dual;
+ insert into Provincia(Provincia_id,Provincia,pais_Id)
+  values(incremento_Provincia.nextval,Nombre,resultado);
   
-end Agregar_Pais;
+end Agregar_Provincia;
 
 --Funcion busqueda--
 create or replace function Provincia_ID(Nombre_Provincia varchar2) 
 return number is
   Id number;
 begin
-  Select provincia_id into  ID 
+  Select Provincia_id into  ID 
   from Provincia
   where (Provincia = Nombre_Provincia);       
   
   return(ID);
-end Usuario_ID;
+end Provincia_ID;
+
 
 ----------4. Cantòn---------------------
 --Procedimiento--
-create or replace procedure Agregar_Provincia(Nombre varchar) is
+create or replace procedure Agregar_Canton(Nombre varchar,Provincia varchar2) is
+       resultado number;
 begin
-  insert into pais(Canton_id,Canton)
-  values(incremento_Canton.nextval,Nombre);
+ Select provincia_id(provincia) into resultado from dual;
+ insert into Canton(Canton_Id,Canton,Provincia_Id)
+  values(incremento_canton,Nombre,resultado);
   
-end Agregar_Pais;
-
+end Agregar_Canton;
 --Funcion busqueda--
 create or replace function Canton_ID(Nombre_Canton varchar2) 
 return number is
@@ -81,15 +84,17 @@ begin
   where (Canton = Nombre_Canton);       
   
   return(ID);
-end Usuario_ID;
+end Canton_ID;
 ----------5. Distrito---------------------
 --Procedimiento--
-create or replace procedure Agregar_Distrito(Nombre varchar) is
+create or replace procedure Agregar_Distrito(Nombre varchar,Canton varchar2) is
+       resultado number;
 begin
-  insert into pais(Distrito_id,Distrito)
-  values(incremento_Distrito.nextval,Nombre);
+ Select canton_id(Canton) into resultado from dual;
+ insert into Distrito(Distrito_Id,Distrito,Canton_Id)
+  values(incremento_distrito.nextval,Nombre,resultado);
   
-end Agregar_Pais;
+end Agregar_Distrito;
 
 --Funcion busqueda--
 create or replace function Distrito_ID(Nombre_Distrito varchar2) 
@@ -101,6 +106,14 @@ begin
   where (Distrito = Nombre_Distrito);       
   
   return(ID);
-end Usuario_ID;
+end Distrito_ID;
 
 
+---Procedimiento para crear la persona---
+--Procedimiento para agregar las personas--
+create or replace procedure Agregar_Persona(nombre varchar,apellido varchar,
+cedula varchar,Direccion number,telef1 number,telef2 number,usuario number,email varchar,) is
+begin
+  insert into persona(persona_id,nombre,apellidos,cedula,direccion_exacta_id,email,num_telefono_1,num_telefono_2,usuario_id)
+  values(incremento_persona.nextval,nombre,apellido,cedula,direccion,email,telef1,telef2,usuario);
+ end Agregar_Persona;
