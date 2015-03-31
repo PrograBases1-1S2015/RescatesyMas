@@ -4,6 +4,16 @@ enfermedad_id NUMBER(6),
 enfermedad VARCHAR2(20) CONSTRAINT enfermedad_enfermedad_nn NOT NULL
 );
 
+COMMENT ON TABLE ENFERMEDAD
+IS 'En esta tabla se almacenan las enfermedades';
+
+COMMENT ON COLUMN ENFERMEDAD.enfermedad_id
+IS 'Identificador de la enfermedad';
+
+COMMENT ON COLUMN ENFERMEDAD.enfermedad
+IS 'Nombre de la enfermedad';
+
+
 ALTER TABLE ENFERMEDAD add
 constraint pk_enfermedad
 primary key(enfermedad_id)
@@ -49,6 +59,18 @@ tratamiento_id NUMBER(6),
 tratamiento VARCHAR2(20) CONSTRAINT tratamiento_tratamiento_nn NOT NULL,
 enfermedad_id NUMBER(6) CONSTRAINT tratamiento_enfermed_nn NOT NULL
 );
+
+COMMENT ON TABLE TRATAMIENTO
+IS 'En esta tabla se almacenan los tratamientos';
+
+COMMENT ON COLUMN TRATAMIENTO.tratamiento_id
+IS 'Identificador del tratamiento';
+
+COMMENT ON COLUMN TRATAMIENTO.tratamiento
+IS 'Nombre del tratamiento';
+
+COMMENT ON COLUMN TRATAMIENTO.enfermedad_id
+IS 'Identificador de la enfermedad al que pertenece el tratamiento, es un foreign key de la tabla ENFERMEDAD';
 
 ALTER TABLE TRATAMIENTO add
 constraint pk_tratamiento
@@ -100,6 +122,18 @@ medicamento VARCHAR2(20) CONSTRAINT medicamento_medicamento_nn NOT NULL,
 tratamiento_id NUMBER(6) CONSTRAINT medicamento_tratamiento_nn NOT NULL
 );
 
+COMMENT ON TABLE MEDICAMENTO
+IS 'En esta tabla se almacenan los tratamientos';
+
+COMMENT ON COLUMN MEDICAMENTO.medicamento_id
+IS 'Identificador del medicamento';
+
+COMMENT ON COLUMN MEDICAMENTO.medicamento
+IS 'Nombre del medicamento';
+
+COMMENT ON COLUMN MEDICAMENTO.tratamiento_id
+IS 'Identificador del tratamiento al que pertenece el medicamento, es un foreign key de la tabla TRATAMIENTO';
+
 ALTER TABLE MEDICAMENTO add
 constraint pk_medicamento
 primary key(medicamento_id)
@@ -147,6 +181,18 @@ CREATE TABLE NIVEL_ENERGIA(
 nivel_energia_id NUMBER(6),
 nivel_energia VARCHAR2(49) CONSTRAINT nivel_energia_nn NOT NULL
 );
+
+COMMENT ON TABLE NIVEL_ENERGIA
+IS 'En esta tabla se almacenan los niveles de energía';
+
+COMMENT ON COLUMN NIVEL_ENERGIA.nivel_energia_id
+IS 'Identificador del nivel de energía';
+
+COMMENT ON COLUMN NIVEL_ENERGIA.nivel_energia
+IS 'Nombre del nivel de energía';
+
+
+
 ALTER TABLE NIVEL_ENERGIA add
 constraint pk_nivel_energia
 primary key(nivel_energia_id)
@@ -191,6 +237,17 @@ CREATE TABLE COLOR(
 color_id NUMBER(6),
 color VARCHAR2(40) CONSTRAINT color_color_nn NOT NULL
 );
+
+COMMENT ON TABLE COLOR
+IS 'En esta tabla se almacenan los colores que puede tener una mascota';
+
+COMMENT ON COLUMN COLOR.color_id
+IS 'Identificador del color';
+
+COMMENT ON COLUMN COLOR.color
+IS 'Nombre del nivel de color';
+
+
 ALTER TABLE COLOR add
 constraint pk_color
 primary key(color_id)
@@ -235,6 +292,16 @@ CREATE TABLE TIPO_FORMULARIO(
 tipo_formulario_id NUMBER(6),
 tipo_formulario VARCHAR2(40) CONSTRAINT TF_tipo_formulario_nn NOT NULL
 );
+
+COMMENT ON TABLE TIPO_FORMULARIO
+IS 'En esta tabla se almacenan los tipos de forulario que puede llegar a llenar el adoptante';
+
+COMMENT ON COLUMN TIPO_FORMULARIO.tipo_formulario_id
+IS 'Identificador del forulario';
+
+COMMENT ON COLUMN TIPO_FORMULARIO.tipo_formulario
+IS 'Nombre del nivel forulario';
+
 ALTER TABLE TIPO_FORMULARIO add
 constraint pk_tipo_formulario
 primary key(tipo_formulario_id)
@@ -280,6 +347,17 @@ CREATE TABLE PREGUNTA(
 pregunta_id NUMBER(6),
 pregunta VARCHAR2(40) CONSTRAINT pregunta_pregunta_nn NOT NULL
 );
+
+
+COMMENT ON TABLE PREGUNTA
+IS 'En esta tabla se almacenan las preguntas';
+
+COMMENT ON COLUMN PREGUNTA.pregunta_id
+IS 'Identificador de la pregunta';
+
+COMMENT ON COLUMN PREGUNTA.pregunta
+IS 'Enunciado de la pregunta';
+
 ALTER TABLE PREGUNTA add
 constraint pk_pregunta
 primary key(pregunta_id)
@@ -325,6 +403,20 @@ respuesta_id NUMBER(6),
 respuesta VARCHAR2(40) CONSTRAINT respuesta_respuesta_nn NOT NULL,
 pregunta_id NUMBER(6)
 );
+
+
+COMMENT ON TABLE RESPUESTA
+IS 'En esta tabla se almacenan las respuestas de las preguntas';
+
+COMMENT ON COLUMN RESPUESTA.respuesta_id
+IS 'Identificador de la respuesta';
+
+COMMENT ON COLUMN RESPUESTA.respuesta
+IS 'Enunciado de la respuesta';
+
+COMMENT ON COLUMN RESPUESTA.pregunta_id
+IS 'Identificador del pregunta al que pertenece la respuesta, es un foreign key de la tabla PREGUNTA';
+
 
 ALTER TABLE RESPUESTA add
 constraint pk_respuesta
@@ -373,6 +465,17 @@ CREATE TABLE FORMULARIO_X_PREGUNTA(
 tipo_formulario_id NUMBER(6),
 pregunta_id NUMBER(6)
 );
+
+COMMENT ON TABLE FORMULARIO_X_PREGUNTA
+IS 'En esta tabla se almacenan las id de los formularios y con los id de sus respectivas preguntas';
+
+COMMENT ON COLUMN FORMULARIO_X_PREGUNTA.tipo_formulario_id
+IS 'Identificador del formulario al que pertenece la pregunta, es un foreign key de la tabla TIPO_FORMULARIO';
+
+COMMENT ON COLUMN FORMULARIO_X_PREGUNTA.pregunta_id
+IS 'Identificador del pregunta , es un foreign key de la tabla PREGUNTA';
+
+
 
 ALTER TABLE FORMULARIO_X_PREGUNTA add
 constraint pk_formulario_x_pregunta
@@ -441,7 +544,7 @@ using index
 CREATE SEQUENCE incremento_pais
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a PAIS-----------------------------
 ALTER TABLE PAIS add Fec_creacion DATE;
@@ -506,7 +609,7 @@ ALTER TABLE PROVINCIA ADD CONSTRAINT FK_PAIS_PROVINCIA
 CREATE SEQUENCE incremento_provincia
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a PROVINCIA-----------------------------
 ALTER TABLE PROVINCIA add Fec_creacion DATE;
@@ -572,7 +675,7 @@ ALTER TABLE CANTON ADD CONSTRAINT FK_PROVINCIA_CANTON
 CREATE SEQUENCE incremento_canton
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a CANTON-----------------------------
 ALTER TABLE CANTON add Fec_creacion DATE;
@@ -638,7 +741,7 @@ ALTER TABLE DISTRITO ADD CONSTRAINT FK_CANTON_DISTRITO
 CREATE SEQUENCE incremento_distrito
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a DISTRITO-----------------------------
 ALTER TABLE DISTRITO add Fec_creacion DATE;
@@ -703,7 +806,7 @@ ALTER TABLE DIRECCION_EXACTA ADD CONSTRAINT FK_DISTRITO_DIRECCION_EXACTA
 CREATE SEQUENCE incremento_direccion_exacta
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a DIRECCION_EXACTA-----------------------------
 ALTER TABLE DIRECCION_EXACTA add Fec_creacion DATE;
@@ -760,7 +863,7 @@ using index
 CREATE SEQUENCE incremento_estado_mascota
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a ESTADO_MASCOTA-----------------------------
 ALTER TABLE ESTADO_MASCOTA add Fec_creacion DATE;
@@ -818,7 +921,7 @@ using index
 CREATE SEQUENCE incremento_severidad
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a SEVERIDAD-----------------------------
 ALTER TABLE SEVERIDAD add Fec_creacion DATE;
@@ -877,7 +980,7 @@ using index
 CREATE SEQUENCE incremento_entrenamiento
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a FACILIDAD_ENTRENAMIENTO-----------------------------
 ALTER TABLE FACILIDAD_ENTRENAMIENTO add Fec_creacion DATE;
@@ -894,7 +997,7 @@ begin
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
 end beforeUpdate_entrenamiento;
---------------------------------------------------------------------------
+
 create or replace trigger beforeInsert_entrenamiento
   before insert
   on FACILIDAD_ENTRENAMIENTO
@@ -935,7 +1038,7 @@ using index
 CREATE SEQUENCE incremento_tamanio
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a TAMANIO -----------------------------
 ALTER TABLE TAMANIO add Fec_creacion DATE;
@@ -992,7 +1095,7 @@ CREATE TABLE TIPO_MASCOTA
 	CREATE SEQUENCE incremento_tipo_mascota_id
 	INCREMENT BY 1
 	START WITH 1
-	MAXVALUE 1000
+	MAXVALUE 1000;
 
 -----------------------Agregar campos a TIPO_MASCOTA -----------------------------
 ALTER TABLE TIPO_MASCOTA add Fec_creacion DATE;
@@ -1057,7 +1160,7 @@ ALTER TABLE RAZA ADD CONSTRAINT FK_TIPO_MASCOTA_RAZA
 CREATE SEQUENCE incremento_raza
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a RAZA -----------------------------
 ALTER TABLE RAZA add Fec_creacion DATE;
@@ -1084,7 +1187,7 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_raza
+end beforeInsert_raza;
 
 -----------21---------Tabla USUARIO---------------------------------
 CREATE TABLE USUARIO
@@ -1122,7 +1225,7 @@ using index
 CREATE SEQUENCE incremento_usuario
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a USUARIO -----------------------------
 ALTER TABLE USUARIO add Fec_creacion DATE;
@@ -1149,7 +1252,7 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_usuario
+end beforeInsert_usuario;
 
 -------------22---------------Tabla PERSONA-----------------------------------
 CREATE TABLE PERSONA(persona_id NUMBER(6),
@@ -1223,7 +1326,7 @@ ALTER TABLE PERSONA ADD CONSTRAINT FK_USUARIO_PERSONA
 CREATE SEQUENCE incremento_persona
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a PERSONA -----------------------------
 ALTER TABLE PERSONA add Fec_creacion DATE;
@@ -1282,7 +1385,7 @@ ALTER TABLE LISTANEGRA ADD CONSTRAINT FK_PERSONA_LISTANEGRA
 CREATE SEQUENCE incremento_listaNegra
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a LISTANEGRA -----------------------------
 ALTER TABLE LISTANEGRA add Fec_creacion DATE;
@@ -1309,7 +1412,7 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_listaNegra
+end beforeInsert_listaNegra;
 
 -----------------24---------------------Tabla RESCATISTA---------------------------------------------------------------
 CREATE TABLE RESCATISTA
@@ -1344,7 +1447,7 @@ ALTER TABLE RESCATISTA ADD CONSTRAINT FK_PERSONA_RESCATISTA
 CREATE SEQUENCE incremento_rescatista
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a RESCATISTA -----------------------------
 ALTER TABLE RESCATISTA add Fec_creacion DATE;
@@ -1371,7 +1474,7 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_rescatista
+end beforeInsert_rescatista;
 
 --------------25-----------Tabla ADOPTANTE--------------------------------------------------------------------------
 CREATE TABLE ADOPTANTE
@@ -1406,7 +1509,7 @@ ALTER TABLE ADOPTANTE ADD CONSTRAINT FK_PERSONA_ADOPTANTE
 CREATE SEQUENCE incremento_adoptante
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a ADOPTANTE -----------------------------
 ALTER TABLE ADOPTANTE add Fec_creacion DATE;
@@ -1433,14 +1536,27 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_adoptante
+end beforeInsert_adoptante;
 
-----------------26------------------------Tabla FORMULARIOS_x_ADOPTANTE-----------------------------------------------------------------
+----------------26------------------------Tabla FORMULARIOS_X_ADOPTANTE-----------------------------------------------------------------
 CREATE TABLE FORMULARIOS_X_ADOPTANTE (
 adoptante_id NUMBER(6),
 tipo_formulario_id NUMBER(6),
 respuesta_id NUMBER(6)
 );
+
+COMMENT ON TABLE FORMULARIOS_X_ADOPTANTE
+IS 'En esta tabla se almacenan el formulario y las respuestas que dio el adoptante';
+
+COMMENT ON COLUMN FORMULARIOS_X_ADOPTANTE.adoptante_id
+IS 'Identificador del adoptante que lleno el forulario, es un foreing key de la tabla ADOPTANTE';
+
+COMMENT ON COLUMN FORMULARIOS_X_ADOPTANTE.tipo_formulario_id
+IS 'Identificador del tipo formulario que lleno el usuario, es un foreing key de la tabla TIPO_FORMULARIO';
+
+COMMENT ON COLUMN FORMULARIOS_X_ADOPTANTE.respuesta_id
+IS 'Identificador de la respuesta que dio el usuario, es un foreing key de la tabla RESPUESTA';
+
 
 ALTER TABLE FORMULARIOS_X_ADOPTANTE add
 constraint pk_f_x_a
@@ -1487,7 +1603,7 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_f_x_a
+end beforeInsert_f_x_a;
 
 ------------------27----------------------Tabla MASCOTA-------------------------------------------
 CREATE TABLE MASCOTA(
@@ -1501,7 +1617,7 @@ requiere_espacion Number(1) CONSTRAINT mascota_requiere_espacio_nn NOT NULL,
 foto_antes BLOB,
 foto_despues BLOB,
 veterinario VARCHAR2(45),
-descripción VARCHAR2(45),
+descripcion VARCHAR2(45),
 nota_adicional VARCHAR2(100),
 fecha DATE CONSTRAINT mascota_fecha_nn NOT NULL,
 raza_id NUMBER(6),
@@ -1512,6 +1628,66 @@ facilidad_entrenamiento_id NUMBER(6),
 rescatista_id NUMBER(6)
 
 );
+
+COMMENT ON TABLE MASCOTA
+IS 'En esta tabla se almacenan a las mascotas';
+
+COMMENT ON COLUMN MASCOTA.mascota_id
+IS 'Identificador de la mascota';
+
+COMMENT ON COLUMN MASCOTA.nombre
+IS 'Nombre de la mascota';
+
+COMMENT ON COLUMN MASCOTA.direccion_exacta_id
+IS 'Identificador de la dirección de donde se encontró la mascota, es un foreing key de la tabla DIRECCION_EXACTA';
+
+COMMENT ON COLUMN MASCOTA.severidad_id
+IS 'Identificador de la severidad de la mascota, es un foreing key de la tabla SEVERIDAD';
+
+COMMENT ON COLUMN MASCOTA.estado_mascota_id
+IS 'Identificador del estado de la mascota (Adoptado o En adopción), es un foreing key de la tabla ESTADO_MASCOTA';
+
+COMMENT ON COLUMN MASCOTA.enfermedad_id
+IS 'Identificador de la enfermedad que puede tener la mascota, es un foreing key de la tabla ENFERMEDAD';
+
+COMMENT ON COLUMN MASCOTA.requiere_espacion
+IS 'Si la mascota requiere un gran espacio o no';
+
+COMMENT ON COLUMN MASCOTA.foto_antes
+IS 'Foto de la mascota antes de ser rescatada';
+
+COMMENT ON COLUMN MASCOTA.foto_despues
+IS 'Foto de la mascota despúes de ser rescatada';
+
+COMMENT ON COLUMN MASCOTA.veterinario
+IS 'Nombre del veterinario de la mascota';
+
+COMMENT ON COLUMN MASCOTA.descripcion
+IS 'Descripción de la mascota';
+
+COMMENT ON COLUMN MASCOTA.nota_adicional
+IS 'Algúna nota adicional sobre la mascota';
+
+COMMENT ON COLUMN MASCOTA.fecha
+IS 'Fecha de caundo fue encontrada la mascota';
+
+COMMENT ON COLUMN MASCOTA.raza_id
+IS 'Identificador de la raza de la mascota, es un foreing key de la tabla RAZA';
+
+COMMENT ON COLUMN MASCOTA.nivel_energia_id
+IS 'Identificador del nivel de energía de la mascota, es un foreing key de la tabla NIVEL_ENERGIA';
+
+COMMENT ON COLUMN MASCOTA.color_id
+IS 'Identificador del color de la mascota, es un foreing key de la tabla COLOR';
+
+COMMENT ON COLUMN MASCOTA.tamanio_id
+IS 'Identificador del tamaño de la mascota, es un foreing key de la tabla TAMANIO';
+
+COMMENT ON COLUMN MASCOTA.facilidad_entrenamiento_id
+IS 'Identificador de la facilidad de entrenamiento de la mascota, es un foreing key de la tabla FACILIDAD_ENTRENAMIENTO';
+
+COMMENT ON COLUMN MASCOTA.rescatista_id
+IS 'Identificador de la respuesta que dio el usuario, es un foreing key de la tabla RESPUESTA';
 
 ALTER TABLE MASCOTA ADD
 CONSTRAINT pk_mascota
@@ -1600,14 +1776,31 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_mascota
+end beforeInsert_mascota;
 
 --------------------28------------------Tabla ADOPCIONES_X_MASCOTA------------------------------------
 CREATE TABLE ADOPCIONES_X_MASCOTA(
 adopciones_x_mascota_id NUMBER(6),
 adoptante_id NUMBER(6),
-mascota_id NUMBER(6)
+mascota_id NUMBER(6),
+foto BLOB
 );
+
+
+COMMENT ON TABLE ADOPCIONES_X_MASCOTA
+IS 'En esta tabla se almacenan a las Adopciones';
+
+COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.adopciones_x_mascota_id
+IS 'Identificador de la adopción';
+
+COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.adoptante_id
+IS 'Identificador del adoptante, es un foreing key de la tabla ADOPTANTE';
+
+COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.mascota_id
+IS 'Identificador de la mascota, es un foreing key de la tabla  MASCOTA';
+
+COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.foto
+IS 'Foto de la mascota con su dueño';
 
 ALTER TABLE ADOPCIONES_X_MASCOTA ADD
 CONSTRAINT pk_adopciones_x_mascota
@@ -1629,7 +1822,7 @@ REFERENCES MASCOTA(mascota_id);
 CREATE SEQUENCE incremento_adop_x_mascota
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a ADOPCIONES_X_MASCOTA -----------------------------
 ALTER TABLE ADOPCIONES_X_MASCOTA add Fec_creacion DATE;
@@ -1656,13 +1849,24 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_a_x_m
+end beforeInsert_a_x_m;
 
 -----------29-----------Tabla Causa----------------------------
 CREATE TABLE CAUSA(
 causa_id NUMBER(6),
 causa VARCHAR(60) CONSTRAINT causa_causa_nn NOT NULL
 ); 
+
+COMMENT ON TABLE CAUSA
+IS 'En esta tabla se almacena las causas de las devoluciones';
+
+COMMENT ON COLUMN causa.causa_id
+IS 'Identificador de la causa';
+
+COMMENT ON COLUMN CAUSA.causa
+IS 'Causa de la devolucion';
+
+
 
 ALTER TABLE CAUSA ADD
 CONSTRAINT pk_causa
@@ -1675,7 +1879,7 @@ using index
 CREATE SEQUENCE incremento_causa
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a CAUSA -----------------------------
 ALTER TABLE CAUSA add Fec_creacion DATE;
@@ -1702,15 +1906,34 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_causa
+end beforeInsert_causa;
 
--------------30-----------Tabla DEVOLUCIONES_X_MACOTA-------------------------------
+-------------30-----------Tabla DEVOLUCIONES_X_MASCOTA-------------------------------
 CREATE TABLE DEVOLUCIONES_X_MASCOTA(
 devoluciones_x_mascota_id NUMBER(6),
 adoptante_id NUMBER(6),
 mascota_id NUMBER(6),
+fecha DATE,
 causa_id NUMBER(6)
 );
+
+COMMENT ON TABLE DEVOLUCIONES_X_MASCOTA
+IS 'En esta tabla se almacenan a las devoluciones';
+
+COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.devoluciones_x_mascota_id
+IS 'Identificador de la devolución';
+
+COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.adoptante_id
+IS 'Identificador del adoptante que devuelve a la mascota, es un foreing key de la tabla ADOPTANTE';
+
+COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.mascota_id
+IS 'Identificador de la mascota, es un foreing key de la tabla MASCOTA';
+
+COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.fecha
+IS 'Fecha de la devolución de la mascota';
+
+COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.causa_id
+IS 'Identificador de la causa, es un foreing key de la tabla CAUSA';
 
 ALTER TABLE DEVOLUCIONES_X_MASCOTA ADD
 CONSTRAINT pk_devoluciones_x_mascota
@@ -1738,7 +1961,7 @@ REFERENCES CAUSA(causa_id);
 CREATE SEQUENCE incremento_devo_x_mascota
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a DEVOLUCIONES_X_MASCOTA -----------------------------
 ALTER TABLE DEVOLUCIONES_X_MASCOTA add Fec_creacion DATE;
@@ -1765,13 +1988,26 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_d_x_m
+end beforeInsert_d_x_m;
 
 ---------------31-------Tabla GRUPO_RESCATISTA---------------------------------------
 CREATE TABLE GRUPO_RESCATISTA (
 grupo_rescatista_id NUMBER(6),
+grupo_rescatista VARCHAR2(46),
 rescatista_id NUMBER(6)
 );
+
+COMMENT ON TABLE GRUPO_RESCATISTA
+IS 'En esta tabla se almacenan a los grupos que sigue el rescatista en FB';
+
+COMMENT ON COLUMN GRUPO_RESCATISTA.grupo_rescatista_id
+IS 'Identificador del grupos de rescatista';
+
+COMMENT ON COLUMN GRUPO_RESCATISTA.grupo_rescatista
+IS 'Nombre del grupo';
+
+COMMENT ON COLUMN GRUPO_RESCATISTA.rescatista_id
+IS 'Identificador del rescatista_id, es un foreing key de la tabla RESCATISTA';
 
 ALTER TABLE GRUPO_RESCATISTA ADD
 CONSTRAINT pk_grupo_rescatista
@@ -1789,7 +2025,7 @@ REFERENCES RESCATISTA(rescatista_id);
 CREATE SEQUENCE incremento_grupo_rescatista_id
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a GRUPO_RESCATISTA -----------------------------
 ALTER TABLE GRUPO_RESCATISTA add Fec_creacion DATE;
@@ -1797,7 +2033,7 @@ ALTER TABLE GRUPO_RESCATISTA add Usuario_creacion VARCHAR2(10);
 ALTER TABLE GRUPO_RESCATISTA add Fec_ultima_modificacion DATE;
 ALTER TABLE GRUPO_RESCATISTA add Usuario_ultima_modificacion VARCHAR2(10);
 
-------------------------------Triggers DEVOLUCIONES_X_MASCOTA---------------------------
+------------------------------Triggers GRUPO_RESCATISTA---------------------------
 create or replace trigger beforeUpdate_grupo_res
   before update
   on GRUPO_RESCATISTA
@@ -1816,60 +2052,35 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_grupo_res
-
--------------32--Tabla CALIFICADOR--------------------------------------------------------
-CREATE TABLE CALIFICADOR (
-calificador_id NUMBER(6),
-calificador VARCHAR2(45) CONSTRAINT calificador_calificador_nn NOT NULL
-);
-
-ALTER TABLE CALIFICADOR ADD
-CONSTRAINT pk_calificador
-PRIMARY KEY(calificador_id)
-using index
-      tablespace Proy_ind pctfree 20
-      storage (initial 10K next 10K pctincrease 0);
-
-CREATE SEQUENCE incremento_calificador
-INCREMENT BY 1
-START WITH 1
-MAXVALUE 1000
+end beforeInsert_grupo_res;
 
 
------------------------Agregar campos a CALIFICADOR -----------------------------
-ALTER TABLE CALIFICADOR add Fec_creacion DATE;
-ALTER TABLE CALIFICADOR add Usuario_creacion VARCHAR2(10);
-ALTER TABLE CALIFICADOR add Fec_ultima_modificacion DATE;
-ALTER TABLE CALIFICADOR add Usuario_ultima_modificacion VARCHAR2(10);
-
-------------------------------Triggers DEVOLUCIONES_X_MASCOTA---------------------------
-create or replace trigger beforeUpdate_calificador
-  before update
-  on CALIFICADOR
-  for each row
-begin
-    :new.fec_ultima_modificacion := sysdate;
-    :new.usuario_ultima_modificacion := user;
-end beforeUpdate_calificador;
---------------------------------------------------------------------------
-create or replace trigger beforeInsert_calificador
-  before insert
-  on CALIFICADOR
-  for each row
-begin
-    :new.fec_creacion := sysdate;
-    :new.usuario_creacion := user;
-    :new.fec_ultima_modificacion := sysdate;
-    :new.usuario_ultima_modificacion := user;
-end beforeInsert_calificador
 
 -----------32----tabla CALIFICACION-----------------------------------------------
 CREATE TABLE CALIFICACION(
 calificacion_id NUMBER(6),
 calificacion NUMBER(2) CONSTRAINT calificacion_calificacion_nn NOT NULL,
-calificador_id NUMBER(6)
+comentario VARCHAR2(45),
+adoptante_id Number(6),
+rescatista_id Number(6)
 );
+
+
+COMMENT ON TABLE CALIFICACION
+IS 'En esta tabla se almacenan a los grupos que sigue el rescatista en FB';
+
+COMMENT ON COLUMN CALIFICACION.calificacion_id
+IS 'Identificador del grupos de rescatista';
+
+COMMENT ON COLUMN CALIFICACION.comentario
+IS 'Nombre del grupo';
+
+COMMENT ON COLUMN CALIFICACION.rescatista_id
+IS 'Identificador del rescatista_id, es un foreing key de la tabla RESCATISTA';
+
+COMMENT ON COLUMN CALIFICACION.adoptante_id
+IS 'Identificador del adoptante_id, es un foreing key de la tabla ADOPTANTE';
+
 
 ALTER TABLE CALIFICACION ADD
 CONSTRAINT pk_calificacion
@@ -1879,14 +2090,21 @@ using index
       storage (initial 10K next 10K pctincrease 0);
 
 AlTER TABLE CALIFICACION ADD
-CONSTRAINT fk_calificador_calificacion
-FOREIGN KEY(calificador_id)
-REFERENCES CALIFICADOR(calificador_id);
+CONSTRAINT fk_adoptante_calificacion
+FOREIGN KEY(adoptante_id)
+REFERENCES ADOPTANTE(adoptante_id);
+
+AlTER TABLE CALIFICACION ADD
+CONSTRAINT fk_rescatista_calificacion
+FOREIGN KEY(rescatista_id)
+REFERENCES RESCATISTA(rescatista_id);
+
+
 
 CREATE SEQUENCE incremento_calificacion
 INCREMENT BY 1
 START WITH 1
-MAXVALUE 1000
+MAXVALUE 1000;
 
 -----------------------Agregar campos a CALIFICACION -----------------------------
 ALTER TABLE CALIFICACION add Fec_creacion DATE;
@@ -1894,7 +2112,7 @@ ALTER TABLE CALIFICACION add Usuario_creacion VARCHAR2(10);
 ALTER TABLE CALIFICACION add Fec_ultima_modificacion DATE;
 ALTER TABLE CALIFICACION add Usuario_ultima_modificacion VARCHAR2(10);
 
-------------------------------Triggers DEVOLUCIONES_X_MASCOTA---------------------------
+------------------------------Triggers CALIFICACION---------------------------
 create or replace trigger beforeUpdate_calificacion
   before update
   on CALIFICACION
@@ -1906,11 +2124,11 @@ end beforeUpdate_calificacion;
 --------------------------------------------------------------------------
 create or replace trigger beforeInsert_calificacion
   before insert
-  on CALIFICADOR
+  on CALIFICACION
   for each row
 begin
     :new.fec_creacion := sysdate;
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_calificacion
+end beforeInsert_calificacion;
