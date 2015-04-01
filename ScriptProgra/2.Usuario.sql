@@ -9,4 +9,4 @@ grant connect to proyecto;
 grant create table to proyecto;
 grant create sequence to proyecto;
 grant create trigger to proyecto;
-	
+grant create procedure to proyecto;

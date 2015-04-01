@@ -135,8 +135,74 @@ end Direccion_Exacta_ID;
 ---Procedimiento para crear la persona---
 --Procedimiento para agregar las personas--
 create or replace procedure Agregar_Persona(nombre varchar,apellido varchar,
-cedula varchar,Direccion number,telef1 number,telef2 number,usuario number,email varchar,) is
+cedula varchar,Direccion number,telef1 number,telef2 number,usuario number,email varchar) is
 begin
   insert into persona(persona_id,nombre,apellidos,cedula,direccion_exacta_id,email,num_telefono_1,num_telefono_2,usuario_id)
   values(incremento_persona.nextval,nombre,apellido,cedula,direccion,email,telef1,telef2,usuario);
  end Agregar_Persona;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
