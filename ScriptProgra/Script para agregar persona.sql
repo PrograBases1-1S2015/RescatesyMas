@@ -71,8 +71,8 @@ create or replace procedure Agregar_Canton(Nombre varchar,Provincia varchar2) is
 begin
  Select provincia_id(provincia) into resultado from dual;
  insert into Canton(Canton_Id,Canton,Provincia_Id)
-  values(incremento_canton,Nombre,resultado);
-  
+  values(incremento_canton.nextval,Nombre,resultado);
+
 end Agregar_Canton;
 --Funcion busqueda--
 create or replace function Canton_ID(Nombre_Canton varchar2) 
@@ -120,28 +120,72 @@ begin
 end Agregar_Direccion_Exacta;
 
 --Funcion busqueda--
-create or replace function Direccion_Exacta_ID(Nombre_Direccion_Exacta varchar2) 
+create or replace function Direccion_Exacta_ID(Nombre_Direccion_Exacta varchar2)
 return number is
   Id number;
 begin
-  Select Direccion_Exacta_id into  ID 
+  Select Direccion_Exacta_id into  ID
   from Direccion_Exacta
-  where (Direccion_Exacta = Direccion_Exacta_Distrito);       
-  
+  where (direccion_exacta=Nombre_Direccion_Exacta);
+
   return(ID);
 end Direccion_Exacta_ID;
 
 
+--Función para recuperar el ID de la persona--
+--Utiliza como parametro el ID del usuario, ya que cuando una persona se
+--logea lo que utiliza es el nombre de usuario.
+create or replace function Persona_ID(Usuario number) return number is
+  Result number;
+begin
+  Select persona_id into result 
+  from persona
+  where (usuario= Usuario_ID);
+  return(Result);
+  
+end Persona_ID;
+
 ---Procedimiento para crear la persona---
 --Procedimiento para agregar las personas--
-create or replace procedure Agregar_Persona(nombre varchar,apellido varchar,
-cedula varchar,Direccion number,telef1 number,telef2 number,usuario number,email varchar) is
-begin
-  insert into persona(persona_id,nombre,apellidos,cedula,direccion_exacta_id,email,num_telefono_1,num_telefono_2,usuario_id)
-  values(incremento_persona.nextval,nombre,apellido,cedula,direccion,email,telef1,telef2,usuario);
+create or replace procedure Agregar_Persona(nombre varchar,apellido varchar,cedula varchar,Direccion number,telef1 number,telef2 number,usuario number,email varchar,cargo number) as
+   persona_agregada number;
+   begin
+  insert into persona(persona_id,nombre,apellidos,cedula,direccion_exacta_id,email,num_telefono_1,num_telefono_2,usuario_id,estado_listanegra)
+  values(incremento_persona.nextval,nombre,apellido,cedula,direccion,email,telef1,telef2,usuario,'no');
+   Select persona_Id(usuario) into persona_agregada from dual;
+   if cargo = 0 then
+     Insert into Adoptante(Adoptante_Id,Persona_Id)
+     values(incremento_adoptante.nextval,persona_agregada);
+    
+    else
+        Insert into rescatista(rescatista_id,persona_id)
+        values(incremento_rescatista.nextval,persona_agregada);
+        
+     
+     end if;
  end Agregar_Persona;
-
-
+--Procedimiento que hace todo el trabajo--
+create or replace procedure Registro(Usuario_n varchar2, contraseña varchar2,token varchar2,direccion varchar,distrito varchar,nombre varchar,apellido varchar,cedula varchar,telef1 number,telef2 number,email varchar,cargo number) is
+  u_id number; --Id del usuario
+  dire_id number; --Id de la direccion     
+begin
+  --Inserta el usuario--
+  begin
+  agregar_usuario(usuario_n,contraseña,token);
+  end;
+  --Inserta la dirección--
+  begin
+  agregar_direccion_exacta(direccion,distrito);
+  end;
+  --Recupera los id de usario y direccion--
+  Select usuario_id(usuario_n) into u_id from dual;
+  Select direccion_exacta_id(direccion) into dire_id from dual;
+  --Inserta en persona--
+  begin
+    agregar_persona(nombre,apellido,cedula,dire_id,telef1,telef2,u_id,email,cargo);
+  end;
+  
+end Registro;
 
 
 
