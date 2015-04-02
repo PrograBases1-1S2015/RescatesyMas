@@ -1353,7 +1353,7 @@ begin
     :new.usuario_creacion := user;
     :new.fec_ultima_modificacion := sysdate;
     :new.usuario_ultima_modificacion := user;
-end beforeInsert_persona
+end beforeInsert_persona;
 
 ---------------23------------------tabla Lista_Negra--------------------------------------------------------------
 CREATE TABLE LISTANEGRA
