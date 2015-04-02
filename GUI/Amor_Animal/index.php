@@ -108,7 +108,7 @@ if (isset($_POST['entrar']))
             </div>
 
 
-	<form id="formulario" action="" method="post" >
+	<form id="formulario" action="resgistro.php" method="post" >
             <legend>Formulario de Registro</legend>
                 <table style="float: left;" >
                   <tr>
@@ -180,14 +180,14 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
-                        <input id="campo9" name="contraseña" type="password" style="width: 200px; display: block; float: left;" />
+                        <input id="campo9" name="contrasenia" type="password" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >País:</label>
-                       <select name=pais style="width: 200px; display: block; float: left;">
+                       <select name='pais' style="width: 200px; display: block; float: left;">
                         <option>Pais</option>
                        </select>
                     </td>
@@ -196,7 +196,7 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Provincia:</label>
-                       <select name=provincia style="width: 200px; display: block; float: left;">
+                       <select name='provincia' style="width: 200px; display: block; float: left;">
                             <option>Provincia</option>
                        </select>
                     </td>
@@ -205,7 +205,7 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Canton:</label>
-                       <select name=canton style="width: 200px; display: block; float: left;">
+                       <select name='canton' style="width: 200px; display: block; float: left;">
                             <option>Cantón</option>
                        </select>
                     </td>
@@ -214,11 +214,21 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Distrito:</label>
-                       <select name=distrito style="width: 200px; display: block; float: left;">
+                       <select name='distrito' style="width: 200px; display: block; float: left;">
                             <option>Distrito</option>
                        </select>
                     </td>
                   </tr>
+                <tr>
+                 <tr><td>&nbsp; </td></tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Dirección Exacta:</label>
+                        <textarea COLS=20 ROWS=5 NAME='direccionExacta'>
+                        </Textarea> 
+                       </select>
+                    </td>
+                  </tr>
+
 
                 </table>
                 <div style="clear: both;"></div>
@@ -248,14 +258,14 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
-                        <input id="campo1" name="nomusuario" type="text" style="width: 200px; display: block; float: left;" />
+                        <input id="campo1" name="logNomusuario" type="text" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
-                        <input id="campo2" name="contraseña" type="password" style="width: 200px; display: block; float: left;" />
+                        <input id="campo2" name="logContrasenia" type="password" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                 </table>
