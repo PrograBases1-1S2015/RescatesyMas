@@ -96,8 +96,61 @@ values(incremento_enfermedad.nextval,'Bronquitis');
 
 --------------------------------Agregar Tratamientos------------------------------
 insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'');
+values(incremento_tratamiento.nextval,'Unguento');
 
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Aerosoles');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Pastillas');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Parches activos');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Inyección');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Medicamento de uso Tópico');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Champú antiseborréico');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Ayuno');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Dieta Balanceada');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Hidratación');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Quimioterapia');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Hospitalización');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Diálisis');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Trasplante');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Fluidoterapia');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Suministro de fluído subcutáneo');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Antibiótico');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Antiparasitario');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Terapia');
 
 
 ------------------------------Agregar Medicamentos-------------------------------
@@ -117,37 +170,46 @@ insert into medicamentos(medicamentos_id,medicamentos)
 values(incremento_medicamentos.nextval,'Ivermectina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Milbemicina Oxima');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Selamectina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Piperazina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Nitroimidazoles');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Tinidazol');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Metronidazol');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Paromomicina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Nitazoxanida');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Timol');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Flumetrina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+values(incremento_medicamentos.nextval,'Oxalico Acido');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Tau Fluvalinato');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Cumafos');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Acido Formico');
 
 -----------------------------Agregar Severidad-----------------------------------
 insert into severidad(severidad_id,severidad)
@@ -545,9 +607,61 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Roborowski',4);
 
 ---------------------Agregar nivel de energia-----------------
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Peligrosamente bajo');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Muy bajo');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Bajo');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Poco bajo');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Normal');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Poco alto');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Alto');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Muy Alto');
+
+insert into nivel_energia(nivel_energia_id,nivel_energia)
+values(incremento_nivel_energia.nextval,'Peligrosamente alto');
 
 ---------------------Agregar Color--------------------------
 
+insert into color(color_id,color)
+values(incremento_color.nextval,'Blanco');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Negro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe claro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe oscuro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe oscuro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe oscuro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe oscuro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe oscuro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Cafe oscuro');
 ---------------------Agregar Tamaño----------------------------
 
 ------------------Agregar facilidad de entrenamiento-----------------------
