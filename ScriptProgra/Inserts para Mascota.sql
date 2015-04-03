@@ -649,20 +649,139 @@ insert into color(color_id,color)
 values(incremento_color.nextval,'Cafe oscuro');
 
 insert into color(color_id,color)
-values(incremento_color.nextval,'Cafe oscuro');
+values(incremento_color.nextval,'Naranja');
 
 insert into color(color_id,color)
-values(incremento_color.nextval,'Cafe oscuro');
+values(incremento_color.nextval,'Negro con blanco');
 
 insert into color(color_id,color)
-values(incremento_color.nextval,'Cafe oscuro');
+values(incremento_color.nextval,'Cafe con blanco');
 
 insert into color(color_id,color)
-values(incremento_color.nextval,'Cafe oscuro');
+values(incremento_color.nextval,'Negro con cafe');
 
 insert into color(color_id,color)
-values(incremento_color.nextval,'Cafe oscuro');
+values(incremento_color.nextval,'Cafe con negro y blanco');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Gris con blanco');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Gris');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Napolitano con chocolate');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Gris con cafe');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Gris con negro');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Rojo');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Verde');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Amarillo');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Rosado');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Morado');
+
+insert into color(color_id,color)
+values(incremento_color.nextval,'Turquesa');
 ---------------------Agregar Tamaño----------------------------
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'5-10cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'10-15cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'15-20cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'20-25cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'25-30cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'30-35cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'35-40cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'40-45cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'45-50cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'50-55cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'55-60cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'60-65cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'65-70cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'70-75cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'75-80cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'80-85cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'85-90cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'90-95cm');
+
+insert into Tamano(tamano_id,tamano)
+values(incremento_tamano.nextval,'95-100cm');
 
 ------------------Agregar facilidad de entrenamiento-----------------------
 
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Sabe Hablar');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Aprende Solo');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Muy Facil');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Facil');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Menos Facil');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Medio');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Menos Dificil');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Dificil');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'Muy Dificil');
+
+insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+values(incremento_facilidad_entrenamiento.nextval,'No hace caso del todo');
