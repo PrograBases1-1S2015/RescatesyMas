@@ -136,3 +136,133 @@ begin
   
   return(ID);
 end Raza_ID;
+
+---7.---------------------- Procedimiento para agregar tratamiento-----------------------------
+
+create or replace procedure Agregar_Tratamiento(Nombre_Tratamiento varchar2, Enfermedad number) is
+begin
+  insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+  values(incremento_tratamiento.nextval,Nombre_Tratamiento,Enfermedad)
+end Agregar_Tratamiento;
+
+-----------Funcion para obtener el ID del tratamiento------------------------------------------
+
+create or replace function Tratamiento_ID(Nombre_Tratamiento varchar2) 
+return number is
+  ID number;
+begin
+   Select tratamiento_id into  ID 
+   from tratamiento
+   where (tratamiento = Nombre_Tratamiento);   
+  
+  return(ID);
+end Tratamiento_ID;
+
+---8.---------------------- Procedimiento para agregar medicamentos-----------------------------
+
+create or replace procedure Agregar_Medicamentos(Nombre_Medicamentos varchar2, Tratamiento number) is
+begin
+  insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+  values(incremento_medicamentos.nextval,Nombre_Medicamentos,Tratamiento)
+end Agregar_Medicamentos;
+
+-----------Funcion para obtener el ID de medicamentos------------------------------------------
+
+create or replace function Medicamentos_ID(Nombre_Medicamentos varchar2) 
+return number is
+  ID number;
+begin
+   Select medicamentos_id into  ID 
+   from medicamentos
+   where (medicamentos = Nombre_Medicamentos);   
+  
+  return(ID);
+end Medicamentos_ID;
+
+---9.---------------------- Procedimiento para agregar nivel de energia--------------------------------
+
+create or replace procedure Agregar_Nivel_Energia(Nivel varchar2) is
+begin
+  insert into nivel_energia(nivel_energia_id,nivel_energia)
+  values(incremento_nivel_energia.nextval,Nivel);
+  
+end Agregar_Nivel_Energia;
+
+-----------Funcion para obtener el ID del nivel de energia---------------------------------------
+
+create or replace function Nivel_Energia_ID(Nivel varchar2) 
+return number is
+  ID number;
+begin
+   Select nivel_energia_id into  ID 
+   from nivel_energia
+   where (nivel_energia = Nivel);  
+  
+  return(ID);
+end Nivel_Energia_ID;
+
+---10.---------------------- Procedimiento para agregar color--------------------------------
+
+create or replace procedure Agregar_Color(Nombre_Color varchar2) is
+begin
+  insert into color(color_id,color)
+  values(incremento_color.nextval,Nombre_Color);
+  
+end Agregar_Color;
+
+-----------Funcion para obtener el ID del color---------------------------------------
+
+create or replace function Color_ID(Nombre_Color varchar2) 
+return number is
+  ID number;
+begin
+   Select color_id into  ID 
+   from color
+   where (color = Nombre_Color);  
+  
+  return(ID);
+end Color_ID;
+
+---11.---------------------- Procedimiento para agregar tamaño--------------------------------
+
+create or replace procedure Agregar_Tamano(Tipo_Tamano varchar2) is
+begin
+  insert into tamano(tamano_id,tamano)
+  values(incremento_tamano.nextval,Tipo_Tamano);
+  
+end Agregar_Tamano;
+
+-----------Funcion para obtener el ID de tamaño---------------------------------------
+
+create or replace function Tamano_ID(Tipo_Tamano varchar2) 
+return number is
+  ID number;
+begin
+   Select tamano_id into  ID 
+   from tamano
+   where (tamano = Tipo_Tamano);  
+  
+  return(ID);
+end Tamano_ID;
+
+---12.---------------------- Procedimiento para agregar facilidad entrenamiento--------------------------------
+
+create or replace procedure Agregar_Facilidad_Entrenamiento(Facilidad varchar2) is
+begin
+  insert into facilidad_entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
+  values(incremento_facilidad_entrenamiento.nextval,Facilidad);
+  
+end Agregar_Facilidad_Entrenamiento;
+
+-----------Funcion para obtener el ID de facilidad entrenamiento---------------------------------------
+
+create or replace function Facilidad_Entrenamiento_ID(Facilidad varchar2) 
+return number is
+  ID number;
+begin
+   Select facilidad_entrenamiento_id into  ID 
+   from facilidad_entrenamiento
+   where (facilidad_entrenamiento = Facilidad);  
+  
+  return(ID);
+end Facilidad_Entrenamiento_ID;
