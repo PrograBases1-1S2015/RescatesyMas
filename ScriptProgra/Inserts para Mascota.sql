@@ -96,32 +96,58 @@ values(incremento_enfermedad.nextval,'Bronquitis');
 
 --------------------------------Agregar Tratamientos------------------------------
 insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Amitraz');
+values(incremento_tratamiento.nextval,'');
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Doxicilina');
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Moxidectina');
-
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Imidacloprid');
-
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Ivermectina');
 
 ------------------------------Agregar Medicamentos-------------------------------
 insert into medicamentos(medicamentos_id,medicamentos)
 values(incremento_medicamentos.nextval,'Amitraz');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Amitraz');
+values(incremento_medicamentos.nextval,'Doxicilina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Amitraz');
+values(incremento_medicamentos.nextval,'Moxidectina');
 
 insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Amitraz');
+values(incremento_medicamentos.nextval,'Imidacloprid');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Ivermectina');
 
 -----------------------------Agregar Severidad-----------------------------------
 insert into severidad(severidad_id,severidad)
