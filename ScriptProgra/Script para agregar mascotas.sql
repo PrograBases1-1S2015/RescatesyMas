@@ -1,36 +1,5 @@
 
----1.---------------------- Procedimiento para agregar mascota--------------------------------
-
-create or replace procedure Agregar_Mascota(nombre_mascota varchar2, direccion_exacta number, severidad number,
- estado_mascota number, enfermedad number, requiere_espacio number, foto_antes blob, foto_despues blob,
-  veterinario varchar2, descripcion varchar2, nota_adicional varchar2, fecha date, raza number,
-   nivel_energia number, color number, tamanio number, facilidad_entrenamiento number, rescatista number) is
-begin
-  insert into MASCOTA(mascota_id,nombre,direccion_exacta_id,severidad_id,estado_mascota_id,enfermedad_id,
-            requiere_espacion,foto_antes,foto_despues,veterinario,descripcion,nota_adicional,fecha,raza_id,
-		        nivel_energia_id,color_id,tamanio_id,facilidad_entrenamiento_id,rescatista_id) 
-
-	 values (incremento_mascota.nextval, nombre_mascota,direccion_exacta,severidad,estado_mascota,enfermedad,
-		   requiere_espacio,foto_antes,foto_despues,veterinario,descripcion,nota_adicional,fecha,raza,
-		   nivel_energia,color,tamanio,facilidad_entrenamiento,rescatista);
-  
-  
-end Agregar_Mascota;
-
----------------------Funcion para obtener el ID de la mascota----------------------------------
-
-create or replace function Mascota_ID(Nombre_Mascota varchar2) 
-return number is
-  ID number;
-begin
-  Select mascota_id into  ID
-  from mascota
-  where (nombre = Nombre_Mascota);  
-  
-  return(ID);
-end Mascota_ID;
-
----2.---------------------- Procedimiento para agregar severidad--------------------------------
+---1.---------------------- Procedimiento para agregar severidad--------------------------------
 
 create or replace procedure Agregar_Severidad(Tipo_Severidad varchar2) is
 begin
@@ -51,7 +20,7 @@ begin
   return(ID);
 end Severidad_ID;
 
----3.---------------------- Procedimiento para agregar estado de la mascota--------------------------------
+---2.---------------------- Procedimiento para agregar estado de la mascota--------------------------------
 
 create or replace procedure Agregar_Estado_Mascota(Estado varchar2) is
 begin
@@ -73,7 +42,7 @@ begin
   return(ID);
 end Estado_Mascota_ID;
 
----4.---------------------- Procedimiento para agregar enfermedad--------------------------------
+---3.---------------------- Procedimiento para agregar enfermedad--------------------------------
 
 create or replace procedure Agregar_Enfermedad(Nombre_Enfermedad varchar2) is
 begin
@@ -95,49 +64,7 @@ begin
   return(ID);
 end Enfermedad_ID;
 
----5.---------------------- Procedimiento para agregar tipo de mascota------------------------------
-
-create or replace procedure Agregar_Tipo_Mascota(Tipo_de_Mascota varchar2) is
-begin
-  insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
-  values(incremento_tipo_mascota_id.nextval,Tipo_de_Mascota);
-end Agregar_Tipo_Mascota;
-
------------Funcion para obtener el ID del tipo de mascota------------------------------------------
-
-create or replace function Tipo_Mascota_ID(Nombre_Tipo_Mascota varchar2) 
-return number is
-  ID number;
-begin
-  Select tipo_mascota_id into  ID 
-  from tipo_mascota
-  where (tipo_mascota = Nombre_Tipo_Mascota);  
-  
-  return(ID);
-end Tipo_Mascota_ID;
-
----6.---------------------- Procedimiento para agregar raza-----------------------------
-
-create or replace procedure Agregar_Raza(Nombre_Raza varchar2, Tipo_Mascota number) is
-begin
-  insert into raza(raza_id,raza,tipo_mascota_id)
-  values(incremento_raza.nextval,Nombre_Raza,Tipo_Mascota)
-end Agregar_Raza;
-
------------Funcion para obtener el ID de la raza------------------------------------------
-
-create or replace function Raza_ID(Nombre_Raza varchar2) 
-return number is
-  ID number;
-begin
-   Select raza_id into  ID 
-   from raza
-   where (raza = Nombre_Raza);   
-  
-  return(ID);
-end Raza_ID;
-
----7.---------------------- Procedimiento para agregar tratamiento-----------------------------
+---4.---------------------- Procedimiento para agregar tratamiento-----------------------------
 
 create or replace procedure Agregar_Tratamiento(Nombre_Tratamiento varchar2, Enfermedad number) is
 begin
@@ -158,7 +85,7 @@ begin
   return(ID);
 end Tratamiento_ID;
 
----8.---------------------- Procedimiento para agregar medicamentos-----------------------------
+---5.---------------------- Procedimiento para agregar medicamentos-----------------------------
 
 create or replace procedure Agregar_Medicamentos(Nombre_Medicamentos varchar2, Tratamiento number) is
 begin
@@ -179,7 +106,50 @@ begin
   return(ID);
 end Medicamentos_ID;
 
----9.---------------------- Procedimiento para agregar nivel de energia--------------------------------
+
+---6.---------------------- Procedimiento para agregar tipo de mascota------------------------------
+
+create or replace procedure Agregar_Tipo_Mascota(Tipo_de_Mascota varchar2) is
+begin
+  insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
+  values(incremento_tipo_mascota_id.nextval,Tipo_de_Mascota);
+end Agregar_Tipo_Mascota;
+
+-----------Funcion para obtener el ID del tipo de mascota------------------------------------------
+
+create or replace function Tipo_Mascota_ID(Nombre_Tipo_Mascota varchar2) 
+return number is
+  ID number;
+begin
+  Select tipo_mascota_id into  ID 
+  from tipo_mascota
+  where (tipo_mascota = Nombre_Tipo_Mascota);  
+  
+  return(ID);
+end Tipo_Mascota_ID;
+
+---7.---------------------- Procedimiento para agregar raza-----------------------------
+
+create or replace procedure Agregar_Raza(Nombre_Raza varchar2, Tipo_Mascota number) is
+begin
+  insert into raza(raza_id,raza,tipo_mascota_id)
+  values(incremento_raza.nextval,Nombre_Raza,Tipo_Mascota)
+end Agregar_Raza;
+
+-----------Funcion para obtener el ID de la raza------------------------------------------
+
+create or replace function Raza_ID(Nombre_Raza varchar2) 
+return number is
+  ID number;
+begin
+   Select raza_id into  ID 
+   from raza
+   where (raza = Nombre_Raza);   
+  
+  return(ID);
+end Raza_ID;
+
+---8.---------------------- Procedimiento para agregar nivel de energia--------------------------------
 
 create or replace procedure Agregar_Nivel_Energia(Nivel varchar2) is
 begin
@@ -201,7 +171,7 @@ begin
   return(ID);
 end Nivel_Energia_ID;
 
----10.---------------------- Procedimiento para agregar color--------------------------------
+---9.---------------------- Procedimiento para agregar color--------------------------------
 
 create or replace procedure Agregar_Color(Nombre_Color varchar2) is
 begin
@@ -223,7 +193,7 @@ begin
   return(ID);
 end Color_ID;
 
----11.---------------------- Procedimiento para agregar tamaño--------------------------------
+---10.---------------------- Procedimiento para agregar tamaño--------------------------------
 
 create or replace procedure Agregar_Tamanio(Tipo_Tamanio varchar2) is
 begin
@@ -245,7 +215,7 @@ begin
   return(ID);
 end Tamanio_ID;
 
----12.---------------------- Procedimiento para agregar facilidad entrenamiento--------------------------------
+---11.---------------------- Procedimiento para agregar facilidad entrenamiento--------------------------------
 
 create or replace procedure Agregar_Facilidad_Entrenamiento(Facilidad varchar2) is
 begin
@@ -266,3 +236,34 @@ begin
   
   return(ID);
 end Facilidad_Entrenamiento_ID;
+
+---12.---------------------- Procedimiento para agregar mascota--------------------------------------
+
+create or replace procedure Agregar_Mascota(nombre_mascota varchar2, direccion_exacta number, severidad number,
+ estado_mascota number, enfermedad number, requiere_espacio number, foto_antes blob, foto_despues blob,
+  veterinario varchar2, descripcion varchar2, nota_adicional varchar2, fecha date, raza number,
+   nivel_energia number, color number, tamanio number, facilidad_entrenamiento number, rescatista number) is
+begin
+  insert into MASCOTA(mascota_id,nombre,direccion_exacta_id,severidad_id,estado_mascota_id,enfermedad_id,
+            requiere_espacion,foto_antes,foto_despues,veterinario,descripcion,nota_adicional,fecha,raza_id,
+            nivel_energia_id,color_id,tamanio_id,facilidad_entrenamiento_id,rescatista_id) 
+
+   values (incremento_mascota.nextval, nombre_mascota,direccion_exacta,severidad,estado_mascota,enfermedad,
+       requiere_espacio,foto_antes,foto_despues,veterinario,descripcion,nota_adicional,fecha,raza,
+       nivel_energia,color,tamanio,facilidad_entrenamiento,rescatista);
+  
+  
+end Agregar_Mascota;
+
+---------------------Funcion para obtener el ID de la mascota----------------------------------
+
+create or replace function Mascota_ID(Nombre_Mascota varchar2) 
+return number is
+  ID number;
+begin
+  Select mascota_id into  ID
+  from mascota
+  where (nombre = Nombre_Mascota);  
+  
+  return(ID);
+end Mascota_ID;
