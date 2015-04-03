@@ -162,8 +162,8 @@ end Tratamiento_ID;
 
 create or replace procedure Agregar_Medicamentos(Nombre_Medicamentos varchar2, Tratamiento number) is
 begin
-  insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-  values(incremento_medicamentos.nextval,Nombre_Medicamentos,Tratamiento)
+  insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+  values(incremento_medicamento.nextval,Nombre_Medicamentos,Tratamiento)
 end Agregar_Medicamentos;
 
 -----------Funcion para obtener el ID de medicamentos------------------------------------------
@@ -172,9 +172,9 @@ create or replace function Medicamentos_ID(Nombre_Medicamentos varchar2)
 return number is
   ID number;
 begin
-   Select medicamentos_id into  ID 
-   from medicamentos
-   where (medicamentos = Nombre_Medicamentos);   
+   Select medicamento_id into  ID 
+   from medicamento
+   where (medicamento = Nombre_Medicamentos);   
   
   return(ID);
 end Medicamentos_ID;
@@ -225,32 +225,32 @@ end Color_ID;
 
 ---11.---------------------- Procedimiento para agregar tamaño--------------------------------
 
-create or replace procedure Agregar_Tamano(Tipo_Tamano varchar2) is
+create or replace procedure Agregar_Tamanio(Tipo_Tamanio varchar2) is
 begin
-  insert into tamano(tamano_id,tamano)
-  values(incremento_tamano.nextval,Tipo_Tamano);
+  insert into tamanio(tamanio_id,tamanio)
+  values(incremento_tamanio.nextval,Tipo_Tamanio);
   
-end Agregar_Tamano;
+end Agregar_Tamanio;
 
 -----------Funcion para obtener el ID de tamaño---------------------------------------
 
-create or replace function Tamano_ID(Tipo_Tamano varchar2) 
+create or replace function Tamanio_ID(Tipo_Tamanio varchar2) 
 return number is
   ID number;
 begin
-   Select tamano_id into  ID 
-   from tamano
-   where (tamano = Tipo_Tamano);  
+   Select tamanio_id into  ID 
+   from tamanio
+   where (tamanio = Tipo_Tamanio);  
   
   return(ID);
-end Tamano_ID;
+end Tamanio_ID;
 
 ---12.---------------------- Procedimiento para agregar facilidad entrenamiento--------------------------------
 
 create or replace procedure Agregar_Facilidad_Entrenamiento(Facilidad varchar2) is
 begin
   insert into facilidad_entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-  values(incremento_facilidad_entrenamiento.nextval,Facilidad);
+  values(incremento_entrenamiento.nextval,Facilidad);
   
 end Agregar_Facilidad_Entrenamiento;
 

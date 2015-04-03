@@ -95,121 +95,121 @@ insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Bronquitis');
 
 --------------------------------Agregar Tratamientos------------------------------
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Unguento');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Unguento',1);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Aerosoles');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Aerosoles',1);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Pastillas');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Pastillas',2);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Parches activos');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Parches activos',2);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Inyección');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Inyección',2);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Medicamento de uso Tópico');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Medicamento de uso Tópico',3);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Champú antiseborréico');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Champú antiseborréico',3);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Ayuno');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Ayuno',9);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Dieta Balanceada');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Dieta Balanceada',4);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Hidratación');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Hidratación',4);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Quimioterapia');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Quimioterapia',8);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Hospitalización');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Hospitalización',5);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Diálisis');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Diálisis',5);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Trasplante');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Trasplante',6);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Fluidoterapia');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Fluidoterapia',6);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Suministro de fluído subcutáneo');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Suministro de fluído subcutáneo',7);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Antibiótico');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Antibiótico',7);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Antiparasitario');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Antiparasitario',8);
 
-insert into tratamiento(tratamiento_id,tratamiento)
-values(incremento_tratamiento.nextval,'Terapia');
+insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
+values(incremento_tratamiento.nextval,'Terapia',9);
 
 
 ------------------------------Agregar Medicamentos-------------------------------
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Amitraz');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Amitraz',1);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Doxicilina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Doxicilina',1);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Moxidectina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Moxidectina',2);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Imidacloprid');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Imidacloprid',2);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Ivermectina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Ivermectina',3);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Milbemicina Oxima');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Milbemicina Oxima',3);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Selamectina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Selamectina',4);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Piperazina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Piperazina',4);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Nitroimidazoles');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Nitroimidazoles',5);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Tinidazol');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Tinidazol',5);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Metronidazol');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Metronidazol',6);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Paromomicina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Paromomicina',6);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Nitazoxanida');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Nitazoxanida',7);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Timol');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Timol',7);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Flumetrina');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Flumetrina',8);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Oxalico Acido');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Oxalico Acido',11);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Tau Fluvalinato');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Tau Fluvalinato',9);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Cumafos');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Cumafos',9);
 
-insert into medicamentos(medicamentos_id,medicamentos)
-values(incremento_medicamentos.nextval,'Acido Formico');
+insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
+values(incremento_medicamentos.nextval,'Acido Formico',10);
 
 -----------------------------Agregar Severidad-----------------------------------
 insert into severidad(severidad_id,severidad)
@@ -679,22 +679,8 @@ insert into color(color_id,color)
 values(incremento_color.nextval,'Gris con negro');
 
 insert into color(color_id,color)
-values(incremento_color.nextval,'Rojo');
-
-insert into color(color_id,color)
-values(incremento_color.nextval,'Verde');
-
-insert into color(color_id,color)
 values(incremento_color.nextval,'Amarillo');
 
-insert into color(color_id,color)
-values(incremento_color.nextval,'Rosado');
-
-insert into color(color_id,color)
-values(incremento_color.nextval,'Morado');
-
-insert into color(color_id,color)
-values(incremento_color.nextval,'Turquesa');
 ---------------------Agregar Tamaño----------------------------
 
 insert into Tamano(tamano_id,tamano)
