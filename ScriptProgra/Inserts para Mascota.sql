@@ -1,4 +1,4 @@
----------------------------------Agregar enfermedades------------------------
+--1.-------------------------------Agregar enfermedades------------------------
 ----------Enfermedades perros-------------------
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Demodicosis');
@@ -43,7 +43,7 @@ insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Leucemia felina');
 
 insert into enfermedad(enfermedad_id,enfermedad)
-values(incremento_enfermedad.nextval,'Bronconeumon√≠a');
+values(incremento_enfermedad.nextval,'BronconeumonÌa');
 
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Conjuntivitis');
@@ -51,7 +51,7 @@ values(incremento_enfermedad.nextval,'Conjuntivitis');
 --------------------------------Enfermedades conejos----------------------
 
 insert into enfermedad(enfermedad_id,enfermedad)
-values(incremento_enfermedad.nextval,'Enfermedad hemorr√°gica del conejo');
+values(incremento_enfermedad.nextval,'Enfermedad hemorr·gica del conejo');
 
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Pasterelosis');
@@ -63,7 +63,7 @@ insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Coccidiosis');
 
 insert into enfermedad(enfermedad_id,enfermedad)
-values(incremento_enfermedad.nextval,'Invaginaci√≥n de los p√°rpados');
+values(incremento_enfermedad.nextval,'InvaginaciÛn de los p·rpados');
 
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Mastitis');
@@ -77,10 +77,10 @@ insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Abscesos');
 
 insert into enfermedad(enfermedad_id,enfermedad)
-values(incremento_enfermedad.nextval,'Estre√±imiento');
+values(incremento_enfermedad.nextval,'EstreÒimiento');
 
 insert into enfermedad(enfermedad_id,enfermedad)
-values(incremento_enfermedad.nextval,'Irritaci√≥n en los ojos');
+values(incremento_enfermedad.nextval,'IrritaciÛn en los ojos');
 
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Enfermedad de cola humeda');
@@ -94,7 +94,7 @@ values(incremento_enfermedad.nextval,'Tumores');
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Bronquitis');
 
---------------------------------Agregar Tratamientos------------------------------
+--2.------------------------------Agregar Tratamientos------------------------------
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Unguento',1);
 
@@ -108,13 +108,13 @@ insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Parches activos',2);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Inyecci√≥n',2);
+values(incremento_tratamiento.nextval,'InyecciÛn',2);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Medicamento de uso T√≥pico',3);
+values(incremento_tratamiento.nextval,'Medicamento de uso TÛpico',3);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Champ√∫ antiseborr√©ico',3);
+values(incremento_tratamiento.nextval,'Champ˙ antiseborrÈico',3);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Ayuno',9);
@@ -123,16 +123,16 @@ insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Dieta Balanceada',4);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Hidrataci√≥n',4);
+values(incremento_tratamiento.nextval,'HidrataciÛn',4);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Quimioterapia',8);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Hospitalizaci√≥n',5);
+values(incremento_tratamiento.nextval,'HospitalizaciÛn',5);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Di√°lisis',5);
+values(incremento_tratamiento.nextval,'Di·lisis',5);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Trasplante',6);
@@ -141,10 +141,10 @@ insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Fluidoterapia',6);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Suministro de flu√≠do subcut√°neo',7);
+values(incremento_tratamiento.nextval,'Suministro de fluÌdo subcut·neo',7);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
-values(incremento_tratamiento.nextval,'Antibi√≥tico',7);
+values(incremento_tratamiento.nextval,'AntibiÛtico',7);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Antiparasitario',8);
@@ -153,67 +153,67 @@ insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Terapia',9);
 
 
-------------------------------Agregar Medicamentos-------------------------------
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Amitraz',1);
+---3.---------------------------Agregar Medicamentos-------------------------------
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Amitraz',1);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Doxicilina',1);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Doxicilina',1);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Moxidectina',2);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Moxidectina',2);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Imidacloprid',2);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Imidacloprid',2);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Ivermectina',3);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Ivermectina',3);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Milbemicina Oxima',3);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Milbemicina Oxima',3);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Selamectina',4);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Selamectina',4);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Piperazina',4);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Piperazina',4);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Nitroimidazoles',5);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Nitroimidazoles',5);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Tinidazol',5);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Tinidazol',5);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Metronidazol',6);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Metronidazol',6);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Paromomicina',6);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Paromomicina',6);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Nitazoxanida',7);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Nitazoxanida',7);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Timol',7);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Timol',7);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Flumetrina',8);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Flumetrina',8);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Oxalico Acido',11);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Oxalico Acido',10);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Tau Fluvalinato',9);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Tau Fluvalinato',9);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Cumafos',9);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Cumafos',9);
 
-insert into medicamentos(medicamentos_id,medicamentos,tratamiento_id)
-values(incremento_medicamentos.nextval,'Acido Formico',10);
+insert into medicamento(medicamento_id,medicamento,tratamiento_id)
+values(incremento_medicamento.nextval,'Acido Formico',10);
 
------------------------------Agregar Severidad-----------------------------------
+---4.--------------------------Agregar Severidad-----------------------------------
 insert into severidad(severidad_id,severidad)
-values(incremento_severidad.nextval,'Cr√≠tico');
+values(incremento_severidad.nextval,'CrÌtico');
 
 insert into severidad(severidad_id,severidad)
 values(incremento_severidad.nextval,'Buen estado');
@@ -221,15 +221,15 @@ values(incremento_severidad.nextval,'Buen estado');
 insert into severidad(severidad_id,severidad)
 values(incremento_severidad.nextval,'Mal estado');
 
----------------------------Agregar estado de la mascota----------------------------
+----5.-----------------------Agregar estado de la mascota----------------------------
 
 insert into estado_mascota(estado_mascota_id,estado_mascota)
-values(incremento_estado_mascota.nextval,'En adopci√≥n');
+values(incremento_estado_mascota.nextval,'En adopciÛn');
 
 insert into estado_mascota(estado_mascota_id,estado_mascota)
 values(incremento_estado_mascota.nextval,'Adoptado');
 
--------------------------Agregar tipo de mascotas--------------------------------
+---6.----------------------Agregar tipo de mascotas--------------------------------
 insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
 values(incremento_tipo_mascota_id.nextval,'Perro');
 
@@ -240,27 +240,27 @@ insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
 values(incremento_tipo_mascota_id.nextval,'Conejo');
 
 insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
-values(incremento_tipo_mascota_id.nextval,'H√°mster');
+values(incremento_tipo_mascota_id.nextval,'H·mster');
 
---------------------Agregar Razas-----------------------------------------------
+---7.-----------------Agregar Razas-----------------------------------------------
 -----Perros----------------------------
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Chihuahua',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Papill√≥n',1);
+values(incremento_raza.nextval,'PapillÛn',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Pomeranian',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Malt√©s',1);
+values(incremento_raza.nextval,'MaltÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Yorkshire terrier',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Bich√≥n Fris√©',1);
+values(incremento_raza.nextval,'BichÛn FrisÈ',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'West Highland White Terrier',1);
@@ -269,16 +269,16 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Boston terrier',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Bulldog ingl√©s',1);
+values(incremento_raza.nextval,'Bulldog inglÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Bulldog franc√©s',1);
+values(incremento_raza.nextval,'Bulldog francÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Pug',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Terrier escoc√©s',1);
+values(incremento_raza.nextval,'Terrier escocÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Shih Tzu',1);
@@ -296,7 +296,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Schnauzer miniatura',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Cocker Spaniel Ingl√©s',1);
+values(incremento_raza.nextval,'Cocker Spaniel InglÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Bull terrier',1);
@@ -320,7 +320,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Boxer',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Pastor Alem√°n',1);
+values(incremento_raza.nextval,'Pastor Alem·n',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Labrador Retriever',1);
@@ -338,7 +338,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'American Staffordshire terrier',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'D√°lmata',1);
+values(incremento_raza.nextval,'D·lmata',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Blood Hound',1);
@@ -365,13 +365,13 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Dogo Argentino',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Gran Dan√©s',1);
+values(incremento_raza.nextval,'Gran DanÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Viejo Pastor Ingl√©s',1);
+values(incremento_raza.nextval,'Viejo Pastor InglÈs',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Mast√≠n Napolitano',1);
+values(incremento_raza.nextval,'MastÌn Napolitano',1);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Terranova',1);
@@ -412,7 +412,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Persa',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Siam√©s',2);
+values(incremento_raza.nextval,'SiamÈs',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Bengala',2);
@@ -427,7 +427,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Ragdoll',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Ex√≥tico',2);
+values(incremento_raza.nextval,'ExÛtico',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Sphynx',2);
@@ -442,7 +442,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Bosque de Noruega',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Burm√©s',2);
+values(incremento_raza.nextval,'BurmÈs',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Siberiano',2);
@@ -490,7 +490,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Devon rex',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Bobtail japon√©s',2);
+values(incremento_raza.nextval,'Bobtail japonÈs',2);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Mau egipcio',2);
@@ -552,7 +552,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Dutch',3);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Mini Arlequ√≠n',3);
+values(incremento_raza.nextval,'Mini ArlequÌn',3);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Mini Rex',3);
@@ -579,7 +579,7 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'English Lop',3);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Neoceland√©s',3);
+values(incremento_raza.nextval,'NeocelandÈs',3);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Gigante de Flandes',3);
@@ -588,11 +588,11 @@ insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Angora Ingles',3);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Arlequ√≠n',3);
+values(incremento_raza.nextval,'ArlequÌn',3);
 
 ------------------Hamsters-----------------------------------------------
 insert into raza(raza_id,raza,tipo_mascota_id)
-values(incremento_raza.nextval,'Com√∫n, dorado o sirio',4);
+values(incremento_raza.nextval,'Com˙n, dorado o sirio',4);
 
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Ruso',4);
@@ -606,7 +606,7 @@ values(incremento_raza.nextval,'Chino',4);
 insert into raza(raza_id,raza,tipo_mascota_id)
 values(incremento_raza.nextval,'Roborowski',4);
 
----------------------Agregar nivel de energia-----------------
+---8.------------------Agregar nivel de energia-----------------
 insert into nivel_energia(nivel_energia_id,nivel_energia)
 values(incremento_nivel_energia.nextval,'Peligrosamente bajo');
 
@@ -634,7 +634,7 @@ values(incremento_nivel_energia.nextval,'Muy Alto');
 insert into nivel_energia(nivel_energia_id,nivel_energia)
 values(incremento_nivel_energia.nextval,'Peligrosamente alto');
 
----------------------Agregar Color--------------------------
+---9.------------------Agregar Color--------------------------
 
 insert into color(color_id,color)
 values(incremento_color.nextval,'Blanco');
@@ -681,93 +681,93 @@ values(incremento_color.nextval,'Gris con negro');
 insert into color(color_id,color)
 values(incremento_color.nextval,'Amarillo');
 
----------------------Agregar Tama√±o----------------------------
+---10.------------------Agregar TamaÒo----------------------------
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'5-10cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'5-10cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'10-15cm');
+insert into Tamano(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'10-15cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'15-20cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'15-20cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'20-25cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'20-25cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'25-30cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'25-30cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'30-35cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'30-35cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'35-40cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'35-40cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'40-45cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'40-45cm');
 
-insert into Tamano(tamano_id,tamano)
+insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamano.nextval,'45-50cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'50-55cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'50-55cm');
 
-insert into Tamano(tamano_id,tamano)
+insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamano.nextval,'55-60cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'60-65cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'60-65cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'65-70cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'65-70cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'70-75cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'70-75cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'75-80cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'75-80cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'80-85cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'80-85cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'85-90cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'85-90cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'90-95cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'90-95cm');
 
 insert into Tamano(tamano_id,tamano)
 values(incremento_tamano.nextval,'95-100cm');
 
-------------------Agregar facilidad de entrenamiento-----------------------
+---11.---------------Agregar facilidad de entrenamiento-----------------------
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Sabe Hablar');
+values(incremento_entrenamiento.nextval,'Sabe Hablar');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Aprende Solo');
+values(incremento_entrenamiento.nextval,'Aprende Solo');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Muy Facil');
+values(incremento_entrenamiento.nextval,'Muy Facil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Facil');
+values(incremento_entrenamiento.nextval,'Facil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Menos Facil');
+values(incremento_entrenamiento.nextval,'Menos Facil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Medio');
+values(incremento_entrenamiento.nextval,'Medio');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Menos Dificil');
+values(incremento_entrenamiento.nextval,'Menos Dificil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Dificil');
+values(incremento_entrenamiento.nextval,'Dificil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'Muy Dificil');
+values(incremento_entrenamiento.nextval,'Muy Dificil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
-values(incremento_facilidad_entrenamiento.nextval,'No hace caso del todo');
+values(incremento_entrenamiento.nextval,'No hace caso del todo');
