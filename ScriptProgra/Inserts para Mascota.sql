@@ -94,13 +94,34 @@ values(incremento_enfermedad.nextval,'Tumores');
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Bronquitis');
 
+--------------------------------Agregar Tratamientos------------------------------
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Amitraz');
 
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Doxicilina');
 
---------------------------------Agregar Tratamientos----------------------------
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Moxidectina');
 
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Imidacloprid');
+
+insert into tratamiento(tratamiento_id,tratamiento)
+values(incremento_tratamiento.nextval,'Ivermectina');
 
 ------------------------------Agregar Medicamentos-------------------------------
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Amitraz');
 
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Amitraz');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Amitraz');
+
+insert into medicamentos(medicamentos_id,medicamentos)
+values(incremento_medicamentos.nextval,'Amitraz');
 
 -----------------------------Agregar Severidad-----------------------------------
 insert into severidad(severidad_id,severidad)
