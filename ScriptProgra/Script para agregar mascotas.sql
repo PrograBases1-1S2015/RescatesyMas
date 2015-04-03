@@ -240,7 +240,7 @@ end Facilidad_Entrenamiento_ID;
 ---12.---------------------- Procedimiento para agregar mascota--------------------------------------
 
 create or replace procedure Agregar_Mascota(nombre_mascota varchar2, direccion_exacta number, severidad number,
- estado_mascota number, enfermedad number, requiere_espacio number, foto_antes blob, foto_despues blob,
+ estado_mascota number, enfermedad number, requiere_espacio number, foto_antes null, foto_despues null,
   veterinario varchar2, descripcion varchar2, nota_adicional varchar2, fecha date, raza number,
    nivel_energia number, color number, tamanio number, facilidad_entrenamiento number, rescatista number) is
 begin
