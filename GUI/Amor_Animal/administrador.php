@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!--esign baytsrapndex
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -268,5 +272,3 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </html>
 
     	
-    	
-            

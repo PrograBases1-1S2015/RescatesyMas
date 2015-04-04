@@ -1,28 +1,69 @@
 <?php
+include ("settings.php");
+include ("common.php");
+
+//Al presionar el boton de login
+if (isset($_POST['entrar']))
+{ // if form has been submitted
+   if(!$_POST['logNomusuario'] | !$_POST['logContrasenia'])
+   {//Verificar que las casillas no esten en blanco
+      die('Es necesario escribir un Usuario y una contraseña <a href=index.php>Intente de nuevo</a>');
+      
+   }
+   $usuario = $_POST['logNomusuario'];
+   $conn = oci_connect(USER, PASS, HOST);
+   $stmt = oci_parse($conn, "SELECT * FROM USUARIO WHERE NOM_USUARIO = '" . $usuario . "'" );
+   oci_execute($stmt);
+
+   if (oci_fetch_array($stmt) == 0) 
+   {
+       echo "<script>alert(\"El usuario no existe en la base de datos.\");</script>";
+       echo "<script>javascript:history.back();</script>";
+   }
+   $stmt = oci_parse($conn, "SELECT * FROM USUARIO WHERE NOM_USUARIO = '" . $usuario . "'" );
+   oci_execute($stmt);
+   while(($row = oci_fetch_array($stmt)))
+   {
+      if ($_POST['logContrasenia'] != $row['CONTRASENIA']) 
+      {
+          echo "<script>alert(\"Password incorrecto.\");</script>";
+          echo "<script>javascript:history.back();</script>";
+      }
+      else
+      {
+        if($row['TIPO_USUARIO'] == 1)
+        {
+             header("Location: administrador.php");
+        }
+        else
+        {
+             header("Location: usuario.php");
+        }
+      }
+   }
+    oci_close($conn);
+}
+else
+{
+    $conn = oci_connect(USER, PASS, HOST);
+    $stmt = oci_parse($conn, "SELECT * FROM PAIS" );
+    oci_execute($stmt);
+
+    $opciones = '';
+
+    while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
+    {
+        $opciones.='<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
+    }
+    oci_close($conn);
+}
 
 
 
 
 
-
-////Agregar archivos de configuracion y funciones
-//
-////Al presionar el boton de enviar
-//if (isset($_POST['enviar']))
-//{ 
-//// Todo el codigo para registrar un usuario
-//         die('Por el momento no podemos realizar su solicitud <a href=index.php>Intente en otro momento</a>');
-//
-//}
-////Al presionar el boton de login
-//if (isset($_POST['entrar']))
-//{ 
-//// Todas las validaciones necesarias antes de entrar
-//         header("Location: index2.php");
-//
-//}
-
-   
+  
+  
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +92,10 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    
+ 
+
+     
+        
 </head>
 
 <body id="page-top" class="index">
@@ -207,23 +251,7 @@
                         <label style="width: 200px; display: block; float: left;" >País:</label>
                        <select name='pais' onChange="cargarProvincias(this.value);" style="width: 200px; display: block; float: left;">
                         <option value="0">Seleccione el pais</option>
-                        <?php
-                            include ("settings.php");
-                            include ("common.php");
-
-                            $conn = oci_connect(USER, PASS, HOST);
-                            $stmt = oci_parse($conn, "SELECT * FROM PAIS" );
-                            oci_execute($stmt);
-                            while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
-                            {
-                            ?>
-                        
-                        <option value="<?php echo $row["PAIS_ID"];?>"><?php echo $row["PAIS"];?></option>
-
-                        <?php
-                            }
-                            oci_close($conn);
-                        ?>                         
+                        <option ><?php echo $opciones; ?></option>
                        </select>
                     </td>
                   </tr>
@@ -233,17 +261,6 @@
                         <label style="width: 200px; display: block; float: left;" >Provincia:</label>
                        <select name='provincia' style="width: 200px; display: block; float: left;">
                             <option value="0">Seleccione la provincia</option>
-                        <?php
-                            while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
-                            {
-                            ?>
-                        
-                        <option value="<?php echo $row["PROVINCIA_ID"];?>"><?php echo $row["PROVINCIA"];?></option>
-
-                        <?php
-                            }
-                            //oci_close($conn);
-                        ?>                         
                        </select>
                     </td>
                   </tr>
@@ -298,7 +315,7 @@
             </div>
         </div>
 
-        <form id="loggin" action="" method="post">
+        <form id="loggin" action="index.php" method="post">
                 <legend>Loggin</legend>
                 <table style="float: left;">
                   <tr>
@@ -318,8 +335,6 @@
                    <div style="clear: both;"></div>
                    <input id="campo3" name="entrar" type="submit" value="Entrar" />       
         </form>
-
-
 
 
     </section>
@@ -425,7 +440,8 @@
 
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
+    <script src="js/agency.js"></script>       
+
 
 </body>
 
