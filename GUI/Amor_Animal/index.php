@@ -205,8 +205,25 @@
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >País:</label>
-                       <select name='pais' style="width: 200px; display: block; float: left;">
-                        <option>Pais</option>
+                       <select name='pais' onChange="cargarProvincias(this.value);" style="width: 200px; display: block; float: left;">
+                        <option value="0">Seleccione el pais</option>
+                        <?php
+                            include ("settings.php");
+                            include ("common.php");
+
+                            $conn = oci_connect(USER, PASS, HOST);
+                            $stmt = oci_parse($conn, "SELECT * FROM PAIS" );
+                            oci_execute($stmt);
+                            while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
+                            {
+                            ?>
+                        
+                        <option value="<?php echo $row["PAIS_ID"];?>"><?php echo $row["PAIS"];?></option>
+
+                        <?php
+                            }
+                            oci_close($conn);
+                        ?>                         
                        </select>
                     </td>
                   </tr>
@@ -215,7 +232,18 @@
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Provincia:</label>
                        <select name='provincia' style="width: 200px; display: block; float: left;">
-                            <option>Provincia</option>
+                            <option value="0">Seleccione la provincia</option>
+                        <?php
+                            while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
+                            {
+                            ?>
+                        
+                        <option value="<?php echo $row["PROVINCIA_ID"];?>"><?php echo $row["PROVINCIA"];?></option>
+
+                        <?php
+                            }
+                            //oci_close($conn);
+                        ?>                         
                        </select>
                     </td>
                   </tr>
@@ -224,7 +252,7 @@
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Canton:</label>
                        <select name='canton' style="width: 200px; display: block; float: left;">
-                            <option>Cantón</option>
+                            <option value="0">Seleccione el cantón</option>
                        </select>
                     </td>
                   </tr>
@@ -233,7 +261,7 @@
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Distrito:</label>
                        <select name='distrito' style="width: 200px; display: block; float: left;">
-                            <option>Distrito</option>
+                            <option value="0">SElecciones el distrito</option>
                        </select>
                     </td>
                   </tr>
@@ -381,7 +409,7 @@
 
 
     <!-- Validaciones -->
-    <script src="js/validaciones.js"></script>
+    <script src="js/misFunciones.js"></script>
     
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
