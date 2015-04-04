@@ -1,26 +1,32 @@
 <?php
-//Agregar archivos de configuracion y funciones
 
-//Al presionar el boton de enviar
-if (isset($_POST['enviar']))
-{ 
-// Todo el codigo para registrar un usuario
-         die('Por el momento no podemos realizar su solicitud <a href=index.php>Intente en otro momento</a>');
 
-}
-//Al presionar el boton de login
-if (isset($_POST['entrar']))
-{ 
-// Todas las validaciones necesarias antes de entrar
-         header("Location: index2.php");
 
-}
+
+
+
+////Agregar archivos de configuracion y funciones
+//
+////Al presionar el boton de enviar
+//if (isset($_POST['enviar']))
+//{ 
+//// Todo el codigo para registrar un usuario
+//         die('Por el momento no podemos realizar su solicitud <a href=index.php>Intente en otro momento</a>');
+//
+//}
+////Al presionar el boton de login
+//if (isset($_POST['entrar']))
+//{ 
+//// Todas las validaciones necesarias antes de entrar
+//         header("Location: index2.php");
+//
+//}
 
    
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -45,6 +51,7 @@ if (isset($_POST['entrar']))
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+    
 </head>
 
 <body id="page-top" class="index">
@@ -108,7 +115,7 @@ if (isset($_POST['entrar']))
             </div>
 
 
-	<form id="formulario" action="resgistro.php" method="post" >
+        <form action="registro.php" method="post" >
             <legend>Formulario de Registro</legend>
                 <table style="float: left;" >
                   <tr>
@@ -120,36 +127,47 @@ if (isset($_POST['entrar']))
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Primer Apellido:</label>
-                        <input id="campo2" name="primerApellido" type="text" style="width: 200px; display: block; float: left;" />
+                        <label style="width: 200px; display: block; float: left;" >Apellidos:</label>
+                        <input id="campo2" name="apellidos" type="text" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
+<!--
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Segundo Apellido:</label>
                         <input id="campo3" name="segundoApellido" type="text" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
+
                   <tr><td>&nbsp; </td></tr>
+-->
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Email:</label>
-                        <input id="campo4" name="email" type="text" style="width: 200px; display: block; float: left;" />
+                        <input id="campo4" name="email" type="text" onchange="verificarCorreo(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
-                  <tr><td>&nbsp; </td></tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >&nbsp;</label>
+                        <label style="width: 200px; display: block; float: left;" >ejemplo: 123456789</label>
+                    </td>
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Cédula:</label>
-                        <input id="campo5" name="cedula" type="number" style="width: 200px; display: block; float: left;" />
+                        <input id="campo5" name="cedula" type="text" onkeypress="return justNumbers(event);" onchange="verificarCedula(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
-                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >&nbsp;</label>
+                        <label style="width: 200px; display: block; float: left;" >ejemplo: 22446688</label>
+                    </td>
+                  </tr>
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Teléfono:</label>
-                        <input id="campo7" name="telefono" type="text" style="width: 200px; display: block; float: left;" />
+                        <input id="campo7" name="telefono" type="text" onkeypress="return justNumbers(event);"  style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
@@ -163,7 +181,7 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label for="adoptante" style="width: 200px; display: block; float: left;" >Adoptante:</label>
-                        <input type="radio" name="tipoPersona" id="adoptante" value="Adoptante"  />
+                        <input type="radio" name="tipoPersona" id="adoptante" value="Adoptante" checked  />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
@@ -173,7 +191,7 @@ if (isset($_POST['entrar']))
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
-                        <input id="campo8" name="nomUsuario" type="text" style="width: 200px; display: block; float: left;" />
+                        <input id="campo8" name="nomUsuario" type="text" onchange="verificarUsuario(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
@@ -361,6 +379,10 @@ if (isset($_POST['entrar']))
 
 
 
+
+    <!-- Validaciones -->
+    <script src="js/validaciones.js"></script>
+    
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
