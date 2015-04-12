@@ -1,5 +1,5 @@
 <?php
-define("HOST", "localhost/dbprueba");
+define("HOST", "localhost/BASE");
 //define("PORT", 3306);
 define("USER", "proyecto");
 define("PASS", "proyecto");
