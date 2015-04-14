@@ -217,12 +217,12 @@ end Tamanio_ID;
 
 ---11.---------------------- Procedimiento para agregar facilidad entrenamiento--------------------------------
 
-create or replace procedure Agregar_Facilidad_Entrenamiento(Facilidad varchar2) is
+create or replace procedure Agregar_Facilidad_Entreno(Facilidad varchar2) is
 begin
   insert into facilidad_entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
   values(incremento_entrenamiento.nextval,Facilidad);
   
-end Agregar_Facilidad_Entrenamiento;
+end Agregar_Facilidad_Entreno;
 
 -----------Funcion para obtener el ID de facilidad entrenamiento---------------------------------------
 
