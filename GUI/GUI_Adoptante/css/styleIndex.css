@@ -30,7 +30,7 @@ img{max-width:100%;}
 /*end reset*/
 body{
 	font-family:Arial, Helvetica, sans-serif;
-	background: url(../images/perro7.jpg)no-repeat center fixed;
+	background: url(../images/mascota-graciosa.jpg)no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -330,39 +330,15 @@ h5.head{
 }
 .main{
 }
-.pais{
-	color: black;
-	position: relative;
-	top: 75px;
-	left: 50px;
-	font: 200% sans-serif;
 
+.busqueda{
+	position: relative;
+	top: 50px;
+	font-family: cursive;
 }
 
-.provincia{
-	color: black;
+.test{
 	position: relative;
-	top: 15px;
-	left: 800px;
-	font: 200% sans-serif;
-
-}
-
-.canton{
-	color: black;
-	position: relative;
-	top: 100px;
-	left: 50px;
-	font: 200% sans-serif;
-
-}
-
-.distrito{
-	color: black;
-	position: relative;
-	top: -55px;
-	left: 800px;
-	font: 200% sans-serif;
-
-
+	top: 50px;
+	font-family: cursive;
 }
