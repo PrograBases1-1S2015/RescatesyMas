@@ -26,8 +26,8 @@ create or replace function Buscar_Mascota(nombreMascota varchar2) return varchar
 begin
   Select mst.nombre into Result
   from mascota mst
-  inner join adoptante adp
-  on adp.adoptante_id=mst.mascota_id and mst.nombre=nombreMascota;
+  inner join adoptante_x_mascota a_x_m
+  on a_x_m.mascota_id=mst.mascota_id and mst.nombre=nombreMascota;
   return(Result);
 end Buscar_Mascota;
 
