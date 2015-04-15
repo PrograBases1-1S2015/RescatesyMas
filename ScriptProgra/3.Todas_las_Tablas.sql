@@ -23,7 +23,7 @@ using index
 
 CREATE SEQUENCE incremento_enfermedad
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a ENFERMEDAD-----------------------
@@ -84,7 +84,7 @@ ALTER TABLE TRATAMIENTO ADD CONSTRAINT FK_ENFERMEDAD_TRATAMIENTO
 
 CREATE SEQUENCE incremento_tratamiento
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a TRATAMIENTO--------------------------
@@ -146,7 +146,7 @@ ALTER TABLE MEDICAMENTO ADD CONSTRAINT FK_TRATAMIENTO_MEDICAMENTO
 
 CREATE SEQUENCE incremento_medicamento
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a MEDICAMENTO--------------------------
@@ -202,7 +202,7 @@ using index
 
 CREATE SEQUENCE incremento_nivel_energia
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a NIVEL DE ENERGIA--------------------------
@@ -257,7 +257,7 @@ using index
 
 CREATE SEQUENCE incremento_color
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a COLOR--------------------------
@@ -311,7 +311,7 @@ using index
 
 CREATE SEQUENCE incremento_tipo_formulario
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a TIPO_FORMULARIO------------------------------
@@ -367,7 +367,7 @@ using index
 
 CREATE SEQUENCE incremento_pregunta
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a PREGUNTA------------------------------
@@ -430,7 +430,7 @@ ALTER TABLE RESPUESTA ADD CONSTRAINT FK_PREGUNTA_RESPUESTA
 
 CREATE SEQUENCE incremento_respuesta
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a RESPUESTA------------------------------
@@ -543,7 +543,7 @@ using index
 
 CREATE SEQUENCE incremento_pais
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a PAIS-----------------------------
@@ -608,7 +608,7 @@ ALTER TABLE PROVINCIA ADD CONSTRAINT FK_PAIS_PROVINCIA
 
 CREATE SEQUENCE incremento_provincia
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a PROVINCIA-----------------------------
@@ -674,7 +674,7 @@ ALTER TABLE CANTON ADD CONSTRAINT FK_PROVINCIA_CANTON
 
 CREATE SEQUENCE incremento_canton
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a CANTON-----------------------------
@@ -740,7 +740,7 @@ ALTER TABLE DISTRITO ADD CONSTRAINT FK_CANTON_DISTRITO
 
 CREATE SEQUENCE incremento_distrito
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a DISTRITO-----------------------------
@@ -805,7 +805,7 @@ ALTER TABLE DIRECCION_EXACTA ADD CONSTRAINT FK_DISTRITO_DIRECCION_EXACTA
 
 CREATE SEQUENCE incremento_direccion_exacta
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a DIRECCION_EXACTA-----------------------------
@@ -862,7 +862,7 @@ using index
 
 CREATE SEQUENCE incremento_estado_mascota
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a ESTADO_MASCOTA-----------------------------
@@ -920,7 +920,7 @@ using index
 
 CREATE SEQUENCE incremento_severidad
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a SEVERIDAD-----------------------------
@@ -979,7 +979,7 @@ using index
 
 CREATE SEQUENCE incremento_entrenamiento
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a FACILIDAD_ENTRENAMIENTO-----------------------------
@@ -1037,7 +1037,7 @@ using index
 
 CREATE SEQUENCE incremento_tamanio
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a TAMANIO -----------------------------
@@ -1094,7 +1094,7 @@ CREATE TABLE TIPO_MASCOTA
 
 	CREATE SEQUENCE incremento_tipo_mascota_id
 	INCREMENT BY 1
-	START WITH 1
+	START WITH 0
 	MAXVALUE 1000;
 
 -----------------------Agregar campos a TIPO_MASCOTA -----------------------------
@@ -1159,7 +1159,7 @@ ALTER TABLE RAZA ADD CONSTRAINT FK_TIPO_MASCOTA_RAZA
 
 CREATE SEQUENCE incremento_raza
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a RAZA -----------------------------
@@ -1224,7 +1224,7 @@ using index
 
 CREATE SEQUENCE incremento_usuario
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a USUARIO -----------------------------
@@ -1325,7 +1325,7 @@ ALTER TABLE PERSONA ADD CONSTRAINT FK_USUARIO_PERSONA
 
 CREATE SEQUENCE incremento_persona
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a PERSONA -----------------------------
@@ -1384,7 +1384,7 @@ ALTER TABLE LISTANEGRA ADD CONSTRAINT FK_PERSONA_LISTANEGRA
 
 CREATE SEQUENCE incremento_listaNegra
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a LISTANEGRA -----------------------------
@@ -1446,7 +1446,7 @@ ALTER TABLE RESCATISTA ADD CONSTRAINT FK_PERSONA_RESCATISTA
 
 CREATE SEQUENCE incremento_rescatista
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a RESCATISTA -----------------------------
@@ -1508,7 +1508,7 @@ ALTER TABLE ADOPTANTE ADD CONSTRAINT FK_PERSONA_ADOPTANTE
 
 CREATE SEQUENCE incremento_adoptante
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a ADOPTANTE -----------------------------
@@ -1748,7 +1748,7 @@ REFERENCES RESCATISTA(rescatista_id);
 
 CREATE SEQUENCE incremento_mascota
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a MASCOTA -----------------------------
@@ -1821,7 +1821,7 @@ REFERENCES MASCOTA(mascota_id);
 
 CREATE SEQUENCE incremento_adop_x_mascota
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a ADOPCIONES_X_MASCOTA -----------------------------
@@ -1878,7 +1878,7 @@ using index
       
 CREATE SEQUENCE incremento_causa
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a CAUSA -----------------------------
@@ -1960,7 +1960,7 @@ REFERENCES CAUSA(causa_id);
 
 CREATE SEQUENCE incremento_devo_x_mascota
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a DEVOLUCIONES_X_MASCOTA -----------------------------
@@ -2024,7 +2024,7 @@ REFERENCES RESCATISTA(rescatista_id);
 
 CREATE SEQUENCE incremento_grupo_rescatista_id
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a GRUPO_RESCATISTA -----------------------------
@@ -2103,7 +2103,7 @@ REFERENCES RESCATISTA(rescatista_id);
 
 CREATE SEQUENCE incremento_calificacion
 INCREMENT BY 1
-START WITH 1
+START WITH 0
 MAXVALUE 1000;
 
 -----------------------Agregar campos a CALIFICACION -----------------------------
