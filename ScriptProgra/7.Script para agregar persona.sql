@@ -97,28 +97,27 @@ begin
 end Agregar_Distrito;
 
 --Funcion busqueda--
-create or replace function Distrito_ID(Nombre_Distrito varchar2) 
+create or replace function Distrito_ID(Nombre_Distrito varchar2,NCanton varchar2)
 return number is
   Id number;
 begin
-  Select Distrito_id into  ID 
-  from Distrito
-  where (Distrito = Nombre_Distrito);       
-  
+  Select Distrito_id into  ID
+  from Distrito dis,canton can
+  where (dis.distrito=Nombre_Distrito and can.canton=NCanton and can.canton_id=dis.canton_id);
+
   return(ID);
 end Distrito_ID;
-
 ----------6. Direccion Exacta---------------------
 --Procedimiento--
-create or replace procedure Agregar_Direccion_Exacta(Nombre varchar,Distrito varchar2) is
+create or replace procedure Agregar_Direccion_Exacta(Nombre varchar,Distrito varchar2,Canton varchar2) is
        resultado number;
 begin
- Select distrito_id(Distrito) into resultado from dual;
+ 
+ Select distrito_id(Distrito,Canton) into resultado from dual;
  insert into Direccion_Exacta(Direccion_Exacta_Id,Direccion_Exacta,Distrito_Id)
   values(incremento_Direccion_Exacta.nextval,Nombre,resultado);
-  
-end Agregar_Direccion_Exacta;
 
+end Agregar_Direccion_Exacta;
 --Funcion busqueda--
 create or replace function Direccion_Exacta_ID(Nombre_Direccion_Exacta varchar2)
 return number is
@@ -165,26 +164,26 @@ create or replace procedure Agregar_Persona(nombre varchar,apellido varchar,cedu
      end if;
  end Agregar_Persona;
 --Procedimiento que hace todo el trabajo--
-create or replace procedure Registro(Usuario_n varchar2, contraseña varchar2,token varchar2,direccion varchar,distrito varchar,nombre varchar,apellido varchar,cedula varchar,telef1 number,telef2 number,email varchar,cargo number) is
+create or replace procedure Registro(Usuario_n varchar2, contraseña varchar2,direccion varchar,distrito varchar,canton varchar,nombre varchar,apellido varchar,cedula varchar,telef1 number,email varchar,cargo number) is
   u_id number; --Id del usuario
-  dire_id number; --Id de la direccion     
+  dire_id number; --Id de la direccion
 begin
   --Inserta el usuario--
   begin
-  agregar_usuario(usuario_n,contraseña,token);
+  agregar_usuario(usuario_n,contraseña,NULL,2);
   end;
   --Inserta la dirección--
   begin
-  agregar_direccion_exacta(direccion,distrito);
+  agregar_direccion_exacta(direccion,distrito,canton);
   end;
   --Recupera los id de usario y direccion--
   Select usuario_id(usuario_n) into u_id from dual;
   Select direccion_exacta_id(direccion) into dire_id from dual;
   --Inserta en persona--
   begin
-    agregar_persona(nombre,apellido,cedula,dire_id,telef1,telef2,u_id,email,cargo);
+    agregar_persona(nombre,apellido,cedula,dire_id,telef1,NULL,u_id,email,cargo);
   end;
-  
+
 end Registro;
 
 
