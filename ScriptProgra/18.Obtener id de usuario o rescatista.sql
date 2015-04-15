@@ -62,4 +62,27 @@ begin
   return(Result);
 end ID_Rescatista_Adoptante;
 
+--Triggers para actualizar el campo de mascota, para volver a ponerla en adopcion--
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ---------------------------------------------------- NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
 
+create or replace trigger beforeUpdate_masc_to_adopcion
+  before update
+  on MASCOTA
+  for each row
+begin
+ 	:new.fec_ultima_modificacion := sysdate;
+    :new.usuario_ultima_modificacion := user;
+end beforeUpdate_employee;
+-----------------------------------------------------------------------------------------------
+create or replace trigger BeforeInsert_mascota
+  before insert
+  on employee
+  for each row
+begin
+    :new.fec_creacion := sysdate;
+    :new.usuario_creacion := user;
+    :new.fec_ultima_modificacion := sysdate;
+    :new.usuario_ultima_modificacion := user;
+end BeforeInsert_employee;
