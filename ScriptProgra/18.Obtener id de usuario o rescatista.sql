@@ -8,6 +8,7 @@ begin
   on per.persona_id=adp.persona_id and per.persona_id=NUsuario;
   return(Result);
 end Buscar_Adoptante;
+
 --Función para buscar un rescatista--
 create or replace function Buscar_Rescatista(NUsuario number) return number is
     Result integer;
@@ -18,6 +19,18 @@ begin
   on per.persona_id=res.rescatista_id and per.persona_id=NUsuario;
   return(Result);
 end Buscar_Rescatista;
+
+--Funcion para buscar una mascota--
+create or replace function Buscar_Mascota(nombreMascota varchar2) return varchar2 is
+  Result varchar2;
+begin
+  Select mst.nombre into Result
+  from mascota mst
+  inner join adoptante adp
+  on adp.adoptante_id=mst.mascota_id and mst.nombre=nombreMascota;
+  return(Result);
+end Buscar_Mascota;
+
 --Función que retornar el id ya sea de un rescatista o de un adoptante--
 create or replace function ID_Rescatista_Adoptante(NUsuario Varchar) return number is
   Result number;
@@ -48,3 +61,5 @@ begin
    end if;
   return(Result);
 end ID_Rescatista_Adoptante;
+
+
