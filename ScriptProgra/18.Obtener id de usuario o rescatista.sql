@@ -65,7 +65,17 @@ end ID_Rescatista_Adoptante;
 --Triggers para actualizar el campo de mascota, para volver a ponerla en adopcion--
 ------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
 ------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
------------------------- NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ---------------------------------------------------- NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
+------------------------ NO CORRER ESTO YA QUE NO ESTA BUENO TODAVIA ----------------------------
 
 create or replace trigger beforeUpdate_masc_to_adopcion
   before update
