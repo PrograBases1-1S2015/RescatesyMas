@@ -183,13 +183,13 @@ nivel_energia VARCHAR2(49) CONSTRAINT nivel_energia_nn NOT NULL
 );
 
 COMMENT ON TABLE NIVEL_ENERGIA
-IS 'En esta tabla se almacenan los niveles de energía';
+IS 'En esta tabla se almacenan los niveles de energÃ­a';
 
 COMMENT ON COLUMN NIVEL_ENERGIA.nivel_energia_id
-IS 'Identificador del nivel de energía';
+IS 'Identificador del nivel de energÃ­a';
 
 COMMENT ON COLUMN NIVEL_ENERGIA.nivel_energia
-IS 'Nombre del nivel de energía';
+IS 'Nombre del nivel de energÃ­a';
 
 
 
@@ -528,10 +528,10 @@ COMMENT ON TABLE PAIS
 IS 'En esta tabla se almacenan los paises';
 
 COMMENT ON COLUMN PAIS.pais_id
-IS 'Identificador del país';
+IS 'Identificador del paÃ­s';
 
 COMMENT ON COLUMN PAIS.pais
-IS 'Nombre del país';
+IS 'Nombre del paÃ­s';
 
 alter table PAIS add
 constraint pk_pais
@@ -591,7 +591,7 @@ COMMENT ON COLUMN PROVINCIA.provincia
 IS 'Nombre de la provincia';
 
 COMMENT ON COLUMN PROVINCIA.pais_id
-IS 'Identificador del país al que pertenece la provincia, es un foreign key de la tabla PAIS';
+IS 'Identificador del paÃ­s al que pertenece la provincia, es un foreign key de la tabla PAIS';
 
 
 AlTER TABLE PROVINCIA add
@@ -651,13 +651,13 @@ COMMENT ON TABLE CANTON
 IS 'En esta tabla se almacenan los cantones';
 
 COMMENT ON COLUMN CANTON.canton_id
-IS 'Identificador del cantón';
+IS 'Identificador del cantÃ³n';
 
 COMMENT ON COLUMN CANTON.canton
-IS 'Nombre del cantón';
+IS 'Nombre del cantÃ³n';
 
 COMMENT ON COLUMN CANTON.provincia_id
-IS 'Identificador del cantón de una provincia, es un foreign key de la tabla CANTON';
+IS 'Identificador del cantÃ³n de una provincia, es un foreign key de la tabla CANTON';
 
 AlTER TABLE CANTON add
 constraint pk_canton
@@ -723,7 +723,7 @@ COMMENT ON COLUMN DISTRITO.distrito
 IS 'Nombre del distrito';
 
 COMMENT ON COLUMN DISTRITO.canton_id
-IS 'Identificador del cantón al que pertenece el distrito, es un foreign key de la tabla CANTON';
+IS 'Identificador del cantÃ³n al que pertenece el distrito, es un foreign key de la tabla CANTON';
 
 
 AlTER TABLE DISTRITO add
@@ -782,10 +782,10 @@ COMMENT ON TABLE DIRECCION_EXACTA
 IS 'En esta tabla se almacenan las direcciones';
 
 COMMENT ON COLUMN DIRECCION_EXACTA.direccion_exacta_id
-IS 'Identificador de la dirección';
+IS 'Identificador de la direcciÃ³n';
 
 COMMENT ON COLUMN DIRECCION_EXACTA.direccion_exacta
-IS 'Descripción de la dirección';
+IS 'DescripciÃ³n de la direcciÃ³n';
 
 COMMENT ON COLUMN DIRECCION_EXACTA.distrito_id
 IS 'Identificador del distrito, es un foreign key de la tabla DISTRITO';
@@ -1017,13 +1017,13 @@ CREATE TABLE TAMANIO
 );
 
 COMMENT ON TABLE TAMANIO
-IS 'En esta tabla se almacenan los tamaños de las mascotas';
+IS 'En esta tabla se almacenan los tamaÃ±os de las mascotas';
 
 COMMENT ON COLUMN TAMANIO.tamanio_id
-IS 'Identificador del tamaño';
+IS 'Identificador del tamaÃ±o';
 
 COMMENT ON COLUMN TAMANIO.tamanio
-IS 'Tamaño de la mascota';
+IS 'TamaÃ±o de la mascota';
 
 
 AlTER TABLE TAMANIO add
@@ -1207,7 +1207,7 @@ COMMENT ON COLUMN USUARIO.nom_usuario
 IS 'Nombre del usuario';
 
 COMMENT ON COLUMN USUARIO.contrasenia
-IS 'Contraseña del usuario';
+IS 'ContraseÃ±a del usuario';
 
 COMMENT ON COLUMN USUARIO.access_token
 IS 'Access token del usuario';
@@ -1283,10 +1283,10 @@ COMMENT ON COLUMN PERSONA.apellidos
 IS 'Apellidos de la persona';
 
 COMMENT ON COLUMN PERSONA.cedula
-IS 'Cédula de la persona';
+IS 'CÃ©dula de la persona';
 
 COMMENT ON COLUMN PERSONA.direccion_exacta_id
-IS 'Dirección del lugar donde vive la persona, es un foreign key de la tabla DIRECCION_EXACTA';
+IS 'DirecciÃ³n del lugar donde vive la persona, es un foreign key de la tabla DIRECCION_EXACTA';
 
 COMMENT ON COLUMN PERSONA.email
 IS 'Email de la persona';
@@ -1301,7 +1301,7 @@ COMMENT ON COLUMN PERSONA.usuario_id
 IS 'Identificador del usuario de la persona, es un foreign key de la tabla USUARIO';
 
 COMMENT ON COLUMN PERSONA.estado_listaNegra
-IS 'Estado que indica si una persona está o no en lista negra';
+IS 'Estado que indica si una persona estÃ¡ o no en lista negra';
 
 COMMENT ON COLUMN PERSONA.foto
 IS 'Foto de la persona';
@@ -1425,7 +1425,7 @@ COMMENT ON TABLE RESCATISTA
 IS 'En esta tabla se almacenan los datos del rescatista';
 
 COMMENT ON COLUMN RESCATISTA.rescatista_id
-IS 'Identificador del cantón';
+IS 'Identificador del cantÃ³n';
 
 COMMENT ON COLUMN RESCATISTA.persona_id
 IS 'Identificador de la persona, es un foreign key de la tabla PERSONA';
@@ -1639,13 +1639,13 @@ COMMENT ON COLUMN MASCOTA.nombre
 IS 'Nombre de la mascota';
 
 COMMENT ON COLUMN MASCOTA.direccion_exacta_id
-IS 'Identificador de la dirección de donde se encontró la mascota, es un foreing key de la tabla DIRECCION_EXACTA';
+IS 'Identificador de la direcciÃ³n de donde se encontrÃ³ la mascota, es un foreing key de la tabla DIRECCION_EXACTA';
 
 COMMENT ON COLUMN MASCOTA.severidad_id
 IS 'Identificador de la severidad de la mascota, es un foreing key de la tabla SEVERIDAD';
 
 COMMENT ON COLUMN MASCOTA.estado_mascota_id
-IS 'Identificador del estado de la mascota (Adoptado o En adopción), es un foreing key de la tabla ESTADO_MASCOTA';
+IS 'Identificador del estado de la mascota (Adoptado o En adopciÃ³n), es un foreing key de la tabla ESTADO_MASCOTA';
 
 COMMENT ON COLUMN MASCOTA.enfermedad_id
 IS 'Identificador de la enfermedad que puede tener la mascota, es un foreing key de la tabla ENFERMEDAD';
@@ -1657,16 +1657,16 @@ COMMENT ON COLUMN MASCOTA.foto_antes
 IS 'Foto de la mascota antes de ser rescatada';
 
 COMMENT ON COLUMN MASCOTA.foto_despues
-IS 'Foto de la mascota despúes de ser rescatada';
+IS 'Foto de la mascota despÃºes de ser rescatada';
 
 COMMENT ON COLUMN MASCOTA.veterinario
 IS 'Nombre del veterinario de la mascota';
 
 COMMENT ON COLUMN MASCOTA.descripcion
-IS 'Descripción de la mascota';
+IS 'DescripciÃ³n de la mascota';
 
 COMMENT ON COLUMN MASCOTA.nota_adicional
-IS 'Algúna nota adicional sobre la mascota';
+IS 'AlgÃºna nota adicional sobre la mascota';
 
 COMMENT ON COLUMN MASCOTA.fecha
 IS 'Fecha de caundo fue encontrada la mascota';
@@ -1675,13 +1675,13 @@ COMMENT ON COLUMN MASCOTA.raza_id
 IS 'Identificador de la raza de la mascota, es un foreing key de la tabla RAZA';
 
 COMMENT ON COLUMN MASCOTA.nivel_energia_id
-IS 'Identificador del nivel de energía de la mascota, es un foreing key de la tabla NIVEL_ENERGIA';
+IS 'Identificador del nivel de energÃ­a de la mascota, es un foreing key de la tabla NIVEL_ENERGIA';
 
 COMMENT ON COLUMN MASCOTA.color_id
 IS 'Identificador del color de la mascota, es un foreing key de la tabla COLOR';
 
 COMMENT ON COLUMN MASCOTA.tamanio_id
-IS 'Identificador del tamaño de la mascota, es un foreing key de la tabla TAMANIO';
+IS 'Identificador del tamaÃ±o de la mascota, es un foreing key de la tabla TAMANIO';
 
 COMMENT ON COLUMN MASCOTA.facilidad_entrenamiento_id
 IS 'Identificador de la facilidad de entrenamiento de la mascota, es un foreing key de la tabla FACILIDAD_ENTRENAMIENTO';
@@ -1791,7 +1791,7 @@ COMMENT ON TABLE ADOPCIONES_X_MASCOTA
 IS 'En esta tabla se almacenan a las Adopciones';
 
 COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.adopciones_x_mascota_id
-IS 'Identificador de la adopción';
+IS 'Identificador de la adopciÃ³n';
 
 COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.adoptante_id
 IS 'Identificador del adoptante, es un foreing key de la tabla ADOPTANTE';
@@ -1800,7 +1800,7 @@ COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.mascota_id
 IS 'Identificador de la mascota, es un foreing key de la tabla  MASCOTA';
 
 COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.foto
-IS 'Foto de la mascota con su dueño';
+IS 'Foto de la mascota con su dueÃ±o';
 
 ALTER TABLE ADOPCIONES_X_MASCOTA ADD
 CONSTRAINT pk_adopciones_x_mascota
@@ -1921,7 +1921,7 @@ COMMENT ON TABLE DEVOLUCIONES_X_MASCOTA
 IS 'En esta tabla se almacenan a las devoluciones';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.devoluciones_x_mascota_id
-IS 'Identificador de la devolución';
+IS 'Identificador de la devoluciÃ³n';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.adoptante_id
 IS 'Identificador del adoptante que devuelve a la mascota, es un foreing key de la tabla ADOPTANTE';
@@ -1930,7 +1930,7 @@ COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.mascota_id
 IS 'Identificador de la mascota, es un foreing key de la tabla MASCOTA';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.fecha
-IS 'Fecha de la devolución de la mascota';
+IS 'Fecha de la devoluciÃ³n de la mascota';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.causa_id
 IS 'Identificador de la causa, es un foreing key de la tabla CAUSA';
