@@ -1,12 +1,11 @@
 ----------1. Usuario-----------------
---Procedimiento para agregar----------------
-
-create or replace procedure Agregar_Usuario(Nombre varchar,contraseña varchar,token varchar,tipo number) is
+--Procedimiento para agregar----------Obsoleto------
+create or replace procedure Agregar_Usuario(Nombre varchar2,contraseña varchar2,token varchar2,) is
 begin
-  insert into usuario(usuario_id,nom_usuario,contrasenia,access_token,tipo_usuario)
-  values(incremento_usuario.nextval,Nombre,contraseña,token,tipo);
-
+  insert into usuario(usuario_id,nom_usuario,contrasenia,access_token)
+  values(incremento_usuario.nextval,Nombre,contraseña,token);
 end Agregar_Usuario;
+
 --Funciòn para buscar id-------------------
 create or replace function Usuario_ID(Nombre_Usuario varchar2) 
 return number is
