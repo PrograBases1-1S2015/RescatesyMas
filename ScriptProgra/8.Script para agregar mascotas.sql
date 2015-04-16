@@ -256,13 +256,14 @@ begin
 end Agregar_Mascota;
 ---------------------Funcion para obtener el ID de la mascota----------------------------------
 
-create or replace function Mascota_ID(Nombre_Mascota varchar2) 
+create or replace function Mascota_ID(Nombre_Mascota varchar2,rescatista number) 
 return number is
   ID number;
 begin
   Select mascota_id into  ID
-  from mascota
-  where (nombre = Nombre_Mascota);  
+  from mascota m, rescatista r
+  where (m.mascota = Nombre_Mascota and r.rescatista_id = rescatista and r.rescatista_id = m.rescatista_id );  
   
   return(ID);
 end Mascota_ID;
+
