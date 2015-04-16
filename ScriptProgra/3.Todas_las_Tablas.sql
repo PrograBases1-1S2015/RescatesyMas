@@ -24,7 +24,7 @@ using index
 CREATE SEQUENCE incremento_enfermedad
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a ENFERMEDAD-----------------------
 ALTER TABLE ENFERMEDAD add Fec_creacion DATE;
@@ -85,7 +85,7 @@ ALTER TABLE TRATAMIENTO ADD CONSTRAINT FK_ENFERMEDAD_TRATAMIENTO
 CREATE SEQUENCE incremento_tratamiento
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a TRATAMIENTO--------------------------
 ALTER TABLE TRATAMIENTO add Fec_creacion DATE;
@@ -147,7 +147,7 @@ ALTER TABLE MEDICAMENTO ADD CONSTRAINT FK_TRATAMIENTO_MEDICAMENTO
 CREATE SEQUENCE incremento_medicamento
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a MEDICAMENTO--------------------------
 ALTER TABLE MEDICAMENTO add Fec_creacion DATE;
@@ -183,13 +183,13 @@ nivel_energia VARCHAR2(49) CONSTRAINT nivel_energia_nn NOT NULL
 );
 
 COMMENT ON TABLE NIVEL_ENERGIA
-IS 'En esta tabla se almacenan los niveles de energÃ­a';
+IS 'En esta tabla se almacenan los niveles de energía';
 
 COMMENT ON COLUMN NIVEL_ENERGIA.nivel_energia_id
-IS 'Identificador del nivel de energÃ­a';
+IS 'Identificador del nivel de energía';
 
 COMMENT ON COLUMN NIVEL_ENERGIA.nivel_energia
-IS 'Nombre del nivel de energÃ­a';
+IS 'Nombre del nivel de energía';
 
 
 
@@ -203,7 +203,7 @@ using index
 CREATE SEQUENCE incremento_nivel_energia
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a NIVEL DE ENERGIA--------------------------
 ALTER TABLE NIVEL_ENERGIA add Fec_creacion DATE;
@@ -258,7 +258,7 @@ using index
 CREATE SEQUENCE incremento_color
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a COLOR--------------------------
 ALTER TABLE COLOR add Fec_creacion DATE;
@@ -312,7 +312,7 @@ using index
 CREATE SEQUENCE incremento_tipo_formulario
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a TIPO_FORMULARIO------------------------------
 ALTER TABLE TIPO_FORMULARIO add Fec_creacion DATE;
@@ -368,7 +368,7 @@ using index
 CREATE SEQUENCE incremento_pregunta
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a PREGUNTA------------------------------
 ALTER TABLE PREGUNTA add Fec_creacion DATE;
@@ -431,7 +431,7 @@ ALTER TABLE RESPUESTA ADD CONSTRAINT FK_PREGUNTA_RESPUESTA
 CREATE SEQUENCE incremento_respuesta
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a RESPUESTA------------------------------
 ALTER TABLE RESPUESTA add Fec_creacion DATE;
@@ -528,10 +528,10 @@ COMMENT ON TABLE PAIS
 IS 'En esta tabla se almacenan los paises';
 
 COMMENT ON COLUMN PAIS.pais_id
-IS 'Identificador del paÃ­s';
+IS 'Identificador del país';
 
 COMMENT ON COLUMN PAIS.pais
-IS 'Nombre del paÃ­s';
+IS 'Nombre del país';
 
 alter table PAIS add
 constraint pk_pais
@@ -544,7 +544,7 @@ using index
 CREATE SEQUENCE incremento_pais
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a PAIS-----------------------------
 ALTER TABLE PAIS add Fec_creacion DATE;
@@ -591,7 +591,7 @@ COMMENT ON COLUMN PROVINCIA.provincia
 IS 'Nombre de la provincia';
 
 COMMENT ON COLUMN PROVINCIA.pais_id
-IS 'Identificador del paÃ­s al que pertenece la provincia, es un foreign key de la tabla PAIS';
+IS 'Identificador del país al que pertenece la provincia, es un foreign key de la tabla PAIS';
 
 
 AlTER TABLE PROVINCIA add
@@ -609,7 +609,7 @@ ALTER TABLE PROVINCIA ADD CONSTRAINT FK_PAIS_PROVINCIA
 CREATE SEQUENCE incremento_provincia
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a PROVINCIA-----------------------------
 ALTER TABLE PROVINCIA add Fec_creacion DATE;
@@ -651,13 +651,13 @@ COMMENT ON TABLE CANTON
 IS 'En esta tabla se almacenan los cantones';
 
 COMMENT ON COLUMN CANTON.canton_id
-IS 'Identificador del cantÃ³n';
+IS 'Identificador del cantón';
 
 COMMENT ON COLUMN CANTON.canton
-IS 'Nombre del cantÃ³n';
+IS 'Nombre del cantón';
 
 COMMENT ON COLUMN CANTON.provincia_id
-IS 'Identificador del cantÃ³n de una provincia, es un foreign key de la tabla CANTON';
+IS 'Identificador del cantón de una provincia, es un foreign key de la tabla CANTON';
 
 AlTER TABLE CANTON add
 constraint pk_canton
@@ -675,7 +675,7 @@ ALTER TABLE CANTON ADD CONSTRAINT FK_PROVINCIA_CANTON
 CREATE SEQUENCE incremento_canton
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a CANTON-----------------------------
 ALTER TABLE CANTON add Fec_creacion DATE;
@@ -723,7 +723,7 @@ COMMENT ON COLUMN DISTRITO.distrito
 IS 'Nombre del distrito';
 
 COMMENT ON COLUMN DISTRITO.canton_id
-IS 'Identificador del cantÃ³n al que pertenece el distrito, es un foreign key de la tabla CANTON';
+IS 'Identificador del cantón al que pertenece el distrito, es un foreign key de la tabla CANTON';
 
 
 AlTER TABLE DISTRITO add
@@ -741,7 +741,7 @@ ALTER TABLE DISTRITO ADD CONSTRAINT FK_CANTON_DISTRITO
 CREATE SEQUENCE incremento_distrito
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a DISTRITO-----------------------------
 ALTER TABLE DISTRITO add Fec_creacion DATE;
@@ -782,10 +782,10 @@ COMMENT ON TABLE DIRECCION_EXACTA
 IS 'En esta tabla se almacenan las direcciones';
 
 COMMENT ON COLUMN DIRECCION_EXACTA.direccion_exacta_id
-IS 'Identificador de la direcciÃ³n';
+IS 'Identificador de la dirección';
 
 COMMENT ON COLUMN DIRECCION_EXACTA.direccion_exacta
-IS 'DescripciÃ³n de la direcciÃ³n';
+IS 'Descripción de la dirección';
 
 COMMENT ON COLUMN DIRECCION_EXACTA.distrito_id
 IS 'Identificador del distrito, es un foreign key de la tabla DISTRITO';
@@ -806,7 +806,7 @@ ALTER TABLE DIRECCION_EXACTA ADD CONSTRAINT FK_DISTRITO_DIRECCION_EXACTA
 CREATE SEQUENCE incremento_direccion_exacta
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a DIRECCION_EXACTA-----------------------------
 ALTER TABLE DIRECCION_EXACTA add Fec_creacion DATE;
@@ -863,7 +863,7 @@ using index
 CREATE SEQUENCE incremento_estado_mascota
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a ESTADO_MASCOTA-----------------------------
 ALTER TABLE ESTADO_MASCOTA add Fec_creacion DATE;
@@ -921,7 +921,7 @@ using index
 CREATE SEQUENCE incremento_severidad
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a SEVERIDAD-----------------------------
 ALTER TABLE SEVERIDAD add Fec_creacion DATE;
@@ -980,6 +980,7 @@ using index
 CREATE SEQUENCE incremento_entrenamiento
 INCREMENT BY 1
 START WITH 0
+MINVALUE 0 
 MAXVALUE 1000;
 
 -----------------------Agregar campos a FACILIDAD_ENTRENAMIENTO-----------------------------
@@ -1017,13 +1018,13 @@ CREATE TABLE TAMANIO
 );
 
 COMMENT ON TABLE TAMANIO
-IS 'En esta tabla se almacenan los tamaÃ±os de las mascotas';
+IS 'En esta tabla se almacenan los tamaños de las mascotas';
 
 COMMENT ON COLUMN TAMANIO.tamanio_id
-IS 'Identificador del tamaÃ±o';
+IS 'Identificador del tamaño';
 
 COMMENT ON COLUMN TAMANIO.tamanio
-IS 'TamaÃ±o de la mascota';
+IS 'Tamaño de la mascota';
 
 
 AlTER TABLE TAMANIO add
@@ -1038,6 +1039,7 @@ using index
 CREATE SEQUENCE incremento_tamanio
 INCREMENT BY 1
 START WITH 0
+MINVALUE 0 
 MAXVALUE 1000;
 
 -----------------------Agregar campos a TAMANIO -----------------------------
@@ -1095,7 +1097,7 @@ CREATE TABLE TIPO_MASCOTA
 	CREATE SEQUENCE incremento_tipo_mascota_id
 	INCREMENT BY 1
 	START WITH 0
-	MAXVALUE 1000;
+	MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a TIPO_MASCOTA -----------------------------
 ALTER TABLE TIPO_MASCOTA add Fec_creacion DATE;
@@ -1160,7 +1162,7 @@ ALTER TABLE RAZA ADD CONSTRAINT FK_TIPO_MASCOTA_RAZA
 CREATE SEQUENCE incremento_raza
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a RAZA -----------------------------
 ALTER TABLE RAZA add Fec_creacion DATE;
@@ -1207,7 +1209,7 @@ COMMENT ON COLUMN USUARIO.nom_usuario
 IS 'Nombre del usuario';
 
 COMMENT ON COLUMN USUARIO.contrasenia
-IS 'ContraseÃ±a del usuario';
+IS 'Contraseña del usuario';
 
 COMMENT ON COLUMN USUARIO.access_token
 IS 'Access token del usuario';
@@ -1225,7 +1227,7 @@ using index
 CREATE SEQUENCE incremento_usuario
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a USUARIO -----------------------------
 ALTER TABLE USUARIO add Fec_creacion DATE;
@@ -1283,10 +1285,10 @@ COMMENT ON COLUMN PERSONA.apellidos
 IS 'Apellidos de la persona';
 
 COMMENT ON COLUMN PERSONA.cedula
-IS 'CÃ©dula de la persona';
+IS 'Cédula de la persona';
 
 COMMENT ON COLUMN PERSONA.direccion_exacta_id
-IS 'DirecciÃ³n del lugar donde vive la persona, es un foreign key de la tabla DIRECCION_EXACTA';
+IS 'Dirección del lugar donde vive la persona, es un foreign key de la tabla DIRECCION_EXACTA';
 
 COMMENT ON COLUMN PERSONA.email
 IS 'Email de la persona';
@@ -1301,7 +1303,7 @@ COMMENT ON COLUMN PERSONA.usuario_id
 IS 'Identificador del usuario de la persona, es un foreign key de la tabla USUARIO';
 
 COMMENT ON COLUMN PERSONA.estado_listaNegra
-IS 'Estado que indica si una persona estÃ¡ o no en lista negra';
+IS 'Estado que indica si una persona está o no en lista negra';
 
 COMMENT ON COLUMN PERSONA.foto
 IS 'Foto de la persona';
@@ -1326,7 +1328,7 @@ ALTER TABLE PERSONA ADD CONSTRAINT FK_USUARIO_PERSONA
 CREATE SEQUENCE incremento_persona
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a PERSONA -----------------------------
 ALTER TABLE PERSONA add Fec_creacion DATE;
@@ -1385,7 +1387,7 @@ ALTER TABLE LISTANEGRA ADD CONSTRAINT FK_PERSONA_LISTANEGRA
 CREATE SEQUENCE incremento_listaNegra
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a LISTANEGRA -----------------------------
 ALTER TABLE LISTANEGRA add Fec_creacion DATE;
@@ -1425,7 +1427,7 @@ COMMENT ON TABLE RESCATISTA
 IS 'En esta tabla se almacenan los datos del rescatista';
 
 COMMENT ON COLUMN RESCATISTA.rescatista_id
-IS 'Identificador del cantÃ³n';
+IS 'Identificador del cantón';
 
 COMMENT ON COLUMN RESCATISTA.persona_id
 IS 'Identificador de la persona, es un foreign key de la tabla PERSONA';
@@ -1447,7 +1449,7 @@ ALTER TABLE RESCATISTA ADD CONSTRAINT FK_PERSONA_RESCATISTA
 CREATE SEQUENCE incremento_rescatista
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a RESCATISTA -----------------------------
 ALTER TABLE RESCATISTA add Fec_creacion DATE;
@@ -1509,7 +1511,7 @@ ALTER TABLE ADOPTANTE ADD CONSTRAINT FK_PERSONA_ADOPTANTE
 CREATE SEQUENCE incremento_adoptante
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a ADOPTANTE -----------------------------
 ALTER TABLE ADOPTANTE add Fec_creacion DATE;
@@ -1639,13 +1641,13 @@ COMMENT ON COLUMN MASCOTA.nombre
 IS 'Nombre de la mascota';
 
 COMMENT ON COLUMN MASCOTA.direccion_exacta_id
-IS 'Identificador de la direcciÃ³n de donde se encontrÃ³ la mascota, es un foreing key de la tabla DIRECCION_EXACTA';
+IS 'Identificador de la dirección de donde se encontró la mascota, es un foreing key de la tabla DIRECCION_EXACTA';
 
 COMMENT ON COLUMN MASCOTA.severidad_id
 IS 'Identificador de la severidad de la mascota, es un foreing key de la tabla SEVERIDAD';
 
 COMMENT ON COLUMN MASCOTA.estado_mascota_id
-IS 'Identificador del estado de la mascota (Adoptado o En adopciÃ³n), es un foreing key de la tabla ESTADO_MASCOTA';
+IS 'Identificador del estado de la mascota (Adoptado o En adopción), es un foreing key de la tabla ESTADO_MASCOTA';
 
 COMMENT ON COLUMN MASCOTA.enfermedad_id
 IS 'Identificador de la enfermedad que puede tener la mascota, es un foreing key de la tabla ENFERMEDAD';
@@ -1657,16 +1659,16 @@ COMMENT ON COLUMN MASCOTA.foto_antes
 IS 'Foto de la mascota antes de ser rescatada';
 
 COMMENT ON COLUMN MASCOTA.foto_despues
-IS 'Foto de la mascota despÃºes de ser rescatada';
+IS 'Foto de la mascota despúes de ser rescatada';
 
 COMMENT ON COLUMN MASCOTA.veterinario
 IS 'Nombre del veterinario de la mascota';
 
 COMMENT ON COLUMN MASCOTA.descripcion
-IS 'DescripciÃ³n de la mascota';
+IS 'Descripción de la mascota';
 
 COMMENT ON COLUMN MASCOTA.nota_adicional
-IS 'AlgÃºna nota adicional sobre la mascota';
+IS 'Algúna nota adicional sobre la mascota';
 
 COMMENT ON COLUMN MASCOTA.fecha
 IS 'Fecha de caundo fue encontrada la mascota';
@@ -1675,13 +1677,13 @@ COMMENT ON COLUMN MASCOTA.raza_id
 IS 'Identificador de la raza de la mascota, es un foreing key de la tabla RAZA';
 
 COMMENT ON COLUMN MASCOTA.nivel_energia_id
-IS 'Identificador del nivel de energÃ­a de la mascota, es un foreing key de la tabla NIVEL_ENERGIA';
+IS 'Identificador del nivel de energía de la mascota, es un foreing key de la tabla NIVEL_ENERGIA';
 
 COMMENT ON COLUMN MASCOTA.color_id
 IS 'Identificador del color de la mascota, es un foreing key de la tabla COLOR';
 
 COMMENT ON COLUMN MASCOTA.tamanio_id
-IS 'Identificador del tamaÃ±o de la mascota, es un foreing key de la tabla TAMANIO';
+IS 'Identificador del tamaño de la mascota, es un foreing key de la tabla TAMANIO';
 
 COMMENT ON COLUMN MASCOTA.facilidad_entrenamiento_id
 IS 'Identificador de la facilidad de entrenamiento de la mascota, es un foreing key de la tabla FACILIDAD_ENTRENAMIENTO';
@@ -1749,7 +1751,7 @@ REFERENCES RESCATISTA(rescatista_id);
 CREATE SEQUENCE incremento_mascota
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a MASCOTA -----------------------------
 ALTER TABLE MASCOTA add Fec_creacion DATE;
@@ -1791,7 +1793,7 @@ COMMENT ON TABLE ADOPCIONES_X_MASCOTA
 IS 'En esta tabla se almacenan a las Adopciones';
 
 COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.adopciones_x_mascota_id
-IS 'Identificador de la adopciÃ³n';
+IS 'Identificador de la adopción';
 
 COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.adoptante_id
 IS 'Identificador del adoptante, es un foreing key de la tabla ADOPTANTE';
@@ -1800,7 +1802,7 @@ COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.mascota_id
 IS 'Identificador de la mascota, es un foreing key de la tabla  MASCOTA';
 
 COMMENT ON COLUMN ADOPCIONES_X_MASCOTA.foto
-IS 'Foto de la mascota con su dueÃ±o';
+IS 'Foto de la mascota con su dueño';
 
 ALTER TABLE ADOPCIONES_X_MASCOTA ADD
 CONSTRAINT pk_adopciones_x_mascota
@@ -1822,7 +1824,7 @@ REFERENCES MASCOTA(mascota_id);
 CREATE SEQUENCE incremento_adop_x_mascota
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a ADOPCIONES_X_MASCOTA -----------------------------
 ALTER TABLE ADOPCIONES_X_MASCOTA add Fec_creacion DATE;
@@ -1879,7 +1881,7 @@ using index
 CREATE SEQUENCE incremento_causa
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a CAUSA -----------------------------
 ALTER TABLE CAUSA add Fec_creacion DATE;
@@ -1921,7 +1923,7 @@ COMMENT ON TABLE DEVOLUCIONES_X_MASCOTA
 IS 'En esta tabla se almacenan a las devoluciones';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.devoluciones_x_mascota_id
-IS 'Identificador de la devoluciÃ³n';
+IS 'Identificador de la devolución';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.adoptante_id
 IS 'Identificador del adoptante que devuelve a la mascota, es un foreing key de la tabla ADOPTANTE';
@@ -1930,7 +1932,7 @@ COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.mascota_id
 IS 'Identificador de la mascota, es un foreing key de la tabla MASCOTA';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.fecha
-IS 'Fecha de la devoluciÃ³n de la mascota';
+IS 'Fecha de la devolución de la mascota';
 
 COMMENT ON COLUMN DEVOLUCIONES_X_MASCOTA.causa_id
 IS 'Identificador de la causa, es un foreing key de la tabla CAUSA';
@@ -1961,7 +1963,7 @@ REFERENCES CAUSA(causa_id);
 CREATE SEQUENCE incremento_devo_x_mascota
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a DEVOLUCIONES_X_MASCOTA -----------------------------
 ALTER TABLE DEVOLUCIONES_X_MASCOTA add Fec_creacion DATE;
@@ -2025,7 +2027,7 @@ REFERENCES RESCATISTA(rescatista_id);
 CREATE SEQUENCE incremento_grupo_rescatista_id
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a GRUPO_RESCATISTA -----------------------------
 ALTER TABLE GRUPO_RESCATISTA add Fec_creacion DATE;
@@ -2104,7 +2106,7 @@ REFERENCES RESCATISTA(rescatista_id);
 CREATE SEQUENCE incremento_calificacion
 INCREMENT BY 1
 START WITH 0
-MAXVALUE 1000;
+MINVALUE 0 MAXVALUE 1000;
 
 -----------------------Agregar campos a CALIFICACION -----------------------------
 ALTER TABLE CALIFICACION add Fec_creacion DATE;
