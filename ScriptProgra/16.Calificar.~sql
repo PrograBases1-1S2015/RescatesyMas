@@ -1,4 +1,4 @@
---FunciÛn que obtiene todos los id de los adoptante que est·n relacionado con 
+--Funci√≥n que obtiene todos los id de los adoptante que est√°n relacionado con 
 --un rescatista--
 create or replace function Obtener_Adopciones(RID number) return sys_refcursor is
   Result sys_refcursor ;
@@ -17,7 +17,7 @@ begin
   insert into calificacion(calificacion_id,calificacion,comentario,adoptante_id,rescatista_id)
   values (incremento_calificacion.nextval,calificacion,comentario,adoptante,rescatista); 
 end Calificar_Persona;
---FunciÛn que obtiene el ID de una persona recibiendo el ID del adoptante--
+--Funci√≥n que obtiene el ID de una persona recibiendo el ID del adoptante--
 --Obtener el id de una persona usando el adoptante
 create or replace function Persona_ID_Con_Adoptante_ID(AID number) return number is
   Result number;
@@ -39,18 +39,15 @@ declare
   promedio number;
   persona number;
 begin
-  Select consultar_persona_calificacion(:old.adoptante_id) into promedio
+  Select consultar_persona_calificacion(:new.adoptante_id) into promedio
   from dual;
   
   if promedio <= 3 then
-    Select persona_id_con_adoptante_id(:old.adoptante_id) into persona from dual;
+    Select persona_id_con_adoptante_id(:new.adoptante_id) into persona from dual;
     insert into Listanegra(Listanegra_Id,Persona_Id)
     values (incremento_listanegra.nextval,persona);
    end if; 
 end Agregar_Lista_Negra;
 
-begin
-  calificar_persona(1,'malo',2,2);
-end;
 
-select * from calificacion
+

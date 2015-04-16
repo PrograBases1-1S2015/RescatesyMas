@@ -1,0 +1,57 @@
+------i. Cantidad de mascotas registradas, adoptadas y en espera de adopción-----------------------------
+create or replace function Cantidad_Mascotas_Registradas
+ return number is
+  cantidad number;
+begin
+  Select count(mascota_id) into cantidad
+  from mascota;
+  return cantidad;
+end Cantidad_Mascotas_Registradas;
+
+
+create or replace function Cantidad_Mascotas_Adoptadas
+ return number is
+  cantidad number;
+begin
+  Select count(mascota_id) into cantidad 
+  from mascota
+  where (estado_mascota_id = 2);
+  return(cantidad);
+end Cantidad_Mascotas_Adoptadas;
+
+
+create or replace function Cantidad_Mascotas_En_Adopcion
+ return number is
+  cantidad number;
+begin
+  Select count(mascota_id) into cantidad 
+  from mascota
+  where (estado_mascota_id = 1);
+  return(cantidad);
+end Cantidad_Mascotas_En_Adopcion;
+
+------ii.Listado de mascotas devueltas y la cantidad de veces que han sido 
+------devueltas con un total al final que sumarice la cantidad de mascotas devueltas---------
+
+-------------------------iii. Top 10 de motivos de devolución de mascotas---------------------------------------
+create or replace function Top_devolucion_Mascotas return sys_refcursor is
+       resultado sys_refcursor;
+begin
+  open resultado for select causa
+  from (select causa , DENSE_RANK() over (order by causa_id) causa_dense_rank
+      from causa)
+  where causa_dense_rank <= 10;
+end Top_devolucion_Mascotas;
+
+------------------------iv.----- Top 10 de mejores adoptantes-------------------------------------------------
+
+create or replace function Top_Mejores_Adoptantes return sys_refcursor is
+       resultado sys_refcursor;
+begin
+    open resultado for select nombre, apellidos
+  	from (select nombre,apellidos, DENSE_RANK() over (order by persona.persona_id) adop_dense_rank
+  	from persona, adoptante, calificacion
+  	where adoptante.persona_id = persona.persona_id and adoptante.adoptante_id = calificacion.adoptante_id and calificacion.calificacion >= 4)
+  	where adop_dense_rank <= 10;
+end Top_Mejores_Adoptantes;
+

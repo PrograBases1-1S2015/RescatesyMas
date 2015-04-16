@@ -21,13 +21,12 @@ inner join color c on m.color_id = c.color_id
 inner join tamanio t on m.tamanio_id = t.tamanio_id
 inner join facilidad_entrenamiento fe on m.facilidad_entrenamiento_id = fe.facilidad_entrenamiento_id
 inner join rescatista re on m.rescatista_id = re.rescatista_id
-inner join persona p on re.persona_id = p.persona_id
+inner join persona p on re.rescatista_id = p.persona_id
 
 where m.nombre like nombre_mascota or m.fecha like fecha_busqueda or d.distrito like distrito_busqueda or r.raza like raza_mascota or
 c.color like color_mascota or em.estado_mascota like estado or t.tamanio like tamanio_mascota or tm.tipo_mascota like tipo_mascota or 
 ne.nivel_energia like nivel_energia_mascota or fe.facilidad_entrenamiento like entrenamiento_mascota
 order by m.fecha desc;
-
 
   return(Result);
 end Buscar_Mascota;
