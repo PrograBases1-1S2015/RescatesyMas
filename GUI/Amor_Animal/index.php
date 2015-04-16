@@ -33,11 +33,13 @@ if (isset($_POST['entrar']))
       {
         if($row['TIPO_USUARIO'] == 1)
         {
-             header("Location: administrador.php");
+             header("Location:  GUI_Administrador/registroAnimales.html");
         }
         else
         {
-             header("Location: usuario.php");
+            //if(es adoptante){header("Location: GUI_Adoptante/indexAdoptante.html");}
+            //else{header("Location: GUI_Rescatista/indexRescatista.html");}
+             header("Location: GUI_Rescatista/indexRescatista.html");
         }
       }
    }
@@ -49,13 +51,13 @@ else
     $stmt = oci_parse($conn, "SELECT * FROM PAIS" );
     oci_execute($stmt);
 
-    $opciones = '';
-
-    while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
-    {
-        $opciones.='<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
-    }
-    oci_close($conn);
+//    $opciones = '';
+//
+//    while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
+//    {
+//        $opciones.='<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
+//    }
+//    oci_close($conn);
 }
 
 
@@ -249,9 +251,17 @@ else
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >País:</label>
-                       <select name='pais' onChange="cargarProvincias(this.value);" style="width: 200px; display: block; float: left;">
-                        <option value="0">Seleccione el pais</option>
-                        <option ><?php echo $opciones; ?></option>
+                       <select name='pais' onChange="getProvincia(this.value);" style="width: 200px; display: block; float: left;">
+                        <option>Seleccione el pais</option>
+                        <option >
+                            <?php 
+                                while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
+                                {
+                                    echo '<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
+                                }
+                                oci_close($conn);
+                            ?>
+                        </option>
                        </select>
                     </td>
                   </tr>
@@ -259,7 +269,7 @@ else
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Provincia:</label>
-                       <select name='provincia' style="width: 200px; display: block; float: left;">
+                       <select id= 'com_Provincia' name='provincia' onChange="getCanton(this.value);" style="width: 200px; display: block; float: left;">
                             <option value="0">Seleccione la provincia</option>
                        </select>
                     </td>
@@ -268,7 +278,7 @@ else
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Canton:</label>
-                       <select name='canton' style="width: 200px; display: block; float: left;">
+                       <select id="com_Canton" name='canton' onChange="getDistrito(this.value);" style="width: 200px; display: block; float: left;">
                             <option value="0">Seleccione el cantón</option>
                        </select>
                     </td>
@@ -277,8 +287,8 @@ else
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Distrito:</label>
-                       <select name='distrito' style="width: 200px; display: block; float: left;">
-                            <option value="0">SElecciones el distrito</option>
+                       <select id="com_Distrito" name='distrito' style="width: 200px; display: block; float: left;">
+                            <option value="0">Selecciones el distrito</option>
                        </select>
                     </td>
                   </tr>
@@ -440,8 +450,9 @@ else
 
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>       
-
+    <script src="js/agency.js"></script> 
+    
+    
 
 </body>
 

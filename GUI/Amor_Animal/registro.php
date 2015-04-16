@@ -15,7 +15,7 @@ if(isset($_REQUEST['enviar']))
     $nomUsuario = $_POST['nomUsuario'];
     $contrasenia = $_POST['contrasenia'];
     $direccionExacta = $_POST['direccionExacta'];
-    $distrito = "distrito";//////POR EL MOMENTO SE COLOCA UN VALOR QUEMADO
+    $distrito = $_POST['distrito'];
     
     if($nombre != '' && $Apellidos != '' && $email != '' && $cedula != '' && $telefono != ''
         && $nomUsuario != '' && $contrasenia != '' && $direccionExacta != '' && $distrito != '' )

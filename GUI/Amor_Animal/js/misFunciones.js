@@ -90,7 +90,103 @@ function stateChangedCorreo()
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////
 
+
+function getProvincia(id_ComboPais)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedProvincia;
+    xmlhttp.open("POST","buscarProvincias.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_ComboPais);	
+
+}
+
+function stateChangedProvincia()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("com_Provincia").innerHTML=xmlhttp.responseText;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+function getCanton(id_ComboProvincia)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedCanton;
+    xmlhttp.open("POST","buscarCantones.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_ComboProvincia);	
+
+}
+
+function stateChangedCanton()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("com_Canton").innerHTML=xmlhttp.responseText;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+function getDistrito(id_ComboCanton)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedDistritos;
+    xmlhttp.open("POST","buscarDistritos.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_ComboCanton);	
+
+}
+
+function stateChangedDistritos()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("com_Distrito").innerHTML=xmlhttp.responseText;
+    }
+}
 
 
 
