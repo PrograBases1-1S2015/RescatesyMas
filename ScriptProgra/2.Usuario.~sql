@@ -10,4 +10,3 @@ grant create table to proyecto;
 grant create sequence to proyecto;
 grant create trigger to proyecto;
 grant create procedure to proyecto;
-grant unlimited tablespace to proyecto;

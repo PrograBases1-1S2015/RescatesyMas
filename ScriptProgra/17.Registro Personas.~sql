@@ -1,11 +1,12 @@
 --Ejecutar uno a uno
 --1--
 begin
-  registro('ckent' , '123456' , 'Detr√°s del palo mango' , 'SAN FELIPE' , 'ALAJUELITA' , 'Clark' , 'Kent' ,'1 123 456' ,11111111 , 'ckent@correo.com' , 0 );
+  registro('ckent' , '123456' , 'Detr·s del palo mango' , 'SAN FELIPE' , 'ALAJUELITA' , 'Clark' , 'Kent' ,'1 123 456' ,11111111 , 'ckent@correo.com' , 0 );
 end;
 --2--  
+Select * from adoptante
 begin
-  registro('fdobles' , '123456' ,'CERCA DEL TEMPLO DE ZEUS' ,'GRECIA'  , 'GRECIA' , 'Fabi√°n' , 'Dobles' ,'2 123 456', 22222222 ,'fdobles@correo.com' , 0 );
+  registro('fdobles' , '123456' ,'CERCA DEL TEMPLO DE ZEUS' ,'GRECIA'  , 'GRECIA' , 'Fabi·n' , 'Dobles' ,'2 123 456', 22222222 ,'fdobles@correo.com' , 0 );
 end;
 --3--
 begin
@@ -13,11 +14,11 @@ begin
 end;
 --4--
 begin
-  registro('jmonge' , '123456' ,'50 metros del supermercado del chino' ,'LOS GUIDO' , 'DESAMPARADOS' , 'Joaqu√≠n' ,'Garc√≠a' ,'4 123 456' , 44444444, 'jgarcia@correo.com' , 1 );
+  registro('jmonge' , '123456' ,'50 metros del supermercado del chino' ,'LOS GUIDO' , 'DESAMPARADOS' , 'JoaquÌn' ,'GarcÌa' ,'4 123 456' , 44444444, 'jgarcia@correo.com' , 1 );
 end;
 --5--
 begin
-  registro('jdobles' , '123456' , '15 metros de la escuela m√°s cercana' ,'SAN ANTONIO' , 'ESCAZ√ö' , 'Julieta' , 'Dobles' ,'5 123 456' , 55555555 , 'jdobles@correo.com' , 1 );
+  registro('jdobles' , '123456' , '15 metros de la escuela m·s cercana' ,'SAN ANTONIO' , 'ESCAZ⁄' , 'Julieta' , 'Dobles' ,'5 123 456' , 55555555 , 'jdobles@correo.com' , 1 );
 end;
 --6--
 begin

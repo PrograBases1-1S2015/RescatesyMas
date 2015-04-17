@@ -4,7 +4,7 @@ begin
   registro('ckent' , '123456' , 'Detrás del palo mango' , 'SAN FELIPE' , 'ALAJUELITA' , 'Clark' , 'Kent' ,'1 123 456' ,11111111 , 'ckent@correo.com' , 0 );
 end;
 --2--  
-Select * from adoptante
+Select * from adoptante;
 begin
   registro('fdobles' , '123456' ,'CERCA DEL TEMPLO DE ZEUS' ,'GRECIA'  , 'GRECIA' , 'Fabián' , 'Dobles' ,'2 123 456', 22222222 ,'fdobles@correo.com' , 0 );
 end;
