@@ -8,12 +8,14 @@ if(isset($_COOKIE['id']))
    $administrador = $_COOKIE['admin'];
    
    $conn = oci_connect(USER, PASS, HOST);
-   $stmt = oci_parse($conn, "SELECT * FROM USUARIO WHERE NOM_USUARIO = '" . $username . "'" );
+   $stmt = oci_parse($conn,"begin :password := Usuario_Password('" . $username . "'); end;" );
+   oci_bind_by_name($stmt, ':password', $password, 40);
    oci_execute($stmt);
-   while(($row = oci_fetch_array($stmt)))
-   {
+   
+//   while(($row = oci_fetch_array($stmt)))
+//   {
        
-        if ($pass != $row['CONTRASENIA'])
+        if ($pass != $password)
         {
             header("Location: index.php");
         }
@@ -21,8 +23,8 @@ if(isset($_COOKIE['id']))
         {
             actualizar_cookie($username,$pass,$administrador);
         }
-   }
-   oci_close($conn);
+//   }
+        oci_close($conn);
 }
 else
 

@@ -2,27 +2,31 @@
 $q = $_POST["q"];
 include ("settings.php");
 include ("common.php"); 
-//conexion con mysql
 
- 
 $conn = oci_connect(USER, PASS, HOST);
-$stmt = oci_parse($conn, "SELECT * FROM CANTON WHERE PROVINCIA_ID = '" . $q . "'" );
-oci_execute($stmt);
+$curs = oci_new_cursor($conn);
+$stid = oci_parse($conn, "begin Buscar_Cantones('$q',:cursbv); end;");
+oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+oci_execute($stid);
+oci_execute($curs);  
 
 
 ?>
 
 
 
-<!--Este es el verdadero combo2 que mostramos con los datos cargados-->
+
 <select id="combo2" style="width: 120px;">
-<option>Seleccione el cantón</option>
+<option>Seleccione la provincia</option>
 <?php
-    while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
-    {
-        echo '<option value="'.$row["CANTON_ID"].'">'.$row["CANTON"].'</option>';
-    }
-    oci_close($conn);//hacemos el query para obtener los datos segun la
-     
+ 
+while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+    echo '<option value="'.$row["CANTON_ID"].'">'.$row["CANTON"].'</option>';
+}
+
+oci_free_statement($stid);
+oci_free_statement($curs);
+oci_close($conn);
+
 ?>
 </select>

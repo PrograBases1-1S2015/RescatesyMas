@@ -16,9 +16,12 @@ if(isset($_REQUEST['enviar']))
     $contrasenia = $_POST['contrasenia'];
     $direccionExacta = $_POST['direccionExacta'];
     $distrito = $_POST['distrito'];
+    $canton = $_POST['canton'];
+    
     
     if($nombre != '' && $Apellidos != '' && $email != '' && $cedula != '' && $telefono != ''
-        && $nomUsuario != '' && $contrasenia != '' && $direccionExacta != '' && $distrito != '' )
+        && $nomUsuario != '' && $contrasenia != '' && $direccionExacta != '' && $distrito != '' 
+        && $canton != '' )
     {
         $conn = oci_connect(USER, PASS, HOST);
         if (!$conn)
@@ -29,12 +32,12 @@ if(isset($_REQUEST['enviar']))
         else
         {
             if($tipoPersona == 'Adoptante')
-            {
-                $stmt = oci_parse($conn, "begin Registro('$nomUsuario' , '$contrasenia' ,'$direccionExacta' , '$distrito' ,'$nombre' ,'$Apellidos', '$cedula','$telefono' ,'$email', 0); end;");
+            {                                           
+                $stmt = oci_parse($conn, "begin Registro('$nomUsuario' , '$contrasenia' ,'$direccionExacta' , '$distrito' ,'$canton' ,'$nombre' ,'$Apellidos', '$cedula','$telefono' ,'$email', 0); end;");
             }
             else
             {
-                $stmt = oci_parse($conn, "begin Registro('$nomUsuario' , '$contrasenia' ,'$direccionExacta' , '$distrito' ,'$nombre' ,'$Apellidos', '$cedula','$telefono' ,'$email', 1); end;");
+                $stmt = oci_parse($conn, "begin Registro('$nomUsuario' , '$contrasenia' ,'$direccionExacta' , '$distrito' ,'$canton'  ,'$nombre' ,'$Apellidos', '$cedula','$telefono' ,'$email', 1); end;");
             }
             oci_execute($stmt); 
             echo "<script>alert(\"Se a registrado correctamente, puede ingresar al sistema\");</script>";

@@ -12,17 +12,24 @@ if (isset($_POST['entrar']))
    }
    $usuario = $_POST['logNomusuario'];
    $conn = oci_connect(USER, PASS, HOST);
-   $stmt = oci_parse($conn, "SELECT * FROM USUARIO WHERE NOM_USUARIO = '" . $usuario . "'" );
-   oci_execute($stmt);
+   $curs = oci_new_cursor($conn);
+   $stid = oci_parse($conn, "begin Buscar_Usuario('$usuario',:cursbv); end;");
+   oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+   oci_execute($stid);
+   oci_execute($curs);  
 
-   if (oci_fetch_array($stmt) == 0) 
+   if (oci_fetch_array($curs) == 0) 
    {
        echo "<script>alert(\"El usuario no existe en la base de datos.\");</script>";
        echo "<script>javascript:history.back();</script>";
    }
-   $stmt = oci_parse($conn, "SELECT * FROM USUARIO WHERE NOM_USUARIO = '" . $usuario . "'" );
-   oci_execute($stmt);
-   while(($row = oci_fetch_array($stmt)))
+   $curs = oci_new_cursor($conn);
+   $stid = oci_parse($conn, "begin Buscar_Usuario('$usuario',:cursbv); end;");
+   oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+   oci_execute($stid);
+   oci_execute($curs);  
+   
+   while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false)
    {
       if ($_POST['logContrasenia'] != $row['CONTRASENIA']) 
       {
@@ -33,13 +40,14 @@ if (isset($_POST['entrar']))
       {
         if($row['TIPO_USUARIO'] == 1)
         {
-             header("Location:  GUI_Administrador/registroAnimales.html");
+             header("Location:  registroAnimales.php");
         }
         else
         {
-            //if(es adoptante){header("Location: GUI_Adoptante/indexAdoptante.html");}
-            //else{header("Location: GUI_Rescatista/indexRescatista.html");}
-             header("Location: GUI_Rescatista/indexRescatista.html");
+            //if(es adoptante){header("Location: indexAdoptante.php");}
+            //else{header("Location: indexRescatista.php");}
+            actualizar_cookie($_POST['logNomusuario'],$_POST['logContrasenia'],$row['TIPO_USUARIO']);
+            header("Location: indexRescatista.php");
         }
       }
    }
@@ -48,16 +56,11 @@ if (isset($_POST['entrar']))
 else
 {
     $conn = oci_connect(USER, PASS, HOST);
-    $stmt = oci_parse($conn, "SELECT * FROM PAIS" );
-    oci_execute($stmt);
-
-//    $opciones = '';
-//
-//    while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
-//    {
-//        $opciones.='<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
-//    }
-//    oci_close($conn);
+    $curs = oci_new_cursor($conn);
+    $stid = oci_parse($conn, "begin Get_Paises(:cursbv); end;");
+    oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+    oci_execute($stid);
+    oci_execute($curs);  
 }
 
 
@@ -253,15 +256,16 @@ else
                         <label style="width: 200px; display: block; float: left;" >País:</label>
                        <select name='pais' onChange="getProvincia(this.value);" style="width: 200px; display: block; float: left;">
                         <option>Seleccione el pais</option>
-                        <option >
                             <?php 
-                                while (($row = oci_fetch_array($stmt, OCI_BOTH)) != false)
-                                {
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
                                     echo '<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
                                 }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
                                 oci_close($conn);
                             ?>
-                        </option>
+                        
                        </select>
                     </td>
                   </tr>
