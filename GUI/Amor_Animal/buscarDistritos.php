@@ -17,7 +17,7 @@ oci_execute($curs);
 
 
 <select id="combo2" style="width: 120px;">
-<option>Seleccione la provincia</option>
+<option>Selecciones el distrito</option>
 <?php
  
 while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {

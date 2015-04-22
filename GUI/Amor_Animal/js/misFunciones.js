@@ -191,6 +191,38 @@ function stateChangedDistritos()
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+function getRaza(id_ComboRaza)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedRaza;
+    xmlhttp.open("POST","buscarRazas.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_ComboRaza);	
+
+}
+
+function stateChangedRaza()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("con_raza").innerHTML=xmlhttp.responseText;
+    }
+}
 
 
 
