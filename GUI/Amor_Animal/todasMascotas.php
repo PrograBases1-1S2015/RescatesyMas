@@ -18,9 +18,9 @@ oci_execute($curs);
 
 ?>
 
+<table> 
+<?php
 
-
-<table>
     while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
     echo '<tr>
         <td>.$row["m.nombre"].</td>
@@ -36,13 +36,10 @@ oci_execute($curs);
         <td>.$row["t.tamanio"].</td>
         <td>.$row["p.nombre"].</td>
         <td>.$row["p.num_telefono_1"].</td>
-        <td>.$row[""].</td>
-    </tr>';
+    </tr>'+1;
  }
-    
-</table>
-<?php
  
+
 
 
 oci_free_statement($stid);
@@ -50,4 +47,4 @@ oci_free_statement($curs);
 oci_close($conn);
 
 ?>
-</select>
+</table>
