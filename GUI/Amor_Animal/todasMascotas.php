@@ -18,25 +18,22 @@ oci_execute($curs);
 
 ?>
 
-<table> 
+<table>
 <?php
 
     while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
-    echo '<tr>
-        <td>.$row["m.nombre"].</td>
-        <td>.$row["m.fecha"].</td>
-        <td>.$row["m.descripcion"].</td>
-        <td>.$row["m.nota_adicional"].</td>
-        <td>.$row["de.direccion_exacta"].</td>
-        <td>.$row["d.distrito"].</td>
-        <td>.$row["em.estado_mascota"].</td>
-        <td>.$row["e.enfermedad"].</td>
-        <td>.$row["r.raza"].</td>
-        <td>.$row["tm.tipo_mascota"].</td>
-        <td>.$row["t.tamanio"].</td>
-        <td>.$row["p.nombre"].</td>
-        <td>.$row["p.num_telefono_1"].</td>
-    </tr>'+1;
+    echo '<tr> <td>'.$row["NOMBRE"]+'</td>'+
+        '<td>'.$row["FECHA"].'</td>'+
+        '<td>'.$row["DESCRIPCION"].'</td>'+
+        '<td>'.$row["NOTA_ADICIONAL"].'</td>'+
+        '<td>'.$row["DIRECCION_EXACTA"].'</td>'+
+        '<td>'.$row["DISTRITO"].'</td>'+
+        '<td>'.$row["ESTADO_MASCOTA"].'</td>'+
+        '<td>'.$row["RAZA"].'</td>'+
+        '<td>'.$row["TIPO_MASCOTA"].'</td>'+
+        '<td>'.$row["TAMANIO"].'</td>'+
+        '<td>'.$row["NOMBRE"].'</td>'+
+        '<td>'.$row["NUM_TELEFONO_1"].'</td> </tr>';
  }
  
 
