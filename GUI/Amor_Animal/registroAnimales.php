@@ -1,8 +1,23 @@
 <?php
 
-include ("auth.php");
-//include ("settings.php");
+include ("settings.php");
+include ("common.php");
+function cargar_mascotas(){ 
+$conn = oci_connect(USER, PASS, HOST);
+  $curs = oci_new_cursor($conn);
+  $stid = oci_parse($conn, "begin Get_Tipo_Mascota(:cursbv); end;");
+  oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);  
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            echo '<option value="'.$row["TIPO_MASCOTA_ID"].'">'.$row["TIPO_MASCOTA"].'</option>';
+              }
 
+    oci_free_statement($stid);
+    oci_free_statement($curs);
+    oci_close($conn);
+                                
+}      
 ?>
 <!--A Design by W3layouts
 Author: W3layout
@@ -58,7 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>                                                                                                
 <div class="main">
 	<div class="animal">
- 	 	<form id="Reganimal" action="" method="post">
+            <form id="Reganimal" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Animal/Tipo Mascota<s></s></legend>
                         <input id="campoAnimal" name="nombreAnimal" type="text" value="Animal/Tipo Mascota"/>
                    		<input id="campoBoton" name="registrarAnimal" type="submit" value="Registrar" />
@@ -66,10 +81,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<div class="raza">
- 	 	<form id="Regraza" action="" method="post">
+            <form id="Regraza" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Raza<s></s></legend>
-       					<select id="idAnimal" name="nombreAnimal2" type="text" value="Nombre del Animal"/>
-                        	<option value="0">Seleccione el Animal</option>
+       					<select  name="nombreAnimal2" />
+                        	<option>Seleccione el Animal</option>
+                                <?php
+                                cargar_mascotas();
+                                ?>
                         </select>
                         <input id="camporaza" name="nombreRaza" type="text" value="Raza"/>
                    		<input id="campoBoton" name="registrarRaza" type="submit" value="Registrar" />

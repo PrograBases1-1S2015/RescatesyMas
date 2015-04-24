@@ -1,7 +1,25 @@
 <?php
 
-include ("auth.php");
-//include ("settings.php");
+include ("settings.php");
+include ("common.php");
+function cargar_enfermedades(){ 
+$conn = oci_connect(USER, PASS, HOST);
+  $curs = oci_new_cursor($conn);
+  $stid = oci_parse($conn, "begin Get_Enfermedad(:cursbv); end;");
+  oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);  
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            echo '<option value="'.$row["ENFERMEDAD_ID"].'">'.$row["ENFERMEDAD"].'</option>';
+              }
+
+    oci_free_statement($stid);
+    oci_free_statement($curs);
+    oci_close($conn);
+                                
+} 
+
+
 
 ?>
 <!--A Design by W3layouts
@@ -58,18 +76,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>                                                                                                
 <div class="main">
 	<div class="enfermedad">
- 	 	<form id="Regenfermedad" action="" method="post">
-       		<legend>Agregar Emfermedad<s></s></legend>
+            <form id="Regenfermedad" action="Administrador_Registros.php" method="post">
+       		<legend>Agregar Enfermedad<s></s></legend>
                         <input id="campoEnfermedad" name="nombreEnfermedad" type="text" value="Enfermedad"/>
                    		<input id="campoBoton" name="registrarEnfermedad" type="submit" value="Registrar" />
         </form>      
 	</div>
 
 	<div class="tratamiento">
- 	 	<form id="RegTratamiento" action="" method="post">
+            <form id="RegTratamiento" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Tratamiento<s></s></legend>
-       					<select id="idEnfermedad" name="nombreEnfermedad2" type="text" value="Nombre de la enfermedad"/>
-                        	<option value="0">Seleccione la Enfermedad</option>
+       			<select  name="nombreEnfermedad2" />
+                        	<option>Seleccione la Enfermedad</option>
+                                <?php
+                                    cargar_enfermedades();
+                                ?>
                         </select>
                         <input id="campotratamiento" name="nombreTratamiento" type="text" value="Tratamiento"/>
                    		<input id="campoBoton" name="registrarTratamiento" type="submit" value="Registrar" />
@@ -77,13 +98,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 		<div class="medicamento">
- 	 	<form id="Regmedicamento" action="" method="post">
+                    <form id="Regmedicamento" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Medicamento<s></s></legend>
-                        <select id="idEnfermedad" name="nombreEnfermedad3" type="text" value="Nombre de la enfermedad"/>
+                <select id="idEnfermedad" name="nombreEnfermedad3" onchange="get_Tratamiento(this.value)"/>
                         	<option value="0">Seleccione la Enfermedad</option>
+                                <?php
+                                    cargar_enfermedades();
+                                ?>
                         </select>
-                         <select id="idProvincia" name="nombreTratamiento2" type="text" value="Nombre del Tratamiento"/>
-                        	<option value="0">Seleccione el Tratamiento</option>
+                         <select id="com_Tratamiento" name="nombreTratamiento2" />
+                        	<option>Seleccione el Tratamiento</option>
                         </select>	
                         <br></br>
                         <input id="campoMedicamento" name="nombreMedicamento" type="text" value="Medicamento"/>
@@ -94,6 +118,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 </div>
+      <!-- Validaciones -->
+    <script src="js/misFunciones.js"></script>
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script> 
 </body>
 </html>
 

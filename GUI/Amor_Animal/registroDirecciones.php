@@ -1,7 +1,30 @@
+
+
 <?php
 
-include ("auth.php");
-//include ("settings.php");
+//include ("auth.php");
+include ("settings.php");
+include ("common.php");
+
+function cargar_paises(){
+  $conn = oci_connect(USER, PASS, HOST);
+  $curs = oci_new_cursor($conn);
+  $stid = oci_parse($conn, "begin Get_Paises(:cursbv); end;");
+  oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);   
+                               while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                    echo '<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+  
+
+
+}
+
 
 ?>
 <!--esign baytsrapndex
@@ -67,7 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <div class="main">
  	<div class="pais">
- 	 	<form id="RegPais" action="" method="post">
+            <form id="RegPais" action="Administrador_Registros.php" method="post">
        		<legend>Agregar País<s></s></legend>
                         <input id="campoPais" name="nombrePais" type="text" value="Nombre del País"/>
                    		<input id="campoBoton" name="registrarPais" type="submit" value="Registrar" />
@@ -75,10 +98,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<div class="provincia">
- 	 	<form id="Regprovincia" action="" method="post">
+            <form id="Regprovincia" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Provincia<s></s></legend>
-                        <select id="idPais" name="nombrePais2" type="text" value="Nombre del País"/>
-                        	<option value="0">Seleccione el País</option>
+                <select  name="nombrePais2"  />
+                    
+                
+                            <option >Seleccione el País</option>
+                                <?php 
+                                   cargar_paises();
+                            ?>
                         </select>
                         <input id="campoProvincia" name="nombreProvincia" type="text" value="Provincia"/>
                    		<input id="campoBoton" name="registrarProvincia" type="submit" value="Registrar" />
@@ -86,30 +114,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<div class="canton">
- 	 	<form id="Regcanton" action="" method="post">
+            <form id="Regcanton" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Cantón<s></s></legend>
-                        <select id="idPais2" name="nombrePais3" type="text" value="Nombre del País"/>
-                        	<option value="0">Seleccione el País</option>
+                <select name="nombrePais3" onChange="getProvincia(this.value);"/>
+                        	<option >Seleccione el País</option>
+                           <?php
+                               cargar_paises();    
+                            ?>
+                                
                         </select>
-                         <select id="idProvincia" name="nombreProvincia2" type="text" value="Nombre de la provincia"/>
-                        	<option value="0">Seleccione el Provincia</option>
+                         <select id="com_Provincia" name="nombreProvincia2"/>
+                        	<option >Seleccione la Provincia</option>
                         </select>	
                         <br></br>
-                        <input id="campoCanton" name="nombreCanton" type="text" value="Provincia"/>
+                        <input id="campoCanton" name="nombreCanton" type="text" value="Cantón"/>
                    		<input id="campoBoton" name="registrarCanton" type="submit" value="Registrar" />
         </form>      
 	</div>
 
 	<div class="distrito">
- 	 	<form id="Regdistrito" action="" method="post">
+            <form id="Regdistrito" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Distrito<s></s></legend>
-                        <select id="idPais2" name="nombrePais4" type="text" value="Nombre del País"/>
-                        	<option value="0">Seleccione el País</option>
+                <select  name="nombrePais4" onChange="getProvincia1(this.value);"/>
+                        	<option >Seleccione el País</option>
+                                 <?php
+                               cargar_paises();     
+                            ?>
                         </select>
-                         <select id="idProvincia" name="nombreProvincia3" type="text" value="Nombre de la provincia"/>
-                        	<option value="0">Seleccione el Provincia</option>
+                <select id="com_Provincia1" name="nombreProvincia3" onchange="getCanton(this.value);"/>
+                        	<option >Seleccione el Provincia</option>
                         </select>
-                         <select id="idCanton" name="nombreCanton2" type="text" value="Nombre del canton"/>
+                         <select id="com_Canton" name="nombreCanton2" type="text" value="Nombre del canton"/>
                         	<option value="0">Seleccione el Cantón</option>
                         </select>	
                         <br></br>
@@ -122,6 +157,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	
 </div>
+    <!-- Validaciones -->
+    <script src="js/misFunciones.js"></script>
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script> 
 </body>
 </html>
 

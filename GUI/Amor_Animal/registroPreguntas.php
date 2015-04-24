@@ -1,7 +1,41 @@
 <?php
 
-include ("auth.php");
-//include ("settings.php");
+include ("settings.php");
+include ("common.php");
+
+function cargar_preguntas(){ 
+$conn = oci_connect(USER, PASS, HOST);
+  $curs = oci_new_cursor($conn);
+  $stid = oci_parse($conn, "begin Get_Pregunta(:cursbv); end;");
+  oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);  
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            echo '<option value="'.$row["PREGUNTA_ID"].'">'.$row["PREGUNTA"].'</option>';
+              }
+
+    oci_free_statement($stid);
+    oci_free_statement($curs);
+    oci_close($conn);
+                                
+} 
+
+function cargar_formularios(){ 
+$conn = oci_connect(USER, PASS, HOST);
+  $curs = oci_new_cursor($conn);
+  $stid = oci_parse($conn, "begin Get_Formulario(:cursbv); end;");
+  oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);  
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            echo '<option value="'.$row["TIPO_FORMULARIO_ID"].'">'.$row["TIPO_FORMULARIO"].'</option>';
+              }
+
+    oci_free_statement($stid);
+    oci_free_statement($curs);
+    oci_close($conn);
+                                
+} 
 
 ?>
 <!--A Design by W3layouts
@@ -50,7 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>                                                                                                
  <div class="main">
  	<div class="pregunta">
- 	 	<form id="Regpregunta" action="" method="post">
+            <form id="Regpregunta" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Pregunta<s></s></legend>
                         <input id="campoPregunta" name="nombrePregunta" type="text" value="Pregunta"/>
                    		<input id="campoBoton" name="registrarPregunta" type="submit" value="Registrar" />
@@ -58,10 +92,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<div class="respuesta">
- 	 	<form id="Regrespuesta" action="" method="post">
+            <form id="Regrespuesta" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Respuesta<s></s></legend>
-       					<select id="idPregunta" name="nombrePregunta2" type="text" value="Nombre de la Pregunta"/>
-                        	<option value="0">Seleccione la Pregunta</option>
+       					<select name="nombrePregunta2" />
+                        	<option>Seleccione la Pregunta</option>
+                                <?php
+                                cargar_preguntas();
+                                ?>
                         </select>
                         <input id="camporespuesta" name="nombreRespuesta" type="text" value="Respuesta"/>
                    		<input id="campoBoton" name="registrarRespuesta" type="submit" value="Registrar" />
@@ -70,7 +107,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 	<div class="formulario">
- 	 	<form id="Regpregunta" action="" method="post">
+            <form id="Regpregunta" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Formulario<s></s></legend>
                         <input id="campoFormulario" name="nombreFormulario" type="text" value="Formulario"/>
                    		<input id="campoBoton" name="registrarFormulario" type="submit" value="Registrar" />
@@ -78,13 +115,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 		<div class="preguntaxformulario">
- 	 	<form id="Regpxf" action="" method="post">
+                    <form id="Regpxf" action="Administrador_Registros.php" method="post">
        		<legend>Agregar Preguntas al Formulario<s></s></legend>
-                        <select id="idPregunta" name="nombrePregunta3" type="text" value="Nombre de la enfermedad"/>
-                        	<option value="0">Seleccione la Pregunta</option>
+                        <select  name="nombrePregunta3" />
+                        	<option>Seleccione la Pregunta</option>
+                                <?php
+                                cargar_preguntas();
+                                ?>
                         </select>
-                         <select id="idFormulario" name="nombreFormulario2" type="text" value="Nombre del Tratamiento"/>
-                        	<option value="0">Seleccione el Formulario</option>
+                         <select  name="nombreFormulario2" />
+                         <option> Seleccione el Formulario</option>
+                                 <?php
+                                    cargar_formularios();
+                                ?>
                         </select>	
                         <br></br>
                    		<input id="campoBoton" name="registrarPregxForm" type="submit" value="Registrar" />
