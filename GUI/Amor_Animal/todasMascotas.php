@@ -18,24 +18,20 @@ oci_execute($curs);
 
 ?>
 
-<table>
+<table border='1'   >
+    <tr><td>Nombre</td><td>Fecha</td><td>Descripción</td><td>Nota Adicional</td>
+        <td>Dirección Exacta</td><td>Distrito</td><td>Estado de la mascota</td><td>Raza</td>
+        <td>Tipo de Mascota</td><td>Tamanio</td><td>Rescatista</td><td>Numero de Telefono</td></tr>
 <?php
-
+    
     while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
-    echo '<tr> <td>'.$row["NOMBRE"]+'</td>'+
-        '<td>'.$row["FECHA"].'</td>'+
-        '<td>'.$row["DESCRIPCION"].'</td>'+
-        '<td>'.$row["NOTA_ADICIONAL"].'</td>'+
-        '<td>'.$row["DIRECCION_EXACTA"].'</td>'+
-        '<td>'.$row["DISTRITO"].'</td>'+
-        '<td>'.$row["ESTADO_MASCOTA"].'</td>'+
-        '<td>'.$row["RAZA"].'</td>'+
-        '<td>'.$row["TIPO_MASCOTA"].'</td>'+
-        '<td>'.$row["TAMANIO"].'</td>'+
-        '<td>'.$row["NOMBRE"].'</td>'+
-        '<td>'.$row["NUM_TELEFONO_1"].'</td> </tr>';
+        echo "<tr>\n";
+        foreach ($row as $item) {
+        echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+    }
+        echo "</tr>\n";
  }
- 
+
 
 
 
@@ -44,4 +40,4 @@ oci_free_statement($curs);
 oci_close($conn);
 
 ?>
-</table>
+ </table>
