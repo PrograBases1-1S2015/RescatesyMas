@@ -83,7 +83,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <font color="white">Nivel de Entrenamiento:</font>
                         <input id="campoFormulario" name="nivelEntrenamiento" type="text" value="Entrenamiento"/>
                    		
-                   	<input id="campoBoton" name="registrarFormulario" type="submit" value="Buscar" />
+                   	<input id="campoBoton" name="buscar" type="submit" value="Buscar" />
         </form>      
 	</div>
 
