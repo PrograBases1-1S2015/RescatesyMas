@@ -18,8 +18,9 @@ inner join tamanio t on m.tamanio_id = t.tamanio_id
 inner join facilidad_entrenamiento fe on m.facilidad_entrenamiento_id = fe.facilidad_entrenamiento_id
 inner join rescatista re on m.rescatista_id = re.rescatista_id
 inner join persona p on re.persona_id = p.persona_id
-where UPPER(m.nombre) like UPPER('fufy') or UPPER(m.fecha) like UPPER('') or UPPER(d.distrito) like UPPER('') or UPPER(r.raza) like UPPER('') or
-UPPER(c.color) like UPPER('') or UPPER(em.estado_mascota) like UPPER('En Adopción') or UPPER(t.tamanio) like UPPER('') or UPPER(tm.tipo_mascota) like UPPER('') or
-UPPER(ne.nivel_energia) like UPPER('') or UPPER(fe.facilidad_entrenamiento) like UPPER('')
+where UPPER(m.nombre) like UPPER(nombre_mascota) or UPPER(m.fecha) like UPPER(fecha_busqueda) or UPPER(d.distrito) like UPPER(distrito_busqueda) 
+or UPPER(r.raza) like UPPER(raza_mascota) or UPPER(c.color) like UPPER(color_mascota) or UPPER(em.estado_mascota) like UPPER(estado)
+or UPPER(t.tamanio) like UPPER(tamanio_mascota) or UPPER(tm.tipo_mascota) like UPPER(tipo_mascota) or UPPER(ne.nivel_energia) like UPPER(nivel_energia_mascota) 
+or UPPER(fe.facilidad_entrenamiento) like UPPER(entrenamiento_mascota)
 order by m.fecha desc;
 end Buscar_Mascota;

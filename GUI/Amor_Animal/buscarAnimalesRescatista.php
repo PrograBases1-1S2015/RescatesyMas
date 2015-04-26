@@ -23,9 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript" src="js/jquery.lightbox.js"></script>
 <link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen">
 	<script type="text/javascript">
-		$(function() {
-			$('.gallery a').lightBox();
-		});
+            
    </script>    
 </head>
 <body>
@@ -61,33 +59,143 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main">
 	
 <div class="busqueda">
- 	 	<form id="busquedaMascota" action="" method="post">
- 	 				<label>Nombre:</label>
-                        <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
-                    <label>Fecha:</label>
-                        <input id="campoFormulario" name="fecha" type="text" value="Fecha"/>
-                    <label>Color:</label>
-                        <input id="campoFormulario" name="color" type="text" value="Color"/>
-                    <label>Tamaño:</label>
-                        <input id="campoFormulario" name="tamanio" type="text" value="Tamaño"/>
-                    <label>Raza:</label>
-                        <input id="campoFormulario" name="raza" type="text" value="Raza"/>
-                    <font color="white">Tipo Mascota:</font>
-                        <input id="campoFormulario" name="tipoMascota" type="text" value="Animal"/>
-                    <font color="white">Nivel de Enrgía:</font>
-                        <input id="campoFormulario" name="nivelEnergía" type="text" value="Energía"/>
-                    <label>Distrito:</label>
+    <form id="busquedaMascota" action="" method="post">
+                        <select name='color' style="width: 200px; display: block; float: left;">
+                            <option value="0">Seleccione el color</option>
+                            <?php
+                                $conn = oci_connect(USER, PASS, HOST);
+                                $curs = oci_new_cursor($conn);
+                                $stid = oci_parse($conn, "begin Get_Color(:cursbv); end;");
+                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                                oci_execute($stid);
+                                oci_execute($curs); 
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+                                {
+                                    echo '<option value="'.$row["COLOR_ID"].'">'.$row["COLOR"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+                            ?>
+                        </select>
+        
+                        <select name='tamaño' style="width: 200px; display: block; float: left;">
+                            <option value="0">Seleccione el tamaño</option>
+                            <?php
+                                $conn = oci_connect(USER, PASS, HOST);
+                                $curs = oci_new_cursor($conn);
+                                $stid = oci_parse($conn, "begin Get_Tamanio(:cursbv); end;");
+                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                                oci_execute($stid);
+                                oci_execute($curs); 
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+                                {
+                                    echo '<option value="'.$row["TAMANIO_ID"].'">'.$row["TAMANIO"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+                            ?>
+                        </select>
+        
+                        <select id = 'con_mascota' name='mascota' onChange="getRaza(this.value);"  style="width: 200px; display: block; float: left;">
+                            <option >Seleccione el Tipo de Mascota</option>
+                            <?php
+                                $conn = oci_connect(USER, PASS, HOST);
+                                $curs = oci_new_cursor($conn);
+                                $stid = oci_parse($conn, "begin Get_Tipo_Mascota(:cursbv); end;");
+                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                                oci_execute($stid);
+                                oci_execute($curs); 
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+                                {
+                                    echo '<option value="'.$row["TIPO_MASCOTA_ID"].'">'.$row["TIPO_MASCOTA"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+                            ?>
+                       </select>
+        
+                        <select id = 'con_raza' name='raza' style="width: 200px; display: block; float: left;">
+                            <option >Seleccione la Raza</option>
+                       </select>
+        
+                        <select name='nivel_energia' style="width: 200px; display: block; float: left;">
+                            <option value="0">Seleccione el nivel</option>
+                            <?php
+                                $conn = oci_connect(USER, PASS, HOST);
+                                $curs = oci_new_cursor($conn);
+                                $stid = oci_parse($conn, "begin Get_Nivel_Energia(:cursbv); end;");
+                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                                oci_execute($stid);
+                                oci_execute($curs); 
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+                                {
+                                    echo '<option value="'.$row["NIVEL_ENERGIA_ID"].'">'.$row["NIVEL_ENERGIA"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+                            ?>
+                        </select>
                         <input id="campoFormulario" name="distrito" type="text" value="Distrito"/>
-                    <label>Estado:</label>
-                        <input id="campoFormulario" name="estado" type="text" value="Estado"/>
-                    <font color="white">Nivel de Entrenamiento:</font>
-                        <input id="campoFormulario" name="nivelEntrenamiento" type="text" value="Entrenamiento"/>
+                        <select name='estadoMascota' style="width: 200px; display: block; float: left;">
+                            <option value="0">Seleccione el Estado de la Mascota</option>
+                            <?php
+                                $conn = oci_connect(USER, PASS, HOST);
+                                $curs = oci_new_cursor($conn);
+                                $stid = oci_parse($conn, "begin Get_Estado_Mascota(:cursbv); end;");
+                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                                oci_execute($stid);
+                                oci_execute($curs); 
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+                                {
+                                    echo '<option value="'.$row["ESTADO_MASCOTA_ID"].'">'.$row["ESTADO_MASCOTA"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+                            ?>
+                       </select>
+                        
+                         <select name='nivel_energia' style="width: 200px; display: block; float: left;">
+                            <option value="0">Seleccione el nivel</option>
+                            <?php
+                                $conn = oci_connect(USER, PASS, HOST);
+                                $curs = oci_new_cursor($conn);
+                                $stid = oci_parse($conn, "begin Get_Nivel_Energia(:cursbv); end;");
+                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                                oci_execute($stid);
+                                oci_execute($curs); 
+                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+                                {
+                                    echo '<option value="'.$row["NIVEL_ENERGIA_ID"].'">'.$row["NIVEL_ENERGIA"].'</option>';
+                                }
+
+                                oci_free_statement($stid);
+                                oci_free_statement($curs);
+                                oci_close($conn);
+                            ?>
+                        </select>
+                        
+                    <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
+                        <input id="campoFormulario" name="fecha" type="text" value="Fecha"/>
+                    
                    		
                    	<input id="campoBoton" name="buscar" type="submit" value="Buscar" />
         </form>      
 	</div>
 
+    <div id='mostrar'> 
+    </div>
 </div>
+  <script src="js/misFunciones.js"></script>
 </body>
 </html>
 
