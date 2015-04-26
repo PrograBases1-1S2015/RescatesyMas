@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 include ("auth.php");
 //include ("settings.php");
@@ -72,15 +72,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <input id="campoFormulario" name="tamanio" type="text" value="Tamaño"/>
                     <label>Raza:</label>
                         <input id="campoFormulario" name="raza" type="text" value="Raza"/>
-                    <label>Tipo Mascota:</label>
+                    <font color="white">Tipo Mascota:</font>
                         <input id="campoFormulario" name="tipoMascota" type="text" value="Animal"/>
-                    <label>Nivel de Enrgía:</label>
+                    <font color="white">Nivel de Enrgía:</font>
                         <input id="campoFormulario" name="nivelEnergía" type="text" value="Energía"/>
                     <label>Distrito:</label>
                         <input id="campoFormulario" name="distrito" type="text" value="Distrito"/>
                     <label>Estado:</label>
                         <input id="campoFormulario" name="estado" type="text" value="Estado"/>
-                    <label>Nivel de Entrenamiento:</label>
+                    <font color="white">Nivel de Entrenamiento:</font>
                         <input id="campoFormulario" name="nivelEntrenamiento" type="text" value="Entrenamiento"/>
                    		
                    	<input id="campoBoton" name="registrarFormulario" type="submit" value="Buscar" />
