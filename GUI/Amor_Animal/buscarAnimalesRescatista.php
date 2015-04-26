@@ -23,7 +23,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript" src="js/jquery.lightbox.js"></script>
 <link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen">
 	<script type="text/javascript">
-            
+             function ajax_post(){
+                // Create our XMLHttpRequest object
+                var hr = new XMLHttpRequest();
+                // Create some variables we need to send to our PHP file
+                var url = "ProcesarBusquedaAnimal.php";
+
+                var color = document.getElementById("color").value;
+                var fecha = document.getElementById("fecha").value;
+                var email = document.getElementById("email").value;
+                var tamanio = document.getElementById("tamanio").value;
+                var nombre = document.getElementById("nombre").value;
+                var raza = document.getElementById("raza").value;
+                var tipoMascota = document.getElementById("tipoMascota").value;
+                var nivelEnergía = document.getElementById("nivelEnergía").value;
+                var distrito = document.getElementById("distrito").value;
+                var estado = document.getElementById("estado").value;
+                var nivelEntrenamiento = document.getElementById("nivelEntrenamiento").value;
+
+                var vars = '&color=' + color + '&fecha=' + fecha+ '&email=' + email+ '&tamanio=' + tamanio+ '&nombre=' + nombre
+                + '&raza=' + raza+ '&tipoMascota=' + tipoMascota+ '&nivelEnergía=' + nivelEnergía+ '&distrito=' + distrito+ '&estado=' + estado+ '&nivelEntrenamiento=' + nivelEntrenamiento;
+
+                hr.open("POST", url, true);
+                // Set content type header information for sending url encoded variables in the request
+                hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // Access the onreadystatechange event for the XMLHttpRequest object
+                hr.onreadystatechange = function() {
+                    if(hr.readyState == 4 && hr.status == 200) {
+                        var return_data = hr.responseText;
+                        document.getElementById("mostrar").innerHTML = return_data;
+                    }
+                }
+                // Send the data to PHP now... and wait for response to update the status div
+                hr.send(vars); // Actually execute the request
+                document.getElementById("mostrar").innerHTML = "Procesando...";
+            }
    </script>    
 </head>
 <body>
@@ -188,11 +222,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <input id="campoFormulario" name="fecha" type="text" value="Fecha"/>
                     
                    		
-                   	<input id="campoBoton" name="buscar" type="submit" value="Buscar" />
+                 <button onclick="ajax_post()"type="submit">Buscar</button>
         </form>      
 	</div>
 
-    <div id='mostrar'> 
+    <div id='mostrar'style="position:relative; top:300px; left:920px; width:150px;"> 
     </div>
 </div>
   <script src="js/misFunciones.js"></script>

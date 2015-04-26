@@ -3,18 +3,68 @@ include ("settings.php");
 include ("common.php");
 
 
-
+    if (isset($_POST['nombre'])){
     $nombre = $_POST['nombre'];
+    }else{
+        $nombre='';
+    }
+    if (isset($_POST['fecha'])){
     $fecha = $_POST['fecha'];
+    }else{
+        $fecha='';
+    }
+     if (isset($_POST['email'])){
     $email = $_POST['email'];
+    }else{
+        $email='';
+    }
+    
+    if (isset($_POST['color'])){
     $color = $_POST['color'];
+    }else{
+        $color='';
+    }
+    
+     if (isset($_POST['tamanio'])){
     $tamanio = $_POST['tamanio'];
+    }else{
+        $tamanio='';
+    }
+    
+     if (isset($_POST['raza'])){
     $raza = $_POST['raza'];////0
+    }else{
+        $raza='';
+    }
+    
+    if (isset($_POST['tipoMascota'])){
     $tipoMascota = $_POST['tipoMascota'];
+    }else{
+        $tipoMascota='';
+    }
+    
+    if (isset($_POST['nivelEnergía'])){
     $nivelEnergía = $_POST['nivelEnergía'];
+    }else{
+        $nivelEnergía='';
+    }
+    
+     if (isset($_POST['distrito'])){
     $distrito = $_POST['distrito'];
+    }else{
+        $distrito='';
+    }
+    
+    if (isset($_POST['estado'])){
     $estado = $_POST['estado'];
+    }else{
+        $estado='';
+    }
+     if (isset($_POST['nivelEntrenamiento'])){
     $nivelEntrenamiento = $_POST['nivelEntrenamiento'];
+    }else{
+        $nivelEntrenamiento='';
+    }
     
     $conn = oci_connect(USER, PASS, HOST);
     $curs = oci_new_cursor($conn);
