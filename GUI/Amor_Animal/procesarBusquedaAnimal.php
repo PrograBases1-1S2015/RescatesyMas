@@ -7,63 +7,69 @@
         }else{
             $color='';
         }
+        echo $color;
         if (isset($_POST['tamaño'])){
             $tamanio = $_POST['tamaño'];
         }else{
             $tamanio='';
         }
+          echo $tamanio;
         if (isset($_POST['mascota'])){
             $mascota = $_POST['mascota'];
         }else{
             $mascota='';
         }
-    
+            echo $mascota;
         if (isset($_POST['raza'])){
             $raza = $_POST['raza'];
         }else{
             $raza='';
         }
-
+            echo $raza;
         if (isset($_POST['nivel_energia'])){
             $nivel_energia = $_POST['nivel_energia'];
         }else{
             $nivel_energia='';
         }
     
-  
+            echo $nivel_energia;
         if (isset($_POST['distrito'])){
             $distrito = $_POST['distrito'];
         }else{
             $distrito='';
         }
-    
-        if (isset($_POST['estado'])){
-            $estado = $_POST['estado'];
+            echo $distrito;
+        if (isset($_POST['estadoMascota'])){
+            $estado = $_POST['estadoMascota'];
         }else{
             $estado='';
         }
+            echo $estado;
         if (isset($_POST['facilidad_entrenamiento'])){
             $nivelEntrenamiento = $_POST['facilidad_entrenamiento'];
        }else{
            $nivelEntrenamiento='';
        }
+        echo $nivelEntrenamiento;
        if (isset($_POST['nombre'])){
             $nombre = $_POST['nombre'];
        }else{
            $nombre='';
        }
+       echo $nombre;
+       
        if (isset($_POST['fecha'])){
             $fecha = $_POST['fecha'];
        }else{
            $fecha='';
        }
+       echo $fecha;
     }
     
     $conn = oci_connect(USER, PASS, HOST);
     $curs = oci_new_cursor($conn);
     $stid = oci_parse($conn, "begin Buscar_Mascota('$nombre','$fecha','$distrito','$raza','$color','$estado','$tamanio','$mascota','$nivel_energia','$nivelEntrenamiento',:cursbv); end;");
     oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-    echo $curs;
     $a=oci_execute($stid);
     $b=oci_execute($curs);
     
