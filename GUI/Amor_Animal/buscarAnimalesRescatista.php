@@ -22,12 +22,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--light-box-->
 <script type="text/javascript" src="js/jquery.lightbox.js"></script>
 <link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen">
-	<script type="text/javascript">
+<!--	<script type="text/javascript">
              function ajax_post(){
                 // Create our XMLHttpRequest object
                 var hr = new XMLHttpRequest();
                 // Create some variables we need to send to our PHP file
-                var url = "ProcesarBusquedaAnimal.php";
+                var url = "procesarBusquedaAnimal.php";
 
                 var color = document.getElementById("color").value;
                 var fecha = document.getElementById("fecha").value;
@@ -41,8 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 var estado = document.getElementById("estado").value;
                 var nivelEntrenamiento = document.getElementById("nivelEntrenamiento").value;
 
-                var vars = '&color=' + color + '&fecha=' + fecha+ '&email=' + email+ '&tamanio=' + tamanio+ '&nombre=' + nombre
-                + '&raza=' + raza+ '&tipoMascota=' + tipoMascota+ '&nivelEnergía=' + nivelEnergía+ '&distrito=' + distrito+ '&estado=' + estado+ '&nivelEntrenamiento=' + nivelEntrenamiento;
+                var vars = "&color=" + color + "&fecha=" + fecha+ "&email=" + email+ "&tamanio=" + tamanio+ "&nombre=" + nombre+ "&raza=" + raza+ "&tipoMascota=" + tipoMascota+ "&nivelEnergía=" + nivelEnergía+ "&distrito=" + distrito+ "&estado=" + estado+ "&nivelEntrenamiento=" + nivelEntrenamiento;
 
                 hr.open("POST", url, true);
                 // Set content type header information for sending url encoded variables in the request
@@ -56,9 +55,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }
                 // Send the data to PHP now... and wait for response to update the status div
                 hr.send(vars); // Actually execute the request
-                document.getElementById("mostrar").innerHTML = "Procesando...";
+                document.getElementById("mostrar").innerHTML = xmlhttp.responseText;
             }
-   </script>    
+   </script>    -->
 </head>
 <body>
 <div class="header">                                                                                  
@@ -93,7 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main">
 	
 <div class="busqueda">
-    <form id="busquedaMascota" action="" method="post">
+    <form id="busquedaMascota" action="buscarAnimalesRescatista.php" method="post">
                         <select name='color' style="width: 200px; display: block; float: left;">
                             <option value="0">Seleccione el color</option>
                             <?php
@@ -197,19 +196,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 oci_close($conn);
                             ?>
                        </select>
-                        
-                         <select name='nivel_energia' style="width: 200px; display: block; float: left;">
-                            <option value="0">Seleccione el nivel</option>
+                       <select name='facilidad_entrenamiento' style="width: 200px; display: block; float: left;">
+                            <option value="0">Seleccione la facilidad</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
-                                $stid = oci_parse($conn, "begin Get_Nivel_Energia(:cursbv); end;");
+                                $stid = oci_parse($conn, "begin Get_Facilidad_Entrenamiento(:cursbv); end;");
                                 oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
                                 oci_execute($stid);
                                 oci_execute($curs); 
                                 while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
                                 {
-                                    echo '<option value="'.$row["NIVEL_ENERGIA_ID"].'">'.$row["NIVEL_ENERGIA"].'</option>';
+                                    echo '<option value="'.$row["FACILIDAD_ENTRENAMIENTO_ID"].'">'.$row["FACILIDAD_ENTRENAMIENTO"].'</option>';
                                 }
 
                                 oci_free_statement($stid);
@@ -221,13 +219,103 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
                         <input id="campoFormulario" name="fecha" type="text" value="Fecha"/>
                     
-                   		
-                 <button onclick="ajax_post()"type="submit">Buscar</button>
+                        <input type="submit" name='buscar' value="Buscar" />
+                 <!--<button onclick="ajax_post()"type="submit">Buscar</button>-->
         </form>      
 	</div>
 
-    <div id='mostrar'style="position:relative; top:300px; left:920px; width:150px;"> 
-    </div>
+ <?php
+        include ("settings.php");
+        include ("common.php");
+    if(isset($_POST['buscar'])){
+        if (isset($_POST['color'])){
+            $color = $_POST['color'];
+        }else{
+            $color='';
+        }
+        if (isset($_POST['tamaño'])){
+            $tamanio = $_POST['tamaño'];
+        }else{
+            $tamanio='';
+        }
+        if (isset($_POST['mascota'])){
+            $mascota = $_POST['mascota'];
+        }else{
+            $mascota='';
+        }
+    
+        if (isset($_POST['raza'])){
+            $raza = $_POST['raza'];
+        }else{
+            $raza='';
+        }
+
+        if (isset($_POST['nivel_energia'])){
+            $nivel_energia = $_POST['nivel_energia'];
+        }else{
+            $nivel_energia='';
+        }
+    
+  
+        if (isset($_POST['distrito'])){
+            $distrito = $_POST['distrito'];
+        }else{
+            $distrito='';
+        }
+    
+        if (isset($_POST['estado'])){
+            $estado = $_POST['estado'];
+        }else{
+            $estado='';
+        }
+        if (isset($_POST['facilidad_entrenamiento'])){
+            $nivelEntrenamiento = $_POST['facilidad_entrenamiento'];
+       }else{
+           $nivelEntrenamiento='';
+       }
+       if (isset($_POST['nombre'])){
+            $nombre = $_POST['nombre'];
+       }else{
+           $nombre='';
+       }
+       if (isset($_POST['fecha'])){
+            $fecha = $_POST['fecha'];
+       }else{
+           $fecha='';
+       }
+    }
+    
+    $conn = oci_connect(USER, PASS, HOST);
+    $curs = oci_new_cursor($conn);
+    $stid = oci_parse($conn, "begin Buscar_Mascota('$nombre','$fecha','$distrito','$raza','$color','$estado','$tamanio','$mascota','$nivel_energia','$nivelEntrenamiento',:cursbv); end;");
+    oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+    echo $curs;
+    $a=oci_execute($stid);
+    $b=oci_execute($curs);
+    
+?>
+<table id='mostrar' style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
+    <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Fecha</td><td style="border:1px solid #000000;">Descripción</td><td>Nota Adicional</td>
+        <td style="border:1px solid #000000;">Dirección Exacta</td><td style="border:1px solid #000000;">Distrito</td><td>Estado de la mascota</td><td>Raza</td>
+        <td style="border:1px solid #000000;">Tipo de Mascota</td><td style="border:1px solid #000000;">Tamanio</td><td>Rescatista</td><td>Numero de Telefono</td></tr>
+<?php
+    
+    while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+        echo "<tr>\n";
+        foreach ($row as $item) {
+        echo "<td >" . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+    }
+        echo "</tr>\n";
+ }
+
+
+oci_free_statement($stid);
+oci_free_statement($curs);
+oci_close($conn);
+
+?>
+ </table>
+    
 </div>
   <script src="js/misFunciones.js"></script>
 </body>

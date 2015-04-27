@@ -1,9 +1,9 @@
 --Búsqueda de mascota global--
 create or replace procedure Buscar_Mascota(nombre_mascota varchar2,fecha_busqueda date,distrito_busqueda varchar2,raza_mascota varchar2,color_mascota varchar2,estado varchar2,tamanio_mascota varchar2,
-tipo_mascota varchar2, nivel_energia_mascota varchar2,entrenamiento_mascota varchar2,resultado out sys_refcursor) is
+tipo_mascota varchar2, nivel_energia_mascota varchar2,entrenamiento_mascota varchar2,Result out sys_refcursor) is
 begin  
   --Abrir cursor para guardar toda la información--
-open resultado for
+open Result for
 Select m.nombre,m.fecha,m.descripcion,m.nota_adicional,de.direccion_exacta,d.distrito,em.estado_mascota,r.raza,tm.tipo_mascota,t.tamanio,p.nombre as nombre_mascota, p.num_telefono_1
 from mascota m
 inner join direccion_exacta de on m.direccion_exacta_id = de.direccion_exacta_id
