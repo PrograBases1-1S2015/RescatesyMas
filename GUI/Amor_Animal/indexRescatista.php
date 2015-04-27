@@ -1,10 +1,28 @@
 <?php
 
-//include ("auth.php");
+include ("auth.php");
 //include ("settings.php");
+$nom_Usuario = $_COOKIE['id'];
+$existeFoto = FALSE;
 
+$Conn = oci_connect(USER, PASS, HOST);
+
+$sql_1 = "SELECT PERSONA.FOTO, nvl2(dbms_lob.GETLENGTH(PERSONA.FOTO),1,0) AS EXISTEFOTO
+          FROM PERSONA INNER JOIN USUARIO 
+          ON PERSONA.USUARIO_ID = USUARIO.USUARIO_ID
+          WHERE USUARIO.NOM_USUARIO = '$nom_Usuario'";
+$sql_1 = OCIParse($Conn, $sql_1);
+OCIExecute($sql_1, OCI_DEFAULT);
+While (OCIFetchInto($sql_1, $row, OCI_ASSOC))
+{
+    if($row['EXISTEFOTO'] == 1)
+    {
+        $existeFoto = TRUE;
+    }
+}
+OCIFreeStatement($sql_1);
+OCILogoff($Conn);
 ?>
-
 
 <!--esign baytsrapndex
 Author: W3layout
@@ -46,8 +64,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				
 			</div>
 			<div class="phone">
-				<span class="order">Contactenos</span><br>
-				<h5 class="ph-no">88888888</h5>		
+                    <?php
+                        if(!$existeFoto)
+                        {
+                            echo '
+                                
+                                <form action="InsertarImagenPerfil.php" method="post" enctype="multipart/form-data">
+                                Seleccione una imagen de perfil: <br/><br/> <input type="file" name="foto_Perfil"><br><br>
+                                <input type="submit" value="Subir Imagen">
+                                </form>';
+                        }
+                        else
+                        {
+                           echo '<img src="cargarImagenPerfil.php"  width="100" />';
+                        }
+                    ?>
 			</div>
 			<div class="clear"></div> 
 	    </div>

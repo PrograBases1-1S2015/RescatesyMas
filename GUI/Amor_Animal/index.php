@@ -7,7 +7,7 @@ if (isset($_POST['entrar']))
 { // if form has been submitted
    if(!$_POST['logNomusuario'] | !$_POST['logContrasenia'])
    {//Verificar que las casillas no esten en blanco
-      die('Es necesario escribir un Usuario y una contraseña <a href=index.php>Intente de nuevo</a>');
+      die('Es necesario escribir un Usuario y una contraseÃ±a <a href=index.php>Intente de nuevo</a>');
       
    }
    $usuario = $_POST['logNomusuario'];
@@ -44,10 +44,29 @@ if (isset($_POST['entrar']))
         }
         else
         {
-            //if(es adoptante){header("Location: indexAdoptante.php");}
-            //else{header("Location: indexRescatista.php");}
+            
+            $nom_Usuario = $_POST['logNomusuario'];
+            $esAdoptante = FALSE;
+
+            $Conn = oci_connect(USER, PASS, HOST);
+
+            $sql_1 = "SELECT *  FROM PERSONA INNER JOIN USUARIO 
+                      ON PERSONA.USUARIO_ID = USUARIO.USUARIO_ID
+                      INNER JOIN ADOPTANTE ON ADOPTANTE.PERSONA_ID = PERSONA.PERSONA_ID
+                      WHERE USUARIO.NOM_USUARIO = '$nom_Usuario'";
+            
+            $sql_1 = OCIParse($Conn, $sql_1);
+            OCIExecute($sql_1, OCI_DEFAULT);
+            While (OCIFetchInto($sql_1, $row, OCI_ASSOC))
+            {
+                    $esAdoptante = TRUE;
+            }
+            OCIFreeStatement($sql_1);
+            OCILogoff($Conn);            
+            
+            if($esAdoptante){header("Location: indexAdoptante.php");}
+            else{header("Location: indexRescatista.php");}
             actualizar_cookie($_POST['logNomusuario'],$_POST['logContrasenia'],$row['TIPO_USUARIO']);
-            header("Location: indexRescatista.php");
         }
       }
    }
@@ -146,7 +165,7 @@ else
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">¡Bienvenido!</div>
+                <div class="intro-lead-in">Â¡Bienvenido!</div>
                 <div class="intro-heading">Rescate y Adopciones</div>
              <!--   <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a> -->
             </div>
@@ -203,7 +222,7 @@ else
                     </td>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Cédula:</label>
+                        <label style="width: 200px; display: block; float: left;" >CÃ©dula:</label>
                         <input id="campo5" name="cedula" type="text" onkeypress="return justNumbers(event);" onchange="verificarCedula(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
@@ -215,7 +234,7 @@ else
                   </tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Teléfono:</label>
+                        <label style="width: 200px; display: block; float: left;" >TelÃ©fono:</label>
                         <input id="campo7" name="telefono" type="text" onkeypress="return justNumbers(event);"  style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
@@ -246,14 +265,14 @@ else
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <label style="width: 200px; display: block; float: left;" >ContraseÃ±a:</label>
                         <input id="campo9" name="contrasenia" type="password" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >País:</label>
+                        <label style="width: 200px; display: block; float: left;" >PaÃ­s:</label>
                        <select name='pais' onChange="getProvincia(this.value);" style="width: 200px; display: block; float: left;">
                         <option>Seleccione el pais</option>
                             <?php 
@@ -283,7 +302,7 @@ else
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Canton:</label>
                        <select id="com_Canton" name='canton' onChange="getDistrito(this.value);" style="width: 200px; display: block; float: left;">
-                            <option value="0">Seleccione el cantón</option>
+                            <option value="0">Seleccione el cantÃ³n</option>
                        </select>
                     </td>
                   </tr>
@@ -299,7 +318,7 @@ else
                 <tr>
                  <tr><td>&nbsp; </td></tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Dirección Exacta:</label>
+                        <label style="width: 200px; display: block; float: left;" >DirecciÃ³n Exacta:</label>
                         <textarea COLS=20 ROWS=5 NAME='direccionExacta'>
                         </Textarea> 
                        </select>
@@ -324,7 +343,7 @@ else
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Entrar</h2>
-                    <h3 class="section-subheading text-muted">!Salvemos los animales¡</h3>
+                    <h3 class="section-subheading text-muted">!Salvemos los animalesÂ¡</h3>
                 </div>
             </div>
         </div>
@@ -341,7 +360,7 @@ else
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <label style="width: 200px; display: block; float: left;" >ContraseÃ±a:</label>
                         <input id="campo2" name="logContrasenia" type="password" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>

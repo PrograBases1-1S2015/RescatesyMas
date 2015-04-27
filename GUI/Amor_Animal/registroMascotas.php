@@ -1,58 +1,127 @@
 <?php
 include ("auth.php");
-//include ("settings.php");
-//include ("common.php");
+
+$nom_Usuario = $_COOKIE['id'];
+$existeFoto = FALSE;
+
+$Conn = oci_connect(USER, PASS, HOST);
+
+$sql_1 = "SELECT PERSONA.FOTO, nvl2(dbms_lob.GETLENGTH(PERSONA.FOTO),1,0) AS EXISTEFOTO
+          FROM PERSONA INNER JOIN USUARIO 
+          ON PERSONA.USUARIO_ID = USUARIO.USUARIO_ID
+          WHERE USUARIO.NOM_USUARIO = '$nom_Usuario'";
+$sql_1 = OCIParse($Conn, $sql_1);
+OCIExecute($sql_1, OCI_DEFAULT);
+While (OCIFetchInto($sql_1, $row, OCI_ASSOC))
+{
+    if($row['EXISTEFOTO'] == 1)
+    {
+        $existeFoto = TRUE;
+    }
+}
+OCIFreeStatement($sql_1);
+OCILogoff($Conn);
 
 //Al presionar el boton de login
-if (isset($_POST['entrar']))
-{ // if form has been submitted
-   if(!$_POST['logNomusuario'] | !$_POST['logContrasenia'])
-   {//Verificar que las casillas no esten en blanco
-      die('Es necesario escribir un Usuario y una contraseña <a href=index.php>Intente de nuevo</a>');
-      
-   }
-   $usuario = $_POST['logNomusuario'];
-   $conn = oci_connect(USER, PASS, HOST);
-   $curs = oci_new_cursor($conn);
-   $stid = oci_parse($conn, "begin Buscar_Usuario('$usuario',:cursbv); end;");
-   oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-   oci_execute($stid);
-   oci_execute($curs);  
+if (isset($_POST['enviar']))
+{
+    $nombre =  $_POST['nombre'];
+    $severidad =  $_POST['severidad'];
+    $estadoMascota = $_POST['estadoMascota'];
+    $enfermedad = $_POST['enfermedad'];
+    $tamanio = $_POST['tamanio'];
+    $color = $_POST['color'];
+    $nivel_energia =$_POST['nivel_energia'];
+    $facilidad_entrenamiento =$_POST['facilidad_entrenamiento'];
+    $mascota = $_POST['mascota'];
+    $raza = $_POST['raza'];
+    $descripcion = $_POST['descripcion'];
+    $nota = $_POST['nota'];
+    $distrito = $_POST['distrito'];
+    $direccionExacta = $_POST['direccionExacta'];
+    $tipoPersona = $_POST['tipoPersona'];
+    
 
-   if (oci_fetch_array($curs) == 0) 
-   {
-       echo "<script>alert(\"El usuario no existe en la base de datos.\");</script>";
-       echo "<script>javascript:history.back();</script>";
-   }
-   $curs = oci_new_cursor($conn);
-   $stid = oci_parse($conn, "begin Buscar_Usuario('$usuario',:cursbv); end;");
-   oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-   oci_execute($stid);
-   oci_execute($curs);  
-   
-   while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false)
-   {
-      if ($_POST['logContrasenia'] != $row['CONTRASENIA']) 
-      {
-          echo "<script>alert(\"Password incorrecto.\");</script>";
-          echo "<script>javascript:history.back();</script>";
-      }
-      else
-      {
-        if($row['TIPO_USUARIO'] == 1)
-        {
-             header("Location:  registroAnimales.php");
-        }
-        else
-        {
-            //if(es adoptante){header("Location: indexAdoptante.php");}
-            //else{header("Location: indexRescatista.php");}
-            actualizar_cookie($_POST['logNomusuario'],$_POST['logContrasenia'],$row['TIPO_USUARIO']);
-            header("Location: indexRescatista.php");
-        }
-      }
-   }
-    oci_close($conn);
+
+    
+    $lim_tam = "1024000";
+
+    $foto_Antes_name = $_FILES['foto_Antes']['name'];
+    $foto_Antes_size = $_FILES['foto_Antes']['size'];
+    $foto_Antes = $_FILES['foto_Antes']['tmp_name'];
+
+    $foto_Despues_name = $_FILES['foto_Despues']['name'];
+    $foto_Despues_size = $_FILES['foto_Despues']['size'];
+    $foto_Despues = $_FILES['foto_Despues']['tmp_name'];
+
+    if($foto_Antes_size >$lim_tam || $foto_Despues_size >$lim_tam )
+    {
+        echo "	<script>alert('Alguno de los archivos supera el limite de tamanio, por favor intente con otros.')</script>";
+    } 
+    else if($_FILES['foto_Antes']['error']!=0 || $_FILES['foto_Despues']['error']!=0)
+    {
+        echo "<script>alert('Error de Archivo, Alguno de los archivos no se puede subir.')</script>";
+    }
+    else 
+    {
+    $user = "proyecto";
+    $pass = "proyecto";
+    $tsnames = "localhost/dbprueba";
+    //Aqui se establece la conexion con una base de datos oracle.
+    $conn = OCILogon($user,$pass,$tsnames);
+
+
+    $lob_Antes = OCINewDescriptor($conn, OCI_D_LOB);
+    $lob_Despues = OCINewDescriptor($conn, OCI_D_LOB);
+
+    
+    if($tipoPersona == 'Adoptante')
+    {                                           
+        $stmt = OCIParse($conn,"INSERT INTO MASCOTA(mascota_id,nombre,direccion_exacta_id,severidad_id,estado_mascota_id,enfermedad_id,
+                                requiere_espacion,foto_antes,foto_despues,veterinario,descripcion,nota_adicional,fecha,raza_id,
+                                nivel_energia_id,color_id,tamanio_id,facilidad_entrenamiento_id,rescatista_id)    
+
+                                values (incremento_mascota.nextval, '$nombre',1,'$severidad','$estadoMascota','$enfermedad',
+                                0,EMPTY_BLOB(),EMPTY_BLOB(),'Veterinario Quemado','$descripcion','$nota',Sysdate,'$raza',
+                                '$nivel_energia','$color','$tamanio','$facilidad_entrenamiento',1)
+                                returning foto_antes,foto_despues into :the_blob_Antes, :the_blob_Despues ");
+    }
+    else
+    {
+        $stmt = OCIParse($conn,"INSERT INTO MASCOTA(mascota_id,nombre,direccion_exacta_id,severidad_id,estado_mascota_id,enfermedad_id,
+                                requiere_espacion,foto_antes,foto_despues,veterinario,descripcion,nota_adicional,fecha,raza_id,
+                                nivel_energia_id,color_id,tamanio_id,facilidad_entrenamiento_id,rescatista_id)    
+
+                                values (incremento_mascota.nextval, '$nombre',1,'$severidad','$estadoMascota','$enfermedad',
+                                1,EMPTY_BLOB(),EMPTY_BLOB(),'Veterinario Quemado','$descripcion','$nota',Sysdate,'$raza',
+                                '$nivel_energia','$color','$tamanio','$facilidad_entrenamiento',1)
+                                returning foto_antes,foto_despues into :the_blob_Antes, :the_blob_Despues ");
+    }
+    
+
+
+
+    
+
+    OCIBindByName($stmt, ':the_blob_Antes',$lob_Antes, -1, OCI_B_BLOB);
+    OCIBindByName($stmt, ':the_blob_Despues',$lob_Despues, -1, OCI_B_BLOB);
+    //Ejecucion de la sentencia.
+    OCIExecute($stmt, OCI_DEFAULT);
+    if($lob_Antes->savefile($foto_Antes) && $lob_Despues->savefile($foto_Despues))
+    {
+        OCICommit($conn);
+        echo "Blob successfully uploaded\n<br>";
+        echo "<a href=show.php>SHOW FILES</a>";
+    }
+    else
+    {
+        echo "Couldn't upload Blob\n";
+    }
+    OCIFreeStatement($stmt);
+    OCILogoff($conn);
+    }    
+
+
 }
 
 
@@ -89,9 +158,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<a href="index.php"><img src="images/logo.png" alt=""/></a>                                             
 			</div>                                                                                    
 			<div class="phone">                                                                       
-				<span class="order">order online:</span><br>                                          
-				<h5 class="ph-no">+1 800 253 2560</h5>		                                          
-			</div>                                                                                    
+                            <?php
+                                if(!$existeFoto)
+                                {
+                                    echo '
+
+                                        <form action="InsertarImagenPerfil.php" method="post" enctype="multipart/form-data">
+                                        Seleccione una imagen de perfil: <br/><br/> <input type="file" name="foto_Perfil"><br><br>
+                                        <input type="submit" value="Subir Imagen">
+                                        </form>';
+                                }
+                                else
+                                {
+                                   echo '<img src="cargarImagenPerfil.php"  width="100" />';
+                                }
+                            ?>
+                        </div>
 			<div class="clear"></div>                                                                 
 	    </div>                                                                                        
 	</div>                                                                                            
@@ -112,7 +194,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    </div>                                                                                             
 </div>                                                                                                
 <div class="main">
-		<form action="" method="post" >
+    <form action="registroMascotas.php" method="post" enctype="multipart/form-data" >
             <legend>Formulario de Registro</legend>
                 <table style="float: left;" >
                   <tr>
@@ -200,7 +282,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				   <tr><td>&nbsp; </td></tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Tamaño:</label>
-                        <select name='tamaño' style="width: 200px; display: block; float: left;">
+                        <select name='tamanio' style="width: 200px; display: block; float: left;">
                             <option value="0">Seleccione el tamaño</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
@@ -294,7 +376,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </td>
                   	<tr>
 
-   					<tr><td>&nbsp; </td></tr>
+                    <tr><td>&nbsp; </td></tr>
                     <td width="500">
                         <label for="rescatista" style="width: 200px; display: block; float: left;" >Requiere Espacio:</label>
                         <input type="radio" name="tipoPersona" id="rescatista" value="Rescatista" />
@@ -308,10 +390,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
-                </table>
-
-                <table style="float: left;">
-				<tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Tipo de Mascota:</label>
                        <select id = 'con_mascota' name='mascota' onChange="getRaza(this.value);"  style="width: 200px; display: block; float: left;">
@@ -344,19 +422,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                        </select>
                     </td>
                   </tr>
-                <tr><td>&nbsp; </td></tr>
+                </table>
+
+                <table style="float: left;">
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Foto Antes:</label>
+                        <input type="file" name="foto_Antes" style="width: 400px; display: block; float: left;">                    
+                    </td>
+                  </tr>  
+                  <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Foto Despues:</label>
+                        <input type="file" name="foto_Despues" style="width: 400px; display: block; float: left;">                    
+                    </td>
+                  </tr>  
+                  <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Descripción del rescate:</label>
-                        <textarea COLS=15 ROWS=3 NAME='descripcion'>
-                        </Textarea>                    
+                        <textarea COLS=15 ROWS=3 NAME='descripcion' style="width: 200px; display: block; float: left;"> </Textarea>                    
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Nota Adicional:</label>
-                        <textarea COLS=15 ROWS=3 NAME='nota'>
+                        <textarea COLS=15 ROWS=3 NAME='nota' style="width: 200px; display: block; float: left;">
                         </Textarea>                    
                     </td>
                   </tr>
@@ -417,7 +510,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                  <tr><td>&nbsp; </td></tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Dirección Exacta:</label>
-                        <textarea COLS=20 ROWS=5 NAME='direccionExacta'>
+                        <textarea COLS=20 ROWS=5 NAME='direccionExacta' style="width: 200px; display: block; float: left;">
                         </Textarea> 
                     </td>
                   </tr>
@@ -425,7 +518,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                 </table>
                 <div style="clear: both;"></div>
-                
+                <br/>
                 <input id="campo10" name="enviar" type="submit" value="Enviar" />                
                 
 	</form>
@@ -441,7 +534,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </body>
 </html>
-
-    	
-    	
-            
+      
