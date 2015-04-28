@@ -686,7 +686,7 @@ values(incremento_color.nextval,'Amarillo');
 insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'5-10cm');
 
-insert into Tamano(tamanio_id,tamanio)
+insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'10-15cm');
 
 insert into Tamanio(tamanio_id,tamanio)
@@ -708,13 +708,13 @@ insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'40-45cm');
 
 insert into Tamanio(tamanio_id,tamanio)
-values(incremento_tamano.nextval,'45-50cm');
+values(incremento_tamanio.nextval,'45-50cm');
 
 insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'50-55cm');
 
 insert into Tamanio(tamanio_id,tamanio)
-values(incremento_tamano.nextval,'55-60cm');
+values(incremento_tamanio.nextval,'55-60cm');
 
 insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'60-65cm');
@@ -737,8 +737,8 @@ values(incremento_tamanio.nextval,'85-90cm');
 insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'90-95cm');
 
-insert into Tamano(tamano_id,tamano)
-values(incremento_tamano.nextval,'95-100cm');
+insert into Tamanio(tamanio_id,tamanio)
+values(incremento_tamanio.nextval,'95-100cm');
 
 ---11.---------------Agregar facilidad de entrenamiento-----------------------
 

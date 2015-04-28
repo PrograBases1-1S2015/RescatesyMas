@@ -2,7 +2,7 @@ create or replace procedure Get_Todas_Mascotas(Result out sys_refcursor) is
 begin
   --Abrir cursor para guardar toda la información--
 open Result for
-Select m.nombre,m.fecha,m.descripcion,m.nota_adicional,de.direccion_exacta,d.distrito,em.estado_mascota,r.raza,tm.tipo_mascota,t.tamanio,p.nombre as nombre_mascota, p.num_telefono_1
+Select m.nombre,m.fecha,m.descripcion,m.nota_adicional,de.direccion_exacta,d.distrito,em.estado_mascota,r.raza,tm.tipo_mascota,t.tamanio,p.nombre as nombre_persona, p.num_telefono_1
 from mascota m
 inner join direccion_exacta de on m.direccion_exacta_id = de.direccion_exacta_id
 inner join distrito d on de.distrito_id = d.distrito_id

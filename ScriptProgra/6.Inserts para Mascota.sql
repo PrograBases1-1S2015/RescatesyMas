@@ -93,7 +93,7 @@ values(incremento_enfermedad.nextval,'Tumores');
 
 insert into enfermedad(enfermedad_id,enfermedad)
 values(incremento_enfermedad.nextval,'Bronquitis');
-
+select * from enfermedad
 --2.------------------------------Agregar Tratamientos------------------------------
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Unguento',1);
@@ -151,7 +151,7 @@ values(incremento_tratamiento.nextval,'Antiparasitario',8);
 
 insert into tratamiento(tratamiento_id,tratamiento,enfermedad_id)
 values(incremento_tratamiento.nextval,'Terapia',9);
-
+select * from tratamiento
 
 ---3.---------------------------Agregar Medicamentos-------------------------------
 insert into medicamento(medicamento_id,medicamento,tratamiento_id)
@@ -210,7 +210,7 @@ values(incremento_medicamento.nextval,'Cumafos',9);
 
 insert into medicamento(medicamento_id,medicamento,tratamiento_id)
 values(incremento_medicamento.nextval,'Acido Formico',10);
-
+select * from medicamento
 ---4.--------------------------Agregar Severidad-----------------------------------
 insert into severidad(severidad_id,severidad)
 values(incremento_severidad.nextval,'Crítico');
@@ -220,7 +220,7 @@ values(incremento_severidad.nextval,'Buen estado');
 
 insert into severidad(severidad_id,severidad)
 values(incremento_severidad.nextval,'Mal estado');
-
+select * from severidad
 ----5.-----------------------Agregar estado de la mascota----------------------------
 
 insert into estado_mascota(estado_mascota_id,estado_mascota)
@@ -228,7 +228,7 @@ values(incremento_estado_mascota.nextval,'En adopción');
 
 insert into estado_mascota(estado_mascota_id,estado_mascota)
 values(incremento_estado_mascota.nextval,'Adoptado');
-
+select * from estado_mascota
 ---6.----------------------Agregar tipo de mascotas--------------------------------
 insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
 values(incremento_tipo_mascota_id.nextval,'Perro');
@@ -241,7 +241,7 @@ values(incremento_tipo_mascota_id.nextval,'Conejo');
 
 insert into tipo_mascota(tipo_mascota_id,tipo_mascota)
 values(incremento_tipo_mascota_id.nextval,'Hámster');
-
+select * from tipo_mascota
 ---7.-----------------Agregar Razas-----------------------------------------------
 -----Perros----------------------------
 insert into raza(raza_id,raza,tipo_mascota_id)
@@ -633,7 +633,7 @@ values(incremento_nivel_energia.nextval,'Muy Alto');
 
 insert into nivel_energia(nivel_energia_id,nivel_energia)
 values(incremento_nivel_energia.nextval,'Peligrosamente alto');
-
+select * from raza
 ---9.------------------Agregar Color--------------------------
 
 insert into color(color_id,color)
@@ -680,7 +680,7 @@ values(incremento_color.nextval,'Gris con negro');
 
 insert into color(color_id,color)
 values(incremento_color.nextval,'Amarillo');
-
+select * from color
 ---10.------------------Agregar Tamaño----------------------------
 
 insert into Tamanio(tamanio_id,tamanio)
@@ -739,7 +739,7 @@ values(incremento_tamanio.nextval,'90-95cm');
 
 insert into Tamanio(tamanio_id,tamanio)
 values(incremento_tamanio.nextval,'95-100cm');
-
+select * from tamanio
 ---11.---------------Agregar facilidad de entrenamiento-----------------------
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
@@ -771,3 +771,4 @@ values(incremento_entrenamiento.nextval,'Muy Dificil');
 
 insert into Facilidad_Entrenamiento(facilidad_entrenamiento_id,facilidad_entrenamiento)
 values(incremento_entrenamiento.nextval,'No hace caso del todo');
+select * from Facilidad_Entrenamiento

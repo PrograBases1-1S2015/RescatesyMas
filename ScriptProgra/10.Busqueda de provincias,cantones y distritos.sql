@@ -6,13 +6,13 @@ begin
  Select provincia 
  from provincia
  inner join pais
-  on provincia.pais_id= ID_Pais
+  on provincia.pais_id= ID_Pais;
 end Buscar_Provincias;
 --Buscar Cantones--
 create or replace procedure Buscar_Cantones(ID_Provincia number) is
        resultado sys_refcursor;
 begin
- open resultado for Select canton.canton from provincia
+open resultado for Select canton.canton from provincia
 inner join canton
 on canton.provincia_id =ID_Provincia;
 end Buscar_Cantones;

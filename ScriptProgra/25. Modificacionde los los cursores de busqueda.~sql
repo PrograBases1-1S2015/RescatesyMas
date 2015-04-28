@@ -14,7 +14,7 @@ create or replace procedure Buscar_Cantones(ID_Provincia in number,resultado out
 begin
  open resultado for Select canton_id, canton from canton
 where provincia_id =ID_Provincia;
-end Buscar_Cantones;
+
 --------------------Buscar Distritos
 
 create or replace procedure Buscar_Distritos(ID_Canton in number,resultado out sys_refcursor) is
@@ -22,4 +22,4 @@ begin
  open resultado for Select distrito_id, distrito from distrito
  where canton_id =ID_Canton;
 end Buscar_Distritos;
-
+end Buscar_Cantones;
