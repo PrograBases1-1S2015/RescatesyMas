@@ -108,8 +108,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include ("settings.php");
-include ("common.php"); 
+//include ("settings.php");
+//include ("common.php"); 
 
 
 $conn = oci_connect(USER, PASS, HOST);

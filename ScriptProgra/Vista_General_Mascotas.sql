@@ -1,10 +1,5 @@
---Búsqueda de mascota global--
-create or replace procedure Buscar_Mascota(nombre_mascota varchar2,distrito_busqueda varchar2,raza_mascota number,color_mascota number,estado varchar2,tamanio_mascota number,
-tipo_mascota number, nivel_energia_mascota number,entrenamiento_mascota number,Result out sys_refcursor) is
-begin  
-  --Abrir cursor para guardar toda la información--
-open Result for
-Select m.nombre,m.fecha,m.descripcion,m.nota_adicional,de.direccion_exacta,d.distrito,em.estado_mascota,r.raza,tm.tipo_mascota,t.tamanio,p.nombre as nombre_Persona,p.num_telefono_1
+CREATE or REPLACE VIEW Vista_General_Mascotas as 
+Select m.nombre,m.requiere_espacion,m.foto_antes, m.foto_despues,m.veterinario,m.fecha,m.descripcion,m.nota_adicional,de.direccion_exacta,d.distrito,s.severidad,em.estado_mascota,r.raza,tm.tipo_mascota,ne.nivel_energia,c.color,t.tamanio,fe.facilidad_entrenamiento,p.nombre as nombre_Persona, p.num_telefono_1
 from mascota m
 inner join direccion_exacta de on m.direccion_exacta_id = de.direccion_exacta_id
 inner join distrito d on de.distrito_id = d.distrito_id
@@ -18,5 +13,3 @@ inner join tamanio t on m.tamanio_id = t.tamanio_id
 inner join facilidad_entrenamiento fe on m.facilidad_entrenamiento_id = fe.facilidad_entrenamiento_id
 inner join rescatista re on m.rescatista_id = re.rescatista_id
 inner join persona p on re.persona_id = p.persona_id
-end Buscar_Mascota;
-    

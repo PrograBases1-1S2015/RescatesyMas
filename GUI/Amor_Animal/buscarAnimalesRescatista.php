@@ -126,7 +126,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="busqueda">
     <form id="busquedaMascota" action="buscarAnimalesRescatista.php" method="post">
                         <select name='color' style="width: 200px; display: block; float: left;">
-                            <option>Seleccione el color</option>
+                            <option value="0">Seleccione el color</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
@@ -146,7 +146,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </select>
         
                         <select name='tamaño' style="width: 200px; display: block; float: left;">
-                            <option>Seleccione el tamano</option>
+                            <option value="0">Seleccione el tamano</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
@@ -166,7 +166,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </select>
         
                         <select id = 'con_mascota' name='mascota' onChange="getRaza(this.value);"  style="width: 200px; display: block; float: left;">
-                            <option>Seleccione el Tipo de Mascota</option>
+                            <option value="0">Seleccione el Tipo de Mascota</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
@@ -186,11 +186,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                        </select>
         
                         <select id = 'con_raza' name='raza' style="width: 200px; display: block; float: left;">
-                            <option >Seleccione la Raza</option>
+                            <option value="0">Seleccione la Raza</option>
                        </select>
         
                         <select name='nivel_energia' style="width: 200px; display: block; float: left;">
-                            <option>Seleccione el nivel</option>
+                            <option value="0">Seleccione el nivel</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
@@ -210,7 +210,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </select>
                         <input id="campoFormulario" name="distrito" type="text" value="Distrito"/>
                         <select name='estadoMascota' style="width: 200px; display: block; float: left;">
-                            <option>Seleccione el Estado de la Mascota</option>
+                            <option value="0">Seleccione el Estado de la Mascota</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
@@ -229,7 +229,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             ?>
                        </select>
                        <select name='facilidad_entrenamiento' style="width: 200px; display: block; float: left;">
-                            <option>Seleccione la facilidad</option>
+                            <option value="0">Seleccione la facilidad</option>
                             <?php
                                 $conn = oci_connect(USER, PASS, HOST);
                                 $curs = oci_new_cursor($conn);
@@ -249,7 +249,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </select>
                         
                     <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
-                        <input id="campoFormulario" name="fecha" type="text" value="Fecha"/>
+                       
                     
                         <input type="submit" name='buscar' value="Buscar" />
                  <!--<button onclick="ajax_post()"type="submit">Buscar</button>-->
@@ -259,7 +259,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 if (isset($_POST['buscar'])){
 
                  $nombre = $_POST['nombre'];
-                 $fecha = $_POST['fecha'];
                  $distrito = $_POST['distrito'];
                  $raza = $_POST['raza'];
                  $color = $_POST['color'];
@@ -268,10 +267,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                  $mascota = $_POST['mascota'];
                  $nivel_energia = $_POST['nivel_energia'];
                  $nivelEntrenamiento = $_POST['facilidad_entrenamiento'];
+                 echo $nombre.'\n';
+                 echo $distrito.'\n';
+                 echo $raza.'\n';
+                 echo $color.'\n';
+                 echo $estado.'\n';
+                 echo $tamanio.'\n';
+                 echo $mascota.'\n';
+                 echo $nivel_energia.'\n';
+                 echo $nivelEntrenamiento.'\n';
+                 
 
                 $conn = oci_connect(USER, PASS, HOST);
                 $curs = oci_new_cursor($conn);
-                $stid = oci_parse($conn, "begin Buscar_Mascota('$nombre','$fecha','$distrito','$raza','$color','$estado','$tamanio','$mascota','$nivel_energia','$nivelEntrenamiento',:cursbv); end;");
+                $stid = oci_parse($conn, "begin Buscar_Mascota('$nombre','$distrito','$raza','$color','$estado','$tamanio','$mascota','$nivel_energia','$nivelEntrenamiento',:cursbv); end;");
                 oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
                 $a=oci_execute($stid);
                 $b=oci_execute($curs);
