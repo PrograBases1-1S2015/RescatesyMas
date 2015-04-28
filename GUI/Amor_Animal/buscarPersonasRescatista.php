@@ -98,7 +98,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                    <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
                      <input id="campoFormulario" name="apellido" type="text" value="Apellido"/>
                         <input id="campoFormulario" name="e-mail" type="text" value="E-Mail"/>
-                        <input id="campoFormulario" name="distrito" type="text" value="Distrito"/>
                         <input id="campoFormulario" name="usuario" type="text" value="Usuario"/>
                         
                         <table> 
@@ -131,14 +130,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     $nombre = $_POST['nombre'];
                     $apellido = $_POST['apellido'];
                     $tipoPersona = $_POST['tipoPersona'];
-                    echo $tipoPersona;
                     $email = $_POST['e-mail'];
-                    $distrito= $_POST['distrito'];
                     $usuario = $_POST['usuario'];
                    
                     $conn = oci_connect(USER, PASS, HOST);
                     $curs = oci_new_cursor($conn);
-                    $stid = oci_parse($conn, "begin Buscar_Persona_Global('$nombre','$apellido','$tipoPersona','$email','$distrito','$usuario',:cursbv); end;");
+                    $stid = oci_parse($conn, "begin Busqueda_Personas('$nombre','$apellido','$tipoPersona','$email','$usuario',:cursbv); end;");
                     oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
                     $a=oci_execute($stid);
                     $b=oci_execute($curs);
@@ -146,8 +143,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     if ($a == true){
                        ?>
                       <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Distrito</td><td>Usuario</td>
-                     <td style="border:1px solid #000000;">Correo</td></tr>
+                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Correo</td><td>Estado en Lista Negra</td>
+                     <td style="border:1px solid #000000;">Número de teléfono</td><td>Usuario</td></tr> 
                      <?php
 
                      while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
