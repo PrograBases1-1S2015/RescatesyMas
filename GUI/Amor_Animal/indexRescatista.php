@@ -103,13 +103,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main">
     <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-include ("settings.php");
-include ("common.php"); 
 
 
 $conn = oci_connect(USER, PASS, HOST);
