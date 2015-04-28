@@ -25,6 +25,59 @@ OCILogoff($Conn);
 
 
 
+$form = '';
+
+if (isset($_POST['seleccion']))
+{
+    if($_POST['Formulario'] == 0)
+    {
+            echo "<script>alert(\"No eligio ningun formulario, intentelo de nuevo.\");</script>";
+            echo "<script>setTimeout(location.href='test.php', 5000);</script>";    }
+    else
+    {
+        
+        $conn = oci_connect(USER, PASS, HOST);
+        $curs = oci_new_cursor($conn);
+        $stid = oci_parse($conn, "begin Buscar_Preguntas(".$_POST['Formulario']." ,:cursbv); end;");
+        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+        oci_execute($stid);
+        oci_execute($curs); 
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+        {
+            $form = $form .'<tr><td>&nbsp; </td></tr>';
+            $form = $form .'<tr>';
+            $form = $form .'<td width="1100">';
+            $form = $form .'<label style="width: 500px; display: block; float: left;" > "'.$row["PREGUNTA"].'" </label>';
+            $form = $form .'<select name="prueba" style="width: 200px; display: block; float: left;">';
+            $form = $form .'<option>Seleccione su respuesta</option>';
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////          
+            $curs1 = oci_new_cursor($conn);
+            $stid1 = oci_parse($conn, "begin Buscar_Respuestas(".$row["PREGUNTA_ID"]." ,:cursbv1); end;");
+            oci_bind_by_name($stid1, ":cursbv1", $curs1, -1, OCI_B_CURSOR);
+            oci_execute($stid1);
+            oci_execute($curs1); 
+            while (($row1 = oci_fetch_array($curs1, OCI_ASSOC+OCI_RETURN_NULLS)) != false) 
+            {
+                $form = $form .'<option value="'.$row1["RESPUESTA_ID"].'">'.$row1["RESPUESTA"].'</option>';
+            }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////          
+            $form = $form .'</select>';
+            $form = $form .'</td>';
+            $form = $form .'</tr>';
+        }
+
+        oci_free_statement($stid);
+        oci_free_statement($curs);
+        oci_free_statement($stid1);
+        oci_free_statement($curs1);
+        oci_close($conn);        
+    }
+}
+
+
+
+
+
 ?>
 <!--A Design by W3layouts
 Author: W3layout
@@ -96,29 +149,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main">
 	<div class="test">
             
-		<form action="test2.php" method="post" >
-                     <label>Test:</label>
-                        <select name='Formulario'>
-                            <option value="0">Seleccione el Test</option>
-                                <?php
-                                $conn = oci_connect(USER, PASS, HOST);
-                                $curs = oci_new_cursor($conn);
-                                $stid = oci_parse($conn, "begin Get_Formulario(:cursbv); end;");
-                                oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-                                oci_execute($stid);
-                                oci_execute($curs); 
-                                while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-                                    echo '<option value="'.$row["TIPO_FORMULARIO_ID"].'">'.$row["TIPO_FORMULARIO"].'</option>';
-                                }
-
-                                oci_free_statement($stid);
-                                oci_free_statement($curs);
-                                oci_close($conn);
-
-                                ?>                        
-                        </select>
-                
-	          <input id="campoBoton" name="seleccion" type="submit" value="Seleccionar" />
+		<form action="" method="post" >
+                    <table>
+                        <?php
+                            echo $form;
+                        ?>
+                    </table>
+	          <input id="campoBoton" name="enviar" type="submit" value="enviar" />
                 </form>
   	</div>
 
