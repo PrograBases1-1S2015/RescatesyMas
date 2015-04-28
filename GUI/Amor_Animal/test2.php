@@ -77,27 +77,6 @@ if (isset($_POST['seleccion']))
 
 
 
-//<tr><td>&nbsp; </td></tr>
-//<tr>
-//<td width="500">
-//    <label style="width: 200px; display: block; float: left;" >PaÃ­s:</label>
-//   <select name='pais' onChange="getProvincia(this.value);" style="width: 200px; display: block; float: left;">
-//    <option>Seleccione el pais</option>
-//
-//            while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-//                echo '<option value="'.$row["PAIS_ID"].'">'.$row["PAIS"].'</option>';
-//            }
-//
-//            oci_free_statement($stid);
-//            oci_free_statement($curs);
-//            oci_close($conn);
-//
-//
-//   </select>
-//</td>
-//</tr>
-
-
 
 ?>
 <!--A Design by W3layouts

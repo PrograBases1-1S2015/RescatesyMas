@@ -1,4 +1,5 @@
 <?php
+require_once ('src/facebook.php');
 include ("auth.php");
 
 $nom_Usuario = $_COOKIE['id'];
@@ -21,6 +22,23 @@ While (OCIFetchInto($sql_1, $row, OCI_ASSOC))
 }
 OCIFreeStatement($sql_1);
 OCILogoff($Conn);
+
+
+        $config = array();
+        $config['appId'] = '1584420661806452';
+        $config['secret'] = 'f8bb41e7e88a1bb300a2a6a1b47144af'; // oculte mi secret por seguridad :)
+        $config['fileUpload'] = false;
+
+        $facebook = new Facebook($config);
+
+        $params = array(
+          'scope' => 'read_stream, friends_likes, publish_actions',
+          'redirect_uri' => 'http://localhost/Amor_Animal/registroMascotas.php'
+        );
+
+        $loginUrl = $facebook->getLoginUrl($params);
+
+        $userID = $facebook->getAccessToken();
 
 //Al presionar el boton de login
 if (isset($_POST['enviar']))
@@ -110,8 +128,19 @@ if (isset($_POST['enviar']))
     if($lob_Antes->savefile($foto_Antes) && $lob_Despues->savefile($foto_Despues))
     {
         OCICommit($conn);
-        echo "Blob successfully uploaded\n<br>";
-        echo "<a href=show.php>SHOW FILES</a>";
+        
+        echo "<script>setTimeout(location.href='$loginUrl', 5000);</script>";
+        
+        if($userID != '1584420661806452|f8bb41e7e88a1bb300a2a6a1b47144af')
+            {
+                $req =  array(
+                'access_token' => $userID,
+                'message' => "Se a registrado a '$nombre' una hermosa mascota que puede ser para ti, descubre que tan linda es en nuestra pagina");
+
+                $res = $facebook->api('/me/feed', 'POST', $req);        
+            }
+
+        
     }
     else
     {
@@ -123,6 +152,8 @@ if (isset($_POST['enviar']))
 
 
 }
+
+
 
 
 ?>
@@ -519,7 +550,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </table>
                 <div style="clear: both;"></div>
                 <br/>
-                <input id="campo10" name="enviar" type="submit" value="Enviar" />                
+                <input id="campo10" name="enviar" type="submit" value="Enviar" /> 
                 
 	</form>
 	  
