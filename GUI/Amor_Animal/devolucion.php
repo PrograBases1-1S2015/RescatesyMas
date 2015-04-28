@@ -91,17 +91,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>                                                                                                
 <div class="main">
 	<div class="busqueda">
-		<form action="" method="post" >
+            <form action="Adopcion.php" method="post" >
             <legend>Devolución</legend>
             
                 <label>Mascota:</label>
-                       			<select name='mascota'>
-                            <option value="0">Seleccione la Mascota</option>
+                       			<select name="mascota">
+                            <option >Seleccione la Mascota</option>
+                              <?PHP
+                            $u=$_COOKIE['id'];
+                            $con = oci_connect(USER, PASS, HOST);
+                            $curs = oci_new_cursor($con);
+                    $stid = oci_parse($con,"begin MASCOTASXADOPTANTE('$u',:cursbv); end;");
+  oci_bind_by_name($stid, ':cursbv', $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);  
+ 
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+             
+            echo '<option value="'.$row["MASCOTA_ID"].'">'.$row["NOMBRE"].'</option>';
+              }
+
+    oci_free_statement($stid);
+    oci_free_statement($curs);
+    oci_close($con);	?>
                        			</select>
                 <label>Causa:</label>
-                       			<select name='causa'>
-                            <option value="0">Seleccione la Causa</option>
-                       			</select>
+                       			<select name="causa">
+                            <option>Seleccione la Causa</option>
+                           <?PHP
+                            $con = oci_connect(USER, PASS, HOST);
+                            $curs = oci_new_cursor($con);
+                    $stid = oci_parse($con,"begin GET_CAUSAS(:cursbv); end;");
+  oci_bind_by_name($stid, ':cursbv', $curs, -1, OCI_B_CURSOR);
+  oci_execute($stid);
+  oci_execute($curs);  
+ 
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+             
+            echo '<option value="'.$row["CAUSA_ID"].'">'.$row["CAUSA"].'</option>';
+              }
+
+    oci_free_statement($stid);
+    oci_free_statement($curs);
+    oci_close($con);	?>
+                                        </select>
                 <input id="campoBoton" name="devolver" type="submit" value="devolver" />
                 
 	</form>

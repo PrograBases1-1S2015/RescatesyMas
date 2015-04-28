@@ -21,7 +21,7 @@ oci_execute($curs);
 <?php
  
 while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-    echo '<option value="'.$row["CANTON_ID"].'">'.$row["CANTON"].'</option>';
+    echo '<option value="'.$row["CANTON"].'">'.$row["CANTON"].'</option>';
 }
 
 oci_free_statement($stid);

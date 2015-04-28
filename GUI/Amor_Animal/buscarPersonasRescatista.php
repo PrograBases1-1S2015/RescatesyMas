@@ -93,23 +93,82 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main">
 	
 <div class="busqueda">
- 	 	<form id="busquedaMascota" action="" method="post">
- 	 				<label>Nombre:</label>
-                        <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
-                    <label>Apellido:</label>
-                        <input id="campoFormulario" name="apellido" type="text" value="Apellido"/>
-                    <label>Tipo Persona:</label>
-                        <input id="campoFormulario" name="tipoPersona" type="text" value="Tipo Persona"/>
-                    <label>E-Mail:</label>
+    <form id="busquedaMascota" action="buscarPersonasRescatista.php" method="post">
+               
+                   <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
+                     <input id="campoFormulario" name="apellido" type="text" value="Apellido"/>
                         <input id="campoFormulario" name="e-mail" type="text" value="E-Mail"/>
-                    <label>Distrito:</label>
                         <input id="campoFormulario" name="distrito" type="text" value="Distrito"/>
-                    <label>Cédula:</label>
-                        <input id="campoFormulario" name="cedula" type="number" value="Cédula"/>
-                    <input id="campoBoton" name="buscar" type="submit" value="Buscar" />
-                   		
-                   	
-        </form>      
+                        <input id="campoFormulario" name="usuario" type="text" value="Usuario"/>
+                        
+                        <table> 
+                        <tr>
+                         <td width="500">
+                             <label for="rescatista" style="width: 200px; display: block; float: left;" >Rescatista:</label>
+                             <input type="radio" name="tipoPersona" id="rescatista" value="rescatista" />
+                         </td>
+                       </tr>
+                       <tr><td>&nbsp; </td></tr>
+                       <tr>
+                         <td width="500">
+                             <label for="adoptante" style="width: 200px; display: block; float: left;" >Adoptante:</label>
+                             <input type="radio" name="tipoPersona" id="adoptante" value="adoptante" checked  />
+                         </td>
+                       </tr>
+                       <tr><td>&nbsp; </td></tr>
+                     </table>
+                       
+                        
+                       <input type="submit" name='buscar' value="Buscar" />
+                    
+                   	              	
+        </form>  
+         <section id="resultados"> 
+             <?php 
+                
+                   if (isset($_POST['buscar'])){
+      
+                    $nombre = $_POST['nombre'];
+                    $apellido = $_POST['apellido'];
+                    $tipoPersona = $_POST['tipoPersona'];
+                    echo $tipoPersona;
+                    $email = $_POST['e-mail'];
+                    $distrito= $_POST['distrito'];
+                    $usuario = $_POST['usuario'];
+                   
+                    $conn = oci_connect(USER, PASS, HOST);
+                    $curs = oci_new_cursor($conn);
+                    $stid = oci_parse($conn, "begin Buscar_Persona_Global('$nombre','$apellido','$tipoPersona','$email','$distrito','$usuario',:cursbv); end;");
+                    oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                    $a=oci_execute($stid);
+                    $b=oci_execute($curs);
+                    
+                    if ($a == true){
+                       ?>
+                      <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
+                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Distrito</td><td>Usuario</td>
+                     <td style="border:1px solid #000000;">Correo</td></tr>
+                     <?php
+
+                     while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+                         echo "<tr>\n";
+                         foreach ($row as $item) {
+                         echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+                     }
+                         echo "</tr>\n";
+                  }
+                  oci_free_statement($stid);
+                  oci_free_statement($curs);
+                  oci_close($conn);
+
+                  }
+                }
+                     ?>
+
+         </table>   
+             
+         </section>     
+            
 	</div>
 
 </div>

@@ -22,6 +22,24 @@ While (OCIFetchInto($sql_1, $row, OCI_ASSOC))
 }
 OCIFreeStatement($sql_1);
 OCILogoff($Conn);
+
+$form = '<label>Test:</label><select name="tipoFormulario"><option value="0">Seleccione el Test</option>';
+$conn = oci_connect(USER, PASS, HOST);
+$curs = oci_new_cursor($conn);
+$stid = oci_parse($conn, "begin Get_Formulario(:cursbv); end;");
+oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+oci_execute($stid);
+oci_execute($curs); 
+while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+    $form = $form .'<option value="'.$row["TIPO_FORMULARIO_ID"].'">'.$row["TIPO_FORMULARIO"].'</option>';
+}
+
+oci_free_statement($stid);
+oci_free_statement($curs);
+oci_close($conn);
+$form = $form .'</select>';
+
+
 ?>
 <!--A Design by W3layouts
 Author: W3layout
@@ -88,20 +106,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="clear"></div>                                                                     
 	  </div>                                                                                          
    </div>                                                                                             
-</div>                                                                                                
+</div> 
+<br/><br/><br/>    
 <div class="main">
 	<div class="test">
+            
 		<form action="" method="post" >
-			             <label>Test:</label>
-                       			<select name='tamaño'>
-                            <option value="0">Seleccione el Test</option>
-                       			</select>
-                
+                    <?php
+                        echo $form;
+                    ?>
 	          <input id="campoBoton" name="seleccion" type="submit" value="Seleccionar" />
+                </form>
   	</div>
 
-  </form>
-	  
 	</div>
 
 </div>

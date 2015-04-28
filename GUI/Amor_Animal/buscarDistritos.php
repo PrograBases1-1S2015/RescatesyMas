@@ -21,7 +21,7 @@ oci_execute($curs);
 <?php
  
 while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-    echo '<option value="'.$row["DISTRITO_ID"].'">'.$row["DISTRITO"].'</option>';
+    echo '<option value="'.$row["DISTRITO"].'">'.$row["DISTRITO"].'</option>';
 }
 
 oci_free_statement($stid);
