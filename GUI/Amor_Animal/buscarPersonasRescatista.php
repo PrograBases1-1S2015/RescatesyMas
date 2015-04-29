@@ -95,11 +95,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="busqueda">
     <form id="busquedaMascota" action="buscarPersonasRescatista.php" method="post">
                
-                   <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
-                     <input id="campoFormulario" name="apellido" type="text" value="Apellido"/>
+                        <input id="campoFormulario" name="nombre" type="text" value="Nombre"/>
+                        <input id="campoFormulario" name="apellido" type="text" value="Apellido"/>
                         <input id="campoFormulario" name="e-mail" type="text" value="E-Mail"/>
                         <input id="campoFormulario" name="usuario" type="text" value="Usuario"/>
-                        
                         <table> 
                         <tr>
                          <td width="500">
@@ -118,24 +117,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                      </table>
                        
                         
+                       
+                        
                        <input type="submit" name='buscar' value="Buscar" />
                     
                    	              	
         </form>  
          <section id="resultados"> 
              <?php 
-                
+                $x="Nombre";
                    if (isset($_POST['buscar'])){
+                       if ( $x == $_POST['nombre']){
+                            $nombre = $_POST['nombre'];
+                                
+                            
+                       }else{
+                           $nombre='';
+                       }
+                       
       
                     $nombre = $_POST['nombre'];
+                    echo $nombre."\n";
                     $apellido = $_POST['apellido'];
+                    echo $apellido."\n";
                     $tipoPersona = $_POST['tipoPersona'];
+                    echo $tipoPersona."\n";
                     $email = $_POST['e-mail'];
+                    echo  $email."\n";
                     $usuario = $_POST['usuario'];
+                    echo $usuario."\n";
+                    
+                    if ($tipoPersona == 'rescatista'){
                    
                     $conn = oci_connect(USER, PASS, HOST);
                     $curs = oci_new_cursor($conn);
-                    $stid = oci_parse($conn, "begin Busqueda_Personas('$nombre','$apellido','$tipoPersona','$email','$usuario',:cursbv); end;");
+                    $stid = oci_parse($conn, "begin Busqueda_Rescatista('$nombre','$apellido','$tipoPersona','$email','$usuario',:cursbv); end;");
                     oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
                     $a=oci_execute($stid);
                     $b=oci_execute($curs);
@@ -143,8 +159,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     if ($a == true){
                        ?>
                       <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Correo</td><td>Estado en Lista Negra</td>
-                     <td style="border:1px solid #000000;">Número de teléfono</td><td>Usuario</td></tr> 
+                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Correo</td><td style="border:1px solid #000000;">Estado en Lista Negra</td><td style="border:1px solid #000000;">Número de teléfono</td><td
+                              style="border:1px solid #000000;">Usuario</td></tr> 
                      <?php
 
                      while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
@@ -160,6 +176,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                   }
                 }
+                
+                else{
+                        $conn = oci_connect(USER, PASS, HOST);
+                        $curs = oci_new_cursor($conn);
+                        $stid = oci_parse($conn, "begin Busqueda_Adoptante('$nombre','$apellido','$tipoPersona','$email','$usuario',:cursbv); end;");
+                        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+                        $a=oci_execute($stid);
+                        $b=oci_execute($curs);
+
+                        if ($a == true){
+                           ?>
+                          <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
+                          <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Correo</td><td>Estado en Lista Negra</td>
+                         <td style="border:1px solid #000000;">Número de teléfono</td><td>Usuario</td></tr> 
+                         <?php
+
+                         while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+                             echo "<tr>\n";
+                             foreach ($row as $item) {
+                             echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+                         }
+                             echo "</tr>\n";
+                      }
+                      oci_free_statement($stid);
+                      oci_free_statement($curs);
+                      oci_close($conn);
+
+                      }  
+
+                    }
+                    }
                      ?>
 
          </table>   
