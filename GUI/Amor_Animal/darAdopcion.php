@@ -101,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="busqueda">
             <form action="Adopcion.php" method="post" >
             <legend>Formulario de Registro</legend>
-               <label>Nombre Completo del Adoptante:</label>
+               <label>Nombre de usuario del adoptante:</label>
                         <input id="campoFormulario" name="dato" type="text" value="Nombre Completo"/>
                 <label>Mascota:</label>
                        			<select name="tamaño">

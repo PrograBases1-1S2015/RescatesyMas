@@ -1,0 +1,7 @@
+Recuerden agregar está linea a los formularios de los adoptantes
+ <li class="last"><a href="perfilA.php"><span>Mi perfil</span></a></li>
+
+y esta a el de los rescatistas
+<li class="last"><a href="perfilR.php"><span>Mi perfil</span></a></li>
+
+Revisen que los enlances esten
