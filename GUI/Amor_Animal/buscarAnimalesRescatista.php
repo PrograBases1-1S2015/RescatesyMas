@@ -267,15 +267,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                  $mascota = $_POST['mascota'];
                  $nivel_energia = $_POST['nivel_energia'];
                  $nivelEntrenamiento = $_POST['facilidad_entrenamiento'];
-                 echo $nombre.'\n';
-                 echo $distrito.'\n';
-                 echo $raza.'\n';
-                 echo $color.'\n';
-                 echo $estado.'\n';
-                 echo $tamanio.'\n';
-                 echo $mascota.'\n';
-                 echo $nivel_energia.'\n';
-                 echo $nivelEntrenamiento.'\n';
                  
 
                 $conn = oci_connect(USER, PASS, HOST);

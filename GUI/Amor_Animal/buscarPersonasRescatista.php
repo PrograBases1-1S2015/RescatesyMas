@@ -114,12 +114,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                          </td>
                        </tr>
                        <tr><td>&nbsp; </td></tr>
-                     </table>
-                       
-                        
-                       
-                        
-                       <input type="submit" name='buscar' value="Buscar" />
+                     </table>   
+                     <input type="submit" name='buscar' value="Buscar" />
                     
                    	              	
         </form>  
@@ -137,15 +133,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                        
       
                     $nombre = $_POST['nombre'];
-                    echo $nombre."\n";
                     $apellido = $_POST['apellido'];
-                    echo $apellido."\n";
                     $tipoPersona = $_POST['tipoPersona'];
-                    echo $tipoPersona."\n";
                     $email = $_POST['e-mail'];
-                    echo  $email."\n";
                     $usuario = $_POST['usuario'];
-                    echo $usuario."\n";
                     
                     if ($tipoPersona == 'rescatista'){
                    
