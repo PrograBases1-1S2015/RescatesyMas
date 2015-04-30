@@ -138,15 +138,130 @@ oci_execute($curs);
         echo "</tr>\n";
  }
 
-
-
-
 oci_free_statement($stid);
 oci_free_statement($curs);
 oci_close($conn);
 
 ?>
  </table>
+    <div>
+        <?php
+        
+        $conn = oci_connect(USER, PASS, HOST);
+        $curs = oci_new_cursor($conn);
+        $stid = oci_parse($conn,"begin Cantidad_Mascotas_Registradas(:cursbv); end;" );
+        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+        oci_execute($stid);
+        oci_execute($curs); 
+        
+        
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+        foreach ($row as $item) {
+        echo "Cantidad de mascotas registradas: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+         }
+        }
+        oci_free_statement($stid);
+        oci_free_statement($curs);
+        oci_close($conn); 
+        
+        $conn = oci_connect(USER, PASS, HOST);
+        $curs = oci_new_cursor($conn);
+        $stid = oci_parse($conn,"begin Cantidad_Mascotas_Adoptadas(:cursbv); end;");
+        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+        oci_execute($stid);
+        oci_execute($curs); 
+      
+        
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+        foreach ($row as $item) {
+        echo "Cantidad de mascotas adoptadas: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+         }
+        
+        }
+        oci_free_statement($stid);
+        oci_free_statement($curs);
+        oci_close($conn);
+           
+        $conn = oci_connect(USER, PASS, HOST);
+        $curs = oci_new_cursor($conn);
+        $stid= oci_parse($conn,"begin Cantidad_Mascotas_En_Adopcion(:cursbv) ; end;" );
+        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+        oci_execute($stid);
+        oci_execute($curs); 
+        
+        
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+        
+        foreach ($row as $item) {
+        echo "Cantidad de mascotas en adopción: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+         }
+        
+        }
+        oci_free_statement($stid);
+        oci_free_statement($curs);
+        oci_close($conn);
+         
+        ?>
+        
+         <?php
+        $conn = oci_connect(USER, PASS, HOST);
+        $curs = oci_new_cursor($conn);
+        $stid = oci_parse($conn,"begin Top_devolucion_Mascotas(:cursbv) ; end;" );
+        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+        oci_execute($stid);
+        oci_execute($curs);  
+        ?>
+     
+        <div class="tabla">
+        <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
+            <tr><td style="border:1px solid #000000;">Causas Devolución Mascotas</td></tr> 
+        <?php
+
+            while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+                echo "<tr>\n";
+                foreach ($row as $item) {
+                echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+            }
+                echo "</tr>\n";
+         }
+        oci_free_statement($stid);
+        oci_free_statement($curs);
+        oci_close($conn);
+
+        ?>
+         </table>
+         <?php
+            
+        $conn = oci_connect(USER, PASS, HOST);
+        $curs = oci_new_cursor($conn);
+        $stid = oci_parse($conn,"begin Top_Mejores_Adoptantes(:cursbv) ; end;" );
+        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+        oci_execute($stid);
+        oci_execute($curs);
+        
+        ?>
+        <div class="tabla">
+        <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
+            <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td></tr> 
+        <?php
+
+            while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+                echo "<tr>\n";
+                foreach ($row as $item) {
+                echo "<td>" . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+            }
+                echo "</tr>\n";
+         }
+        oci_free_statement($stid);
+        oci_free_statement($curs);
+        oci_close($conn);
+
+        ?>
+        </table>
+         </div>
+        </div>
+        </div> 
+       
 </div> 	
 </div>
 </body>
