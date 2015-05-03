@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include ("settings.php");
 include ("common.php");
 if(isset($_COOKIE['id']))

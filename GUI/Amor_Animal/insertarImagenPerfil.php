@@ -1,5 +1,5 @@
 <?php
-    
+    error_reporting(0);
     $nom_Usuario = $_COOKIE['id'];
 
     $lim_tam = "1024000";

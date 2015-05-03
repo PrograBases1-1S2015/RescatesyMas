@@ -8,9 +8,6 @@ begin
   update mascota 
   set estado_mascota_id = 1
   where mascota_id = mascota;
-  
-  delete adopciones_x_mascota axm
-  where axm.adoptante_id=ida and mascota=axm.mascota_id;
 end Agregar_Devoluciones;
 
 

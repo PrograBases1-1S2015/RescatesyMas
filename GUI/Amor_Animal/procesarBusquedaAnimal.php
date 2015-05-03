@@ -1,6 +1,7 @@
    <?php
         include ("settings.php");
         include ("common.php");
+        error_reporting(0);
     if(isset($_POST['buscar'])){
         if (isset($_POST['color'])){
             $color = $_POST['color'];

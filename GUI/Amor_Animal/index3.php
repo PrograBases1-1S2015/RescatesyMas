@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-
+            error_reporting(0);
             require 'facebook-php-sdk-v4-4.0-dev/autoload.php';
 
             use Facebook\FacebookSession;

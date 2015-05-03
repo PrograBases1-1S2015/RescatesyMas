@@ -7,7 +7,7 @@
  */
 include ("settings.php");
 include ("common.php"); 
-
+error_reporting(0);
 
 $conn = oci_connect(USER, PASS, HOST);
 $curs = oci_new_cursor($conn);

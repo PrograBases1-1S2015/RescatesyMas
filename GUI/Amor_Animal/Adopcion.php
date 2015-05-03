@@ -1,8 +1,10 @@
 <?php
+//error_reporting(0);
     include 'auth.php';
-    
+//    error_reporting(0);
     if (isset($_REQUEST["adoptar"])){
         $Usuario=$_COOKIE['id'];
+                
         $UAdoptante=$_POST["dato"];
         
         if ($UAdoptante!='' && $UAdoptante!="Nombre Completo"){
@@ -53,10 +55,28 @@ OCILogoff($Conn);
         }
      }
      
-       if (isset($_REQUEST["devolver"])){
+       if (isset($_REQUEST["devolver"]))
+        {
+           
            $U=$_COOKIE['id'];
            $CAUSA=$_POST["causa"];
            $MASCOTA=$_POST["mascota"];
+           $idAdoptante;
+           
+            $Conn = oci_connect(USER, PASS, HOST);
+
+            $sql_1 = "SELECT ADOPTANTE_ID
+                      FROM ADOPTANTE INNER JOIN PERSONA ON ADOPTANTE.PERSONA_ID = PERSONA.PERSONA_ID
+                      INNER JOIN USUARIO ON PERSONA.USUARIO_ID = USUARIO.USUARIO_ID
+                      WHERE USUARIO.NOM_USUARIO = '$U'";
+            $sql_1 = OCIParse($Conn, $sql_1);
+            OCIExecute($sql_1, OCI_DEFAULT);
+            While (OCIFetchInto($sql_1, $row, OCI_ASSOC))
+            {
+                $idAdoptante = $row['ADOPTANTE_ID'];
+            }
+            OCIFreeStatement($sql_1);
+            OCILogoff($Conn);           
           
            $conn = oci_connect(USER, PASS, HOST);
             
@@ -66,7 +86,7 @@ OCILogoff($Conn);
             echo "<script>setTimeout(location.href='index.php', 5000);</script>";
         }
         else{
-            $stmt = oci_parse($conn,"begin  Agregar_Devoluciones('$U','$MASCOTA','$CAUSA'); end;");
+            $stmt = oci_parse($conn,"begin  Agregar_Devoluciones('$idAdoptante','$MASCOTA','$CAUSA'); end;");
             oci_execute($stmt);
             echo "<script>alert(\"Devolución realizada con éxito.\");</script>";
             echo "<script>setTimeout(location.href='devolucion.php#portfolio', 5000);</script>";

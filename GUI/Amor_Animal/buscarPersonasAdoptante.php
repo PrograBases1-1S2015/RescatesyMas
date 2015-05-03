@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include ("auth.php");
 //include ("settings.php");
 $nom_Usuario = $_COOKIE['id'];
@@ -77,12 +77,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header-bottom">                                                                       
 	  <div class="wrap">	                                                                          
 		<div id="cssmenu">                                                                            
-			 <ul>                                                                                     
-			   <li><a href="indexAdoptante.php"><span>Inicio</span></a></li>
-			   <li class="has-sub"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
-			   <li class="active"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
-         	   <li class="last"><a href="test.php"><span>Test</span></a></li>
-         	   <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
+                    <ul>
+                        <li class="last"><a href="indexAdoptante.php"><span>Inicio</span></a></li>
+                        <li class="last"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
+                        <li class="last"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
+                        <li class="last"><a href="test.php"><span>Test</span></a></li>
+                        <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
+                        <li class="last"><a href="perfilA.php"><span>Mi perfil</span></a></li>
+                    </ul>
 			</ul>                                                                                     
 		</div>                                                                                        
 		<div class="clear"></div>                                                                     
@@ -97,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <input id="campoFormulario" name="apellido" type="text" value="Apellido"/>
                         <input id="campoFormulario" name="e-mail" type="text" value="E-Mail"/>
                         <input id="campoFormulario" name="usuario" type="text" value="Usuario"/>
-                        <table> 
+                        <table > 
                         <tr>
                          <td width="500">
                              <label for="rescatista" style="width: 200px; display: block; float: left;" >Rescatista:</label>
@@ -118,6 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                    	
         </form> 
             <section id="resultados"> 
+                <div class="tabla">
              <?php 
                 $x="Nombre";
                    if (isset($_POST['buscar'])){
@@ -147,9 +150,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     
                     if ($a == true){
                        ?>
-                      <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Correo</td><td style="border:1px solid #000000;">Estado en Lista Negra</td><td style="border:1px solid #000000;">Número de teléfono</td><td
-                              style="border:1px solid #000000;">Usuario</td></tr> 
+                      <table >
+                      <tr><td >Nombre</td><td >Apellidos</td><td >Correo</td><td >Estado en Lista Negra</td><td >Número de teléfono</td><td
+                              >Usuario</td></tr> 
                      <?php
 
                      while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
@@ -176,9 +179,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         if ($a == true){
                            ?>
-                          <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-                          <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td><td style="border:1px solid #000000;">Correo</td><td>Estado en Lista Negra</td>
-                         <td style="border:1px solid #000000;">Número de teléfono</td><td>Usuario</td></tr> 
+                          <table >
+                          <tr><td >Nombre</td><td >Apellidos</td><td >Correo</td><td>Estado en Lista Negra</td>
+                         <td >Número de teléfono</td><td>Usuario</td></tr> 
                          <?php
 
                          while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
@@ -199,7 +202,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                      ?>
 
          </table>   
-             
+         </div>    
          </section>     
             
             

@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include ("auth.php");
 //include ("settings.php");
 $nom_Usuario = $_COOKIE['id'];
@@ -77,13 +77,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header-bottom">                                                                       
 	  <div class="wrap">	                                                                          
 		<div id="cssmenu">                                                                            
-			 <ul>                                                                                     
-			   <li><a href="indexAdoptante.php"><span>Inicio</span></a></li>
-			   <li class="active"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
-			   <li><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
-         	   <li class="last"><a href="test.php"><span>Test</span></a></li>
-         	   <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
-			</ul>                                                                                     
+                    <ul>
+                        <li class="last"><a href="indexAdoptante.php"><span>Inicio</span></a></li>
+                        <li class="last"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
+                        <li class="last"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
+                        <li class="last"><a href="test.php"><span>Test</span></a></li>
+                        <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
+                        <li class="last"><a href="perfilA.php"><span>Mi perfil</span></a></li>
+                    </ul>
 		</div>                                                                                        
 		<div class="clear"></div>                                                                     
 	  </div>                                                                                          
@@ -221,6 +222,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                        
         </form> 
              <section id="resultados"> 
+                 <div class="tabla">
                 <?php 
                 if (isset($_POST['buscar'])){
 
@@ -244,10 +246,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                   if ($a == true){
                        ?>
-                     <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-                      <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Fecha</td><td style="border:1px solid #000000;">Descripción</td><td>Nota Adicional</td>
-                     <td style="border:1px solid #000000;">Dirección Exacta</td><td style="border:1px solid #000000;">Distrito</td><td>Estado de la mascota</td><td>Raza</td>
-                     <td style="border:1px solid #000000;">Tipo de Mascota</td><td style="border:1px solid #000000;">Tamanio</td><td>Rescatista</td><td>Numero de Telefono</td></tr>
+                     <table  >
+                      <tr><td >Nombre</td><td >Fecha</td><td >Descripción</td><td>Nota Adicional</td>
+                     <td >Dirección Exacta</td><td >Distrito</td><td>Estado de la mascota</td><td>Raza</td>
+                     <td >Tipo de Mascota</td><td >Tamanio</td><td>Rescatista</td><td>Numero de Telefono</td></tr>
                      <?php
 
                      while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
@@ -266,7 +268,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                  }
              ?>
 
- </table>   
+ </table> 
+</div>                     
  </section>  
 	</div>
 

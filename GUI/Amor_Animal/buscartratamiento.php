@@ -2,7 +2,7 @@
 $q = $_POST["q"];
 include ("settings.php");
 include ("common.php"); 
-
+error_reporting(0);
 $conn = oci_connect(USER, PASS, HOST);
 $curs = oci_new_cursor($conn);
 $stid = oci_parse($conn, "begin Buscar_Tratamientos('$q',:cursbv); end;");

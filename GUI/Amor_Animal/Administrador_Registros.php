@@ -1,7 +1,7 @@
 <?php
 include ("settings.php");
 include ("common.php");
-
+error_reporting(0);
 
 //#####################Registrar Direcciones########################//
 

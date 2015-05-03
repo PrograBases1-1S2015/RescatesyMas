@@ -1,6 +1,6 @@
 <?php
 $q = $_GET["q"];
-
+error_reporting(0);
 include ("settings.php");
 include ("common.php");
 

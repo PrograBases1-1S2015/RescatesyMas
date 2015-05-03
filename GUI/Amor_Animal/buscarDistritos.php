@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $q = $_POST["q"];
 include ("settings.php");
 include ("common.php"); 

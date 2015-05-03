@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include ("auth.php");
 //include ("settings.php");
 $nom_Usuario = $_COOKIE['id'];
@@ -129,14 +129,15 @@ input[type = "radio"]:checked ~ label{color:orange;}
 	<div class="header-bottom">                                                                       
 	  <div class="wrap">	                                                                          
 		<div id="cssmenu">                                                                            
-			 <ul>                                                                                     
-			    <li><a href="indexRescatista.php"><span>Inicio</span></a></li>
-			   <li><a href="registroMascotas.php"><span>Registro de Mascotas</span></a></li>
-			   <li class="has-sub"><a href="buscarAnimalesRescatista.php"><span>Buscar Animales</span></a></li>
-			   <li class="last"><a href="buscarPersonasRescatista.php"><span>Buscar Personas</span></a></li>
-         	   <li class="active"><a href="calificar.php"><span>Calificar</span></a></li>
-         	   <li class="last"><a href="darAdopcion.php"><span>Dar en Adopción</span></a></li>
-			</ul>                                                                                     
+                    <ul>
+                        <li class="last"><a href="indexRescatista.php"><span>Inicio</span></a></li>
+                        <li><a href="registroMascotas.php"><span>Registro de Mascotas</span></a></li>
+                        <li class="last"><a href="buscarAnimalesRescatista.php"><span>Buscar Animales</span></a></li>
+                        <li class="last"><a href="buscarPersonasRescatista.php"><span>Buscar Personas</span></a></li>
+                        <li class="last"><a href="calificar.php"><span>Calificar</span></a></li>
+                        <li class="last"><a href="darAdopcion.php"><span>Dar en Adopción</span></a></li>
+                        <li class="last"><a href="perfilR.php"><span>Mi perfil</span></a></li>
+                    </ul>
 		</div>                                                                                        
 		<div class="clear"></div>                                                                     
 	  </div>                                                                                          
@@ -157,7 +158,7 @@ input[type = "radio"]:checked ~ label{color:orange;}
                         oci_execute($stid);
                         oci_execute($curs);
                         while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-                            echo '<option value="'.$row["PERSONA_ID"].'">'.$row["NOMBRE"].'<br/><br/> '.$row["APELLIDOS"].'</option>';
+                            echo '<option value="'.$row["ADOPTANTE_ID"].'">'.$row["NOMBRE"].'<br/><br/> '.$row["APELLIDOS"].'</option>';
                         }
 
                         oci_free_statement($stid);

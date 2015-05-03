@@ -3,6 +3,7 @@
 file.php
 Archivo que nos muestra el archivo pedido a la base de datos
 */
+error_reporting(0);
 $nom_Usuario = $_COOKIE['id'];
 
 $id= 1;

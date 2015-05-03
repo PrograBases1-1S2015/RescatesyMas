@@ -1,8 +1,23 @@
 <?php
-
+error_reporting(0);
 include ("auth.php");
 //include ("settings.php");
 $nom_Usuario = $_COOKIE['id'];
+
+// $nombre = '';
+// $apellidos = '';
+// $contraseña = '';
+// $cedula = '';
+// $correo = '';
+// $direccionExacta = '';
+// $telefono = '';
+// $distrito = '';
+// $canton = '';
+// $provincia = '';
+// $pais = '';
+
+
+
 $existeFoto = FALSE;
 
 $Conn = oci_connect(USER, PASS, HOST);
@@ -110,14 +125,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header-bottom">
 	  <div class="wrap">	
 		<div id="cssmenu">
-			 <ul>
-			   <li class="last"><a href="indexAdoptante.php"><span>Inicio</span></a></li>
-			   <li class="has-sub"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
-			   <li class="last"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
-         	   <li class="last"><a href="test.php"><span>Test</span></a></li>
-         	   <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
-                   <li class="active"><a href="perfilA.php"><span>Mi perfil</span></a></li>
-			</ul>
+                    <ul>
+                        <li class="last"><a href="indexAdoptante.php"><span>Inicio</span></a></li>
+                        <li class="last"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
+                        <li class="last"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
+                        <li class="last"><a href="test.php"><span>Test</span></a></li>
+                        <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
+                        <li class="last"><a href="perfilA.php"><span>Mi perfil</span></a></li>
+                    </ul>
 		</div>
 		<div class="clear"></div> 
 	  </div>
@@ -133,9 +148,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    $ok= oci_execute($sti);
    oci_execute($cur);  
      
-    
+  
  if ($ok == true){
-		
 // agarramos los datos q fueron devueltos en el cursor
 		 while ($entry = oci_fetch_array($cur, OCI_RETURN_LOBS + OCI_RETURN_NULLS)){
 

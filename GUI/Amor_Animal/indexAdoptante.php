@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include ("auth.php");
 //include ("settings.php");
 $nom_Usuario = $_COOKIE['id'];
@@ -85,13 +85,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header-bottom">
 	  <div class="wrap">	
 		<div id="cssmenu">
-			 <ul>
-			   <li class="active"><a href="indexAdoptante.php"><span>Inicio</span></a></li>
-			   <li class="has-sub"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
-			   <li class="last"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
-         	   <li class="last"><a href="test.php"><span>Test</span></a></li>
-         	   <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
-			</ul>
+                    <ul>
+                        <li class="last"><a href="indexAdoptante.php"><span>Inicio</span></a></li>
+                        <li class="last"><a href="buscarAnimalesAdoptante.php"><span>Buscar Animales</span></a></li>
+                        <li class="last"><a href="buscarPersonasAdoptante.php"><span>Buscar Personas</span></a></li>
+                        <li class="last"><a href="test.php"><span>Test</span></a></li>
+                        <li class="last"><a href="devolucion.php"><span>Devolver MAscota</span></a></li>
+                        <li class="last"><a href="perfilA.php"><span>Mi perfil</span></a></li>
+                    </ul>
 		</div>
 		<div class="clear"></div> 
 	  </div>
@@ -99,7 +100,67 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 
 <div class="main">
-     <?php
+<?php
+
+$conn = oci_connect(USER, PASS, HOST);
+$curs = oci_new_cursor($conn);
+$stid = oci_parse($conn,"begin Cantidad_Mascotas_Registradas(:cursbv); end;" );
+oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+oci_execute($stid);
+oci_execute($curs); 
+
+
+while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+foreach ($row as $item) {
+echo "Cantidad de mascotas registradas: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+ }
+}
+oci_free_statement($stid);
+oci_free_statement($curs);
+oci_close($conn); 
+
+$conn = oci_connect(USER, PASS, HOST);
+$curs = oci_new_cursor($conn);
+$stid = oci_parse($conn,"begin Cantidad_Mascotas_Adoptadas(:cursbv); end;");
+oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+oci_execute($stid);
+oci_execute($curs); 
+
+
+while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+foreach ($row as $item) {
+echo "Cantidad de mascotas adoptadas: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+ }
+
+}
+oci_free_statement($stid);
+oci_free_statement($curs);
+oci_close($conn);
+
+$conn = oci_connect(USER, PASS, HOST);
+$curs = oci_new_cursor($conn);
+$stid= oci_parse($conn,"begin Cantidad_Mascotas_En_Adopcion(:cursbv) ; end;" );
+oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
+oci_execute($stid);
+oci_execute($curs); 
+
+
+while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
+
+foreach ($row as $item) {
+echo "Cantidad de mascotas en adopción: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
+ }
+
+}
+oci_free_statement($stid);
+oci_free_statement($curs);
+oci_close($conn);
+
+?>    
+
+    
+    
+<?php
     $conn = oci_connect(USER, PASS, HOST);
     $curs = oci_new_cursor($conn);
     $stid = oci_parse($conn, "begin Get_Todas_Mascotas(:cursbv); end;");
@@ -109,10 +170,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 ?>
 <div class="tabla">
-<table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-    <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Fecha</td><td style="border:1px solid #000000;">Descripción</td><td>Nota Adicional</td>
-        <td style="border:1px solid #000000;">Dirección Exacta</td><td style="border:1px solid #000000;">Distrito</td><td>Estado de la mascota</td><td>Raza</td>
-        <td style="border:1px solid #000000;">Tipo de Mascota</td><td style="border:1px solid #000000;">Tamanio</td><td>Rescatista</td><td>Numero de Telefono</td></tr>
+<table  >
+    <tr><td >Nombre</td><td >Fecha</td><td >Descripción</td><td>Nota Adicional</td>
+        <td >Dirección Exacta</td><td >Distrito</td><td>Estado de la mascota</td><td>Raza</td>
+        <td >Tipo de Mascota</td><td >Tamanio</td><td>Rescatista</td><td>Numero de Telefono</td></tr>
 <?php
     
     while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
@@ -131,63 +192,6 @@ oci_close($conn);
  	
 </div>
  <div>
-        <?php
-        
-        $conn = oci_connect(USER, PASS, HOST);
-        $curs = oci_new_cursor($conn);
-        $stid = oci_parse($conn,"begin Cantidad_Mascotas_Registradas(:cursbv); end;" );
-        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-        oci_execute($stid);
-        oci_execute($curs); 
-        
-        
-        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
-        foreach ($row as $item) {
-        echo "Cantidad de mascotas registradas: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
-         }
-        }
-        oci_free_statement($stid);
-        oci_free_statement($curs);
-        oci_close($conn); 
-        
-        $conn = oci_connect(USER, PASS, HOST);
-        $curs = oci_new_cursor($conn);
-        $stid = oci_parse($conn,"begin Cantidad_Mascotas_Adoptadas(:cursbv); end;");
-        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-        oci_execute($stid);
-        oci_execute($curs); 
-      
-        
-        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
-        foreach ($row as $item) {
-        echo "Cantidad de mascotas adoptadas: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
-         }
-        
-        }
-        oci_free_statement($stid);
-        oci_free_statement($curs);
-        oci_close($conn);
-           
-        $conn = oci_connect(USER, PASS, HOST);
-        $curs = oci_new_cursor($conn);
-        $stid= oci_parse($conn,"begin Cantidad_Mascotas_En_Adopcion(:cursbv) ; end;" );
-        oci_bind_by_name($stid, ":cursbv", $curs, -1, OCI_B_CURSOR);
-        oci_execute($stid);
-        oci_execute($curs); 
-        
-        
-        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
-        
-        foreach ($row as $item) {
-        echo "Cantidad de mascotas en adopción: " . ($item !== null ? htmlentities($item, ENT_QUOTES,'ISO-8859-1') : "Nombre") . "</td>\n";
-         }
-        
-        }
-        oci_free_statement($stid);
-        oci_free_statement($curs);
-        oci_close($conn);
-         
-        ?>
         
          <?php
         $conn = oci_connect(USER, PASS, HOST);
@@ -199,8 +203,8 @@ oci_close($conn);
         ?>
      
         <div class="tabla">
-        <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-            <tr><td style="border:1px solid #000000;">Causas Devolución Mascotas</td></tr> 
+        <table  >
+            <tr><td >Causas Devolución Mascotas</td></tr> 
         <?php
 
             while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){
@@ -227,8 +231,8 @@ oci_close($conn);
         
         ?>
         <div class="tabla">
-        <table style="border:1px solid #000000;" cellspacing="0" cellpadding="0">
-            <tr><td style="border:1px solid #000000;">Nombre</td><td style="border:1px solid #000000;">Apellidos</td></tr> 
+        <table  >
+            <tr><td >Nombre</td><td >Apellidos</td></tr> 
         <?php
 
             while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false){

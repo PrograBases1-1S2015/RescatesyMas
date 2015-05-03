@@ -1,7 +1,7 @@
 <?php
 include ("settings.php");
 include ("common.php");
-
+error_reporting(0);
 //Al presionar el boton de login
 if (isset($_POST['entrar']))
 { // if form has been submitted
@@ -41,6 +41,7 @@ if (isset($_POST['entrar']))
         if($row['TIPO_USUARIO'] == 1)
         {
              header("Location:  registroAnimales.php");
+             actualizar_cookie($_POST['logNomusuario'],$_POST['logContrasenia'],$row['TIPO_USUARIO']);
         }
         else
         {
