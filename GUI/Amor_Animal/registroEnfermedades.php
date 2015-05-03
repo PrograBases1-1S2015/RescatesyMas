@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="wrap">                                                                                
 	   <div class="header-top">	                                                                      
 	        <div class="logo">                                                                        
-				<a href="index.php"><img src="images/logo.png" alt=""/></a>                                             
+				<img src="images/logo.png" alt=""/>                                           
 			</div>                                                                                    
 			<div class="phone">                                                                       
                             <?php
