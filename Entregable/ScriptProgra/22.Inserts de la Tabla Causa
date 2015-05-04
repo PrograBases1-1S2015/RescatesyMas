@@ -1,0 +1,4 @@
+Insert into causa(causa_id,causa) Values (incremento_causa.nextval,'Muy Molesto');
+Insert into causa(causa_id,causa) Values (incremento_causa.nextval,'Muy Feo');
+Insert into causa(causa_id,causa) Values (incremento_causa.nextval,'Necesita Muchos Cuidados');
+Select * from causa
